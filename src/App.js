@@ -3,10 +3,12 @@ import logo from './logo.svg'
 import './App.css'
 
 class App extends Component {
-  state = {}
+  state = {
+    
+  }
 
   componentDidMount() {
-    fetch('/')
+
   }
 
   render() {

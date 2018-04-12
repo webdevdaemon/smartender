@@ -1,4 +1,4 @@
-const INGREDIENTS = {
+const INGREDIENTS_ALPHA = {
     _X : ['151 proof rum', '7-up'],
 
     A: ['Absinthe', 'Absolut citron', 'Absolut Kurant', 'Absolut Peppar', 'Absolut Vodka', 'Advocaat', 'Aejo rum', 'Aftershock', 'Agave syrup', 'Ale', 'Allspice', 'Almond Extract', 'Almond flavoring', 'Almond', 'Amaretto', 'Angelica Root', 'Angostura Bitters', 'Anis', 'Anise', 'Anisette', 'Aperol', 'Apfelkorn', 'Apple Brandy', 'Apple Cider', 'Apple Juice', 'Apple schnapps', 'Apple', 'Applejack', 'Apricot Brandy', 'Apricot nectar', 'Apricot', 'Aquavit', 'Asafoetida', 'A?ejo rum'],
