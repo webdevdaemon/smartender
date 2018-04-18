@@ -1,26 +1,29 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+import Header from './Sections/Header'
+import Page from './Sections/Page'
+import Footer from './Sections/Footer'
 
 class App extends Component {
-  state = {
-    
-  }
-
-  componentDidMount() {
-
+  static propTypes = {
+    children: PropTypes.any,
+    header: PropTypes.node,
+    content: PropTypes.node,
+    footer: PropTypes.node,
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="main">
+        <Header />
+        <Page>
+        
+        
+        
+        </Page>
+        <Footer />
       </div>
     )
   }
