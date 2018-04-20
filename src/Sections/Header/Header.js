@@ -1,10 +1,13 @@
 import React from 'react'
-import Nav from '../../Components/Nav'
+import PropTypes from 'prop-types'
 
-const Header = () => (
-  <div className="Header">
-    <Nav />
+const Header = ({ children }) => (
+  <div className="header">
+    {children}
   </div>
 )
 
+Header.propTypes = {
+  children: PropTypes.any,
+}
 export default Header

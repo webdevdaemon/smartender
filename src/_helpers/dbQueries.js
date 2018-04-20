@@ -9,15 +9,9 @@ const queryStringLegendObj = function() {
     filterByAlcoholPresence: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${
       isVirginBool ? 'Non_Alcoholic' : 'Alcoholic'
     }`,
-    filterByIngredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin',
+    filterByIngredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Cranberry_Juice',
     filterByCategory: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryString}`,
     filterByGlassType: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass',
-    listPossibilities: {
-      categories: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
-      glasses: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list',
-      ingredients: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
-      alcoholic: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'
-    },
     getIngredientImagesbySize: {
       small: 'https://www.thecocktaildb.com/images/ingredients/ice-Small.png',
       medium: 'https://www.thecocktaildb.com/images/ingredients/ice-Medium.png',
@@ -25,3 +19,30 @@ const queryStringLegendObj = function() {
     }
   }
 }
+
+const drinkInfoByName = (query = '') => (
+  `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
+const drinkInfoByID = (id = 0) => (
+  `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+)
+const IngredientInfoByName = (query = '') => (
+  `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${query}` )
+const DrinkInfoByRandom = () => ('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+
+const listCategories = () => ('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+const listGlasses = () => ('https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list')
+const listIngredients = () => ('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+const listAlcoholic = () => ('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list')
+
+
+
+
+
+
+
+
+
+
+
+
+

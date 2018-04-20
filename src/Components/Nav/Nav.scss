@@ -1,5 +1,33 @@
-/*
-.Nav {
+.nav {
+  background: #05353e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+
+  ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+  }
   
+  .nav-link {
+    color: fff;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    a {
+      background: darkslategray;
+      border-radius: 12px;
+      color: skyblue;
+      margin: 0;
+      padding: 12px 18px;
+    }
+    a.active {
+      color: #ffff55;
+    }
+  }
 }
-*/

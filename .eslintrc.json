@@ -1,10 +1,6 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
+  "env": {"browser": true, "es6": true, "node": true},
   "parserOptions": {
     "ecmaVersion": 9,
     "ecmaFeatures": {
@@ -23,19 +19,15 @@
     "linebreak-style": 0,
     "no-console": 0,
     "no-undef": 0,
-    "indent": [
-      0,
-      2,
-      {
-        "ImportDeclaration": 4,
-        "flatTernaryExpressions": false,
-        "ObjectExpression": 2,
-        "ArrayExpression": 2,
-        "SwitchCase": 1,
-        "CallExpression": {"arguments": "first"},
-        "VariableDeclarator": {"var": 2, "let": 2, "const": 3}
-      }
-    ],
+    "indent": [ 0, 2, {
+      "ImportDeclaration": 4,
+      "flatTernaryExpressions": false,
+      "ObjectExpression": 2,
+      "ArrayExpression": 2,
+      "SwitchCase": 1,
+      "CallExpression": {"arguments": "first"},
+      "VariableDeclarator": {"var": 2, "let": 2, "const": 3}
+    }],
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-indent-props": [0, 2],
     "react/jsx-indent": [0, 2],
@@ -46,9 +38,10 @@
     "jsx-a11y/href-no-hash": 0,
     "no-extra-semi": 0,
     "babel/object-curly-spacing": ["error", "always"],
-    "babel/quotes": [ 0, "single", { "allowTemplateLiterals": true, "avoidEscape": true }
-    ],
-    "babel/semi":  [2, "never"],
+    "babel/quotes": [ 0, "single", {
+      "allowTemplateLiterals": true, "avoidEscape": true
+    }],
+    "babel/semi": [0, "never"],
     "prettier/prettier": 0
   }
 }

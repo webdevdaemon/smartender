@@ -1,11 +1,35 @@
-import React from 'react'
- import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
-const $Ingredients = ({children, ...props}) =>
-  <div className='$Ingredients'>$Ingredients</div>
+import Selector from '../../Components/Selector'
+import VariableList from '../../Components/VariableList'
 
-$Ingredients.propTypes    = { }
-$Ingredients.defaultProps = { }
+import INGREDIENTS from '../../_helpers/listIngredients'
 
+class $Ingredients extends Component {
+  state = {
+    allIngredients: INGREDIENTS,
+    currentValue: ' ',
+    chosen: [],
+  }
+
+  getCurrVal = val => {
+    this.setState((prev) => ({ currentValue: val, }),
+      () => { this.setState({ chosen: this.state.allIngredients[this.state.currentValue] || '' }) })
+  }
+
+  
+
+  render() {
+    let { currentValue, chosen: list } = this.state
+
+    return (
+      <div className="ingredients">
+        <h2>All Ingredients</h2>
+        <Selector currentValue={currentValue} callParent={this.getCurrVal} />
+        <VariableList list={list} char={currentValue} />
+      </div>
+    )
+  }
+}
 
 export default $Ingredients

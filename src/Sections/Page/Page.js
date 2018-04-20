@@ -1,16 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import Home from '../../Pages/Home'
-import SearchWrapper from '../../Components/SearchWrapper'
-
-const Page = () => (
-  <div className="Page">
-    <Route path="/" component={Home} />
-    <Route path="/search" component={SearchWrapper} />
-    <Route path="/random" component={Home} />
-    <Route path="/by-ingredients" component={Home} />
+const Page = ({ children, ...props }) => (
+  <div className='page'>
+    {children}
   </div>
 )
+
+Page.propTypes = {
+  children: PropTypes.any,
+}
 
 export default Page

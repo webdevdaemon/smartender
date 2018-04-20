@@ -1,32 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
-import Header from './Sections/Header'
-import Page from './Sections/Page'
-import Footer from './Sections/Footer'
+import Main from './Components/Main'
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    header: PropTypes.node,
-    content: PropTypes.node,
-    footer: PropTypes.node,
-  }
-
-  render() {
-    return (
-      <div className="main">
-        <Header />
-        <Page>
-        
-        
-        
-        </Page>
-        <Footer />
-      </div>
-    )
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <Main/>
+  </BrowserRouter>
+)
 
 export default App
