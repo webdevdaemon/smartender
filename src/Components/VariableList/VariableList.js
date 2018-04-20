@@ -23,3 +23,15 @@ VariableList.propTypes = {
 
 export default VariableList
 
+// const _VariableList = ({ list, char, c_g_i_a }) => (
+//   <div className="variable-list-wrapper">
+//     <h4>{`Available Ingredients for Letter: ${char}`}</h4>
+//     <ul className="variable-list ingredients-list">
+//       {list.map(ing => (
+//         <li className="ingredient" key={`I-${ing.substring(-3)}`}>
+//           <a href={`filter.php?i=Gin`}>{ing}</a>
+//         </li>
+//       ))}
+//     </ul>
+//   </div>
+// )
