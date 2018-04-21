@@ -1,1 +1,10 @@
-/* No CSS */
+.page {
+  background: #dfeeaa;
+  display: grid;
+  height: 75vh;
+  width: 100vw;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20vh 20vh auto;
+  grid-gap: 12px;
+  grid-auto-columns: 1fr;
+}

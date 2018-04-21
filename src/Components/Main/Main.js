@@ -12,14 +12,16 @@ import $Search from '../../Pages/$Search'
 import $Randomizer from '../../Pages/$Randomizer'
 import $Ingredients from '../../Pages/$Ingredients'
 
+import Masthead from '../Masthead/'
 import Nav from '../Nav'
 
 const Main = ({ children }) => (
   <div className="main grid-layout">
     {/* <Overlay /> */}
     <Header>
-      <Nav />
+      <Masthead />
     </Header>
+
     <Page>
       <div className="app-wrapper">
         <Route exact path="/" component={Home} />
@@ -28,7 +30,10 @@ const Main = ({ children }) => (
         <Route path="/ingredients" component={$Ingredients} />
       </div>
     </Page>
-    <Footer />
+
+    <Footer>
+      <Nav />
+    </Footer>
   </div>
 )
 
