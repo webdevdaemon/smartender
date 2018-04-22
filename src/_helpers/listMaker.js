@@ -1,47 +1,35 @@
 import axios from 'axios'
 
-/*-----ERROR MESSAGE-----*/
-const errorMessage = `
-  ERROR @ 'generateList' FAILURE!!!\n
-  input invalid...\n
-  arguments[0] MUST be one of three strings:\n
-  "c": (Categories)\n
-  "g": (Glass Type)\n
-  "i": (Ingredients)\n`
+import { errListAll } from '../errorMessages'
 
-/*-----Helper Strings-----*/
-const preQuery = 'https://www.thecocktaildb.com/api/json/v1/1/'
-const cStr = 'Category'
-const gStr = 'Glass'
-const iStr = 'Ingredient'
+const KEYS = {
+  c: 'strCategory',
+  g: 'strGlass',
+  i: 'strIngredient1',
+}
 
-const listAllCGI = cgi => {
-  const key = cgi
-  switch (key) {
-    case 'c':
-      return axios(preQuery + 'list.php?c=list')
-      break
-    case 'g':
-      return axios(preQuery + 'list.php?g=list')
-      break
-    case 'i':
-      return axios(preQuery + 'list.php?i=list')
-      break
-    default:
-      break
+const listMaker = (function() {
+  const preQuery = 'https://www.thecocktaildb.com/api/json/v1/1/'
+
+  const queryAPI = flag =>
+    axios(`${preQuery}list.php?${flag}=list`)
+      .then(({ data }) => data)
+      .catch(err => err)
+
+  const extractList = (promise, keyString) =>
+    promise.then(r => r.drinks).then(drinks => drinks.map(o => o[keyString]))
+
+  const gateKeeper = flag => {
+    if (!flag.length > 1 || !/[cgi]/.test(flag)) {
+      throw new Error(errListAll)
+    }
+    
+    return extractList(queryAPI(flag), KEYS[flag])
   }
-}
 
-const extractList = prom => {
-  return prom
-    .then(({ data }) => ({ raw: data }))
-    .then()
-    .catch()
-}
+  return input => gateKeeper(input)
+})()
 
-const generateList = keyString => /[??cgi]/.test(keyString)
-
-console.log({ c: generateList('c') })
-console.log({ g: generateList('g') })
-console.log({ i: generateList('i') })
-console.log({ c: generateList('cg') })
+let a = listMaker('i') /*?*/
+a
+console.log(a)
