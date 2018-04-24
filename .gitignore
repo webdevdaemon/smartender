@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.vscode
 
 # testing
 /coverage
@@ -19,3 +20,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.esformatter
+.importjs.json
+jstwister.config.js
+yarn.lock
