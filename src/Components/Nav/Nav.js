@@ -15,7 +15,7 @@ const Nav = () => (
         <NavLink to="/randomizer">Random Drink</NavLink>
       </li>
       <li className='nav-link'>
-        <NavLink to="/ingredients">Ingredients List</NavLink>
+        <NavLink to="/browser">Browse Beverages</NavLink>
       </li>
     </ul>
   </div>

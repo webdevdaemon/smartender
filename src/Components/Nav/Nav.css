@@ -1,35 +1,47 @@
 .nav {
-  background: #05353e;
+  background: #a5acaf;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0;
   padding: 0;
   width: 100vw;
+  height: 100%;
 }
 
 .nav ul {
+  background: transparent;
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
   width: 100%;
+  height: 100%;
 }
 
 .nav .nav-link {
-  color: fff;
-  display: block;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   margin: 0;
   padding: 0;
   width: 25%;
+  height: 100%;
 }
 
 .nav .nav-link a {
-  background: darkslategray;
-  border-radius: 12px;
+  background: transparent;
   color: skyblue;
-  margin: 0;
+  font-weight: 600;
+  height: 100%;
+  margin: auto 0;
   padding: 12px 18px;
 }
 
 .nav .nav-link a.active {
+  background: transparent;
   color: #ffff55;
 }

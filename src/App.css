@@ -1,27 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Alfa+Slab+One|Cinzel+Decorative:900|Croissant+One|Fascinate|Fascinate+Inline|Limelight|Sigmar+One");
 html {
   font-size: 1em;
 }
 
 body {
-  background-color: white;
-  color: darkblue;
+  background-color: #d9dbf7;
+  color: #000035;
   font-family: Raleway;
-  font-weight: 200;
+  font-weight: 600;
   line-height: 1.45;
 }
 
 p {
-  margin-bottom: 1.3em;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
+  margin: 0;
+  padding: 0;
   font-weight: inherit;
   line-height: 1.2;
+  text-align: center;
 }
 
 h1 {
-  margin-top: 0;
   font-size: 3.157em;
 }
 
@@ -39,4 +42,20 @@ h4 {
 
 small, .font_small {
   font-size: 0.75em;
+}
+
+.masthead {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  grid-area: masthead;
+  width: 100%;
+}
+
+.masthead .masthead-title, .masthead .masthead-subtitle {
+  color: #ffb;
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 8vh;
+  text-align: left;
 }

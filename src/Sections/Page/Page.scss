@@ -1,8 +1,10 @@
+@import '../../_scss_util/variables.scss';
+
 .page {
-  background: #dfeeaa;
+  background: $lightBG;
   display: grid;
   height: 75vh;
-  width: 100vw;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 20vh 20vh auto;
   grid-gap: 12px;

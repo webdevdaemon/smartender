@@ -1,43 +1,107 @@
-.page {
-  display: block;
-  position: absolute;
-  height: 75vh;
+@import url("https://fonts.googleapis.com/css?family=Alfa+Slab+One|Cinzel+Decorative:900|Croissant+One|Fascinate|Fascinate+Inline|Limelight|Sigmar+One");
+html {
+  font-size: 1em;
+}
+
+body {
+  background-color: #d9dbf7;
+  color: #000035;
+  font-family: Raleway;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+p {
   margin: 0;
   padding: 0;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  line-height: 1.2;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.157em;
+}
+
+h2 {
+  font-size: 2.369em;
+}
+
+h3 {
+  font-size: 1.777em;
+}
+
+h4 {
+  font-size: 1.333em;
+}
+
+small, .font_small {
+  font-size: 0.75em;
+}
+
+.masthead {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  grid-area: masthead;
+  width: 100%;
+}
+
+.masthead .masthead-title, .masthead .masthead-subtitle {
+  font-family: "Fascinate Inline", cursive;
+  font-size: 8vh;
+  text-align: left;
+}
+
+.page {
+  display: block;
+  background: #d9dbf7;
+  color: #000035;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  grid-area: page;
 }
 
 .header {
-  display: block;
-  height: 10vh;
+  display: grid;
+  background: #a5acaf;
+  height: 100%;
   margin: 0;
   padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  grid-area: header;
+  grid-template-rows: 100%;
+  grid-template-columns: 85% 1fr;
+  grid-template-areas: "masthead hamburger";
 }
 
 .footer {
-  background: #a5acaf;
   display: block;
+  background: #a5acaf;
+  height: 100%;
   margin: 0;
   padding: 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 15vh;
+  width: 100%;
+  grid-area: footer;
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
   height: 100vh;
   margin: 0;
   padding: 0;
   width: 100vw;
+  grid-template-columns: 100%;
+  grid-template-rows: 10vh 77vh 13vh;
+  grid-template-areas: "header" "page" "footer";
 }
 
 .nav-link {
