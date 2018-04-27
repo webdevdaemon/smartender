@@ -27,8 +27,8 @@ body {
   font-weight: 600;
   line-height: 1.45;
   margin: 0;
-  padding: 0;
   overflow: hidden;
+  padding: 0;
 }
 
 p {
@@ -40,27 +40,32 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 0;
-  padding: 0;
   font-weight: inherit;
   line-height: 1.2;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
 h1 {
-  font-size: 3.157em;
+  font-size: 2.666em;
 }
 
 h2 {
-  font-size: 2.369em;
+  font-size: 2em;
 }
 
 h3 {
-  font-size: 1.777em;
+  font-size: 1.666em;
 }
 
 h4 {
   font-size: 1.333em;
+}
+
+p {
+  font-family: 'raleway', 'avenir', sans-serif;
+  font-size: 1em;
 }
 
 small,
@@ -69,74 +74,153 @@ small,
 }
 
 .page {
-  display: block;
   background: $lightBG;
   color: $darkTXT;
+  grid-area: page;
   height: 100%;
   margin: 0;
+  max-height: 75vh;
+  min-height: 75vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 0;
   width: 100%;
-  grid-area: page;
+}
+.page {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-gap: 12px;
+  grid-template-areas: "v-list-head" "v-list-nav" "v-list";
+  grid-template-columns: 100vw;
+  grid-template-rows: 10vh 10vh auto
+}
+
+.variable-list-wrapper {
+  grid-area: v-list;
+
+  h4 {
+    background: $darkTXT;
+    color: $lightBG;
+    display: block;
+    margin: 0;
+    padding: .33em 0;
+    position: sticky;
+    top: 10vh;
+  }
+}
+
+.variable-list-header {
+  background: $lightBG;
+  font-size: 1.5em;
+  grid-area: v-list-head;
+  height: 7vh;
+  line-height: 7vh;
+  position: sticky;
+  top: 0;
+}
+
+.variable-list-nav-list {
+  align-items: center;
+  background: $silver;
+  display: flex;
+  flex-direction: row;
+  grid-area: v-list-nav;
+  height: 10vh;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+
+  li {
+    background: $silver;
+    height: 100%;
+    text-align: center;
+    width: 33.33%;
+
+    p {
+      margin: 0;
+      padding: 1em 0;
+    }
+  }
+}
+
+.variable-list {
+  list-style: none;
 }
 
 .back-button {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   grid-area: back;
+  justify-content: center;
+
 }
 
 .menu-button {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   grid-area: menu;
+  justify-content: center;
+
 }
 
 .masthead {
-  color: #ffb;
+  align-items: center;
+  color: #cff;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  grid-area: masthead;
+  justify-content: center;
   margin: 0;
   padding: 0;
-  grid-area: masthead;
   width: 100%;
-  h2.masthead-title {
+  h2 {
     font-family: $f2;
     font-size: var(--masthead-title-size);
-    text-align: left;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.66);
+    font-size: 4.5vh;
+    line-height: 10vh;
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 40, 0.8);
+
   }
 }
 
 .header {
-  display: grid;
   background: $silver;
-  height: 100%;
+  display: grid;
+  grid-area: header;
+  grid-template-areas: "back masthead menu";
+  grid-template-columns: 17.5% 65% 17.5%;
+  grid-template-rows: 100%;
+  height: calc(10vh+4px);
   margin: 0;
   padding: 0;
   width: 100%;
-  grid-area: header;
-  grid-template-rows: 100%;
-  grid-template-columns: 10% 80% 10%;
-  grid-template-areas: "back masthead menu";
 }
 
 .footer {
-  display: block;
   background: $silver;
+  display: block;
+  grid-area: footer;
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
-  grid-area: footer;
 }
 
 .main {
   display: grid;
+  grid-template-areas: 'header' 'page' 'footer';
+  grid-template-columns: 100%;
+  grid-template-rows: 10vh 77vh 13vh;
   height: 100vh;
   margin: 0;
   padding: 0;
   width: 100vw;
-  grid-template-columns: 100%;
-  grid-template-rows: 10vh 77vh 13vh;
-  grid-template-areas: 'header' 'page' 'footer';
 }
 
 .nav-link {
