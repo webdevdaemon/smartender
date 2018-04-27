@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import Masthead from '../../Components/Masthead'
 import FaBars from 'react-icons/lib/fa/bars'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 
@@ -17,7 +19,7 @@ const BackButton = () => (
 const Header = ({children}) => (
   <div className="header">
     <BackButton />
-    {children}
+    <Masthead title="SmarTender" subTitle="" />
     <MenuButton />
   </div>
 )

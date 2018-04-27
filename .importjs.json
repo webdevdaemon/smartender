@@ -1,6 +1,8 @@
 {
   "lookupPaths": [
     "./src/Components/**/*.js",
+    "./src/Sections/**/*.js",
+    "./src/Pages/**/*.js",
     "./src/**/*.js",
     "./src/*.js",
     "./src"

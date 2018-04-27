@@ -7,11 +7,9 @@ import PageRoutes from '../../_helpers/page-routes'
 import Masthead from '../Masthead/'
 import Nav from '../Nav'
 
-const Main = ({ children }) => (
+const Main = ({children}) => (
   <div className="main grid-layout">
-    <Header>
-      <Masthead title='Smartender' subTitle=''/>
-    </Header>
+    <Header />
 
     <Page>
       <PageRoutes />
