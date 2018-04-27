@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { errListAll } from '../errorMessages'
+import { errorListPossibilities } from '../errorMessages'
 
 const KEYS_BY_FLAG = { c: 'strCategory', g: 'strGlass', i: 'strIngredient1' }
 
@@ -12,10 +12,10 @@ export default (function() {
       .then(({ data }) => data)
       .then(r => r.drinks)
       .then(drinks => drinks.map(o => o[keyString]))
-      .catch(err => ({ err, errListAll }))
+      .catch(err => ({ err, errorListPossibilities }))
   const validateOutput = flag => {
     if (flag.length !== 1 || !/[cgi]/.test(flag)) {
-      throw new Error(errListAll)
+      throw new Error(errorListPossibilities)
     }
     return extractList(queryAPI(convertFlagToQueryString(flag)), KEYS_BY_FLAG[flag])
   }

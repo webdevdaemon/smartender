@@ -1,26 +1,17 @@
-const ERROR_MODULE = (function() {
+const errorMessagesObject = {
+  errorGeneric: 'ERROR, Something went wrong, please try again',
+  errorListPossibilities: `ERROR @ 'listAll' FAILURE!!!\n
+      input invalid...\n
+      arguments[0] MUST be one of three strings:\n
+      "c": (Categories)\n
+      "g": (Glass Type)\n
+      "i": (Ingredients)\n`,
+}
 
-  /*
-1) Add any new errors to 'errorMassagesObject' as a new property
-2) then add the following to your imports list:
-    import { [YOUR ERROR MESSAGE] } from [path to errorMessages.js]
-3) ex: if (err) {throw new Error([YOUR ERROR MESSAGE])}
-*/
- 
-  const errorMessagesObject = {
-  errGeneric: 'ERROR, Something went wrong, please try again',
+let { errorGeneric, ...errorListPossibilities } = errorMessagesObject
 
-    errListMaker: `ERROR @ 'listAll' FAILURE!!!\n
-  input invalid...\n
-  arguments[0] MUST be one of three strings:\n
-  "c": (Categories)\n
-  "g": (Glass Type)\n
-  "i": (Ingredients)\n`,
-  }
-  const modulator = function({ errGeneric, ...all }) {
-    return { ...arguments[0] }
-  }
-  return modulator(errorMessagesObject)
-}())
+export { errorGeneric, errorListPossibilities }
 
-export default { ...ERROR_MODULE }
+
+
+
