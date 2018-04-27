@@ -3,58 +3,88 @@ import PropTypes from 'prop-types'
 import { Link, Route } from 'react-router-dom'
 import VariableList from '../../Components/VariableList'
 
+import listPossibilities from '../../_helpers/listPossibilities'
+
+const HEADERS_BY_FLAG = { c: 'Categories', g: 'Glass Types', i: 'Ingredients' }
+
 class $BeverageBrowser extends Component {
   state = {
     visibleList: [],
-    listHeader: '',
-    currentValue: ' ',
+    listHeader: 'Browse by Category, Ingredient, or Glass Type',
+    currentFlag: '',
     cachedLists: {},
   }
 
-  static propTypes = {
-    match: PropTypes.any,
-  }  
+  static propTypes = { match: PropTypes.any }
 
-  getCurrVal = val => {
+  updateListState = async flag => {
+    let newList = await listPossibilities(flag)
     this.setState(
-      prev => ({ currentValue: val }),
-      () => { this.setState({ chosen: this.state.allIngredients[this.state.currentValue] || '', }) },
+      prevState =>
+        prevState.visibleList.length === 0 ? { visibleList: newList } : { visibleList: [] },
+      () =>
+        this.setState({
+          visibleList: this.state.visibleList === [] || newList,
+          listHeader: HEADERS_BY_FLAG[flag],
+          currentFlag: flag,
+        }),
     )
   }
 
   render() {
-    let {
-      visibleList,
-      // listHeader,
-      // currentValue
-    } = this.state
     let { match } = this.props
+    let update = this.updateListState
     return (
-      <div className='beverage-browser'>
-        <h2>Browsing Beverages By:</h2>
-        <ul>
-          <li>
-            <Link to={`${match.url}/by-ingredient`}>Ingredient</Link>
+      <div className="beverage-browser">
+        <h2 className="variable-list-header">List Drinks By:</h2>
+        <ul className="variable-list-nav-list">
+          <li className="variable-list-nav-link">
+            <Link onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
+              <p className="variable-list-nav-link-text">Ingredients</p>
+            </Link>
           </li>
-          <li>
-            <Link to={`${match.url}/by-glass`}>Glass Type</Link>
+          <li className="variable-list-nav-link">
+            <Link onClick={() => update('g')} to={`${match.url}/by-glass`}>
+              <p className="variable-list-nav-link-text">Glass Types</p>
+            </Link>
           </li>
-          <li>
-            <Link to={`${match.url}/by-category`}>Category</Link>
+          <li className="variable-list-nav-link">
+            <Link onClick={() => update('c')} to={`${match.url}/by-category`}>
+              <p className="variable-list-nav-link-text">Categories</p>
+            </Link>
           </li>
         </ul>
 
         <Route
-          path="/:list"
-          component={() => <VariableList {...this.props} {...this.state} list={visibleList} />}
+          path={`${match.url}/by-ingredient`}
+          render={() => (
+            <VariableList
+              updateList={update}
+              list={this.state.visibleList}
+              header={this.state.listHeader}
+            />
+          )}
         />
-
-        {/*
-         It's possible to use regular expressions to control what param values should be matched.
-            * "/order/asc"  - matched
-            * "/order/desc" - matched
-            * "/order/foo"  - not matched
-      */}
+        <Route
+          path={`${match.url}/by-glass`}
+          render={() => (
+            <VariableList
+              updateList={update}
+              list={this.state.visibleList}
+              header={this.state.listHeader}
+            />
+          )}
+        />
+        <Route
+          path={`${match.url}/by-category`}
+          render={() => (
+            <VariableList
+              updateList={update}
+              list={this.state.visibleList}
+              header={this.state.listHeader}
+            />
+          )}
+        />
       </div>
     )
   }
