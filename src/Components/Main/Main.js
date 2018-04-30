@@ -4,10 +4,9 @@ import Header from '../../Sections/Header'
 import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
 import PageRoutes from '../../_helpers/page-routes'
-import Masthead from '../Masthead/'
 import Nav from '../Nav'
 
-const Main = ({children}) => (
+const Main = ({ children }) => (
   <div className="main grid-layout">
     <Header />
 

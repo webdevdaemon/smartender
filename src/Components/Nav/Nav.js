@@ -2,20 +2,37 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
+import FaQuestion from 'react-icons/lib/fa/question'
+import FaSearch from 'react-icons/lib/fa/search'
+import FaCogs from 'react-icons/lib/fa/cogs'
+import FaList from 'react-icons/lib/fa/list'
+
 const Nav = () => (
   <div className="nav">
     <ul>
       <li className='nav-link'>
-        <NavLink to="/" exact>Smartender HQ</NavLink>
+        <NavLink to="/" exact>
+          <FaCogs />
+          <p className='footer-nav-text'>{'About'}</p>
+        </NavLink>
       </li>
       <li className='nav-link'>
-        <NavLink to="/search">Drink Search</NavLink>
+        <NavLink to="/search">
+          <FaSearch />
+          <p className='footer-nav-text'>{'Search'}</p>
+        </NavLink>
       </li>
       <li className='nav-link'>
-        <NavLink to="/randomizer">Random Drink</NavLink>
+        <NavLink to="/randomizer">
+          <FaQuestion />  
+          <p className='footer-nav-text'>{'Random'}</p>
+        </NavLink>
       </li>
       <li className='nav-link'>
-        <NavLink to="/browser">Browse Beverages</NavLink>
+        <NavLink to="/browser">
+          <FaList />
+          <p className='footer-nav-text'>{'Browse'}</p>
+        </NavLink>
       </li>
     </ul>
   </div>

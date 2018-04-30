@@ -16,7 +16,7 @@ const BackButton = () => (
   </div>
 )
 
-const Header = ({children}) => (
+const Header = ({ children }) => (
   <div className="header">
     <BackButton />
     <Masthead title="SmarTender" subTitle="" />

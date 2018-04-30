@@ -31,9 +31,13 @@ class $BeverageBrowser extends Component {
     )
   }
 
+  clickListItem = (evt) => {
+    return evt
+  }
+
   render() {
     let { match } = this.props
-    let update = this.updateListState
+    let update = this.updateListState, listItemClick = this.clickListItem
     return (
       <div className="beverage-browser">
         <h2 className="variable-list-header">List Drinks By:</h2>
@@ -59,6 +63,7 @@ class $BeverageBrowser extends Component {
           path={`${match.url}/by-ingredient`}
           render={() => (
             <VariableList
+              clickHandler={listItemClick}
               updateList={update}
               list={this.state.visibleList}
               header={this.state.listHeader}
@@ -69,6 +74,7 @@ class $BeverageBrowser extends Component {
           path={`${match.url}/by-glass`}
           render={() => (
             <VariableList
+              clickHandler={listItemClick}
               updateList={update}
               list={this.state.visibleList}
               header={this.state.listHeader}
@@ -79,6 +85,7 @@ class $BeverageBrowser extends Component {
           path={`${match.url}/by-category`}
           render={() => (
             <VariableList
+              clickHandler={listItemClick}
               updateList={update}
               list={this.state.visibleList}
               header={this.state.listHeader}
