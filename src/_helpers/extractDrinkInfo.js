@@ -1,4 +1,4 @@
-import {drinkObject as test} from './testObjects'
+import { drinkObject as test } from './testObjects'
 
 const extractDrinkInfo = (function() {
   const parseIngredients = function(raw) {

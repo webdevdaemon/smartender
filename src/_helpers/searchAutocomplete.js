@@ -1,46 +1,53 @@
 import axios from 'axios'
-import { get } from './dbQueries'
-import { prependOnceListener } from 'cluster';
+import { get, filterBy } from './dbQueries'
 
-const initMatches = []
+// const autocomplete = (function () {
+  const getData = function(qry) {
+    const output = axios(get.drinkByName(qry))
+      .then(({ data: { drinks } }) => drinks)
+      .then(drinks => drinks.map(({ strDrink }) => strDrink))
+      .catch(err => new Error(err))
+    return await output
+  }
 
-/*  ********************************************* /
-[POSSIBLE FEATURE] "Variable Search Precision"
-- search levels 1-3 from "fuzzy" to precise
-    *********************************************
-const getRegExByLevel = (stringToMatch) => (lvl = 3) => [
-  new RegX(`[${stringToMatch}]`, 'gi'),
-  // FUZZY - '/[abc]/'
-  new RegX(`${stringToMatch}`,   'gi' ),
-  // LOOSE   '/abc/'
-  new RegX(`^${stringToMatch}`,  'gi' ),
-  // PRECISE '/^abc/' 
-][lvl-1]
-**  ********************************************  */
+  const filterResults = (stringToMatch, curr) => {
+    const rgxToMatch = new RegExp(`${stringToMatch}`, 'gi')
+    return curr.filter(str => rgxToMatch.test(str))
+  }
 
-const filterResults = stringToMatch => {
-  const rgxToMatch = new RegExp(`(${stringToMatch})`, 'gi')
-  return listToFilter =>
-    listToFilter.filter(str => rgxToMatch.test(str))
-}
+  const go = async function(searchQuery, curr) {
+    let output = []
+    const filteredList = await searchQuery.length > 0
+      ? (searchQuery.length !== 1)
+        ? filterResults(searchQuery, curr)
+        : getData(searchQuery)
+      : [] && filteredList.forEach(item => output.push(item))
+    return output
+  }
 
-const initAutocompList = qry =>
-  axios(get.drinkByName(qry))
-    .then(({ data: { drinks } }) => drinks)
-    .then(drinks => drinks.map(({ strDrink }) => strDrink))
-    .then(list => {
-      list.forEach(match => initMatches.push(match))
-      console.log({ list, initMatches: [...initMatches] })
-      return list
-    })
+  const test = async function () {
+    let a = await go('a', ['arf', 'arfa', 'xxx', 'x', 'arfurgh'])
+    let arr = a
+    return arr
+  }
+  console.log(test())  
 
-const go = (searchQ, current) =>
-  searchQ.length > 0
-    ? searchQ.length !== 1
-      ? filterResults(searchQ, current)
-      : initAutocompList(searchQ)
-    : null // no query = return <null>
+  
+console.log(go('ar', ['arf', 'arfa', 'xxx', 'x', 'arfurgh']))
+// })()
 
-let ___ = go('v')
-___ = go('vo', ___)
+// export default autocomplete
 
+/**
+ * @description EXPERIMENTAL - accepts a search string, and level/type id (1, 2, or 3), and returns a corresponding RegExp obj to utilize when filtering a collection of results.
+ * @param {string} stringToMatch The current search query string
+ * @param {number} [lvl=3] Choose between search levels ranging from "loosest" to "strictest". 1 = "Fuzzy Search", 2 = "Loose Search", 3 = "Strict Search."
+ */
+
+// const getRegExByLevel = (stringToMatch, lvl = 3) =>
+//   [
+//     null,
+//     new RegX(`[${stringToMatch}]`, 'gi'), // (FUZZY - '/[abc]/')
+//     new RegX(`${stringToMatch}`, 'gi'),   // (LOOSE   '/abc/')
+//     new RegX(`^${stringToMatch}`, 'gi'),  // (PRECISE '/^abc/')
+//   ][lvl]
