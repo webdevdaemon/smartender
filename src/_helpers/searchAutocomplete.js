@@ -3,21 +3,40 @@ import organizeInfo from './extractDrinkInfo'
 import axios from 'axios'
 const cache = []
 
-async function getListofDrinkObjects(queryString) {
-  const list = await axios(queryString).then(({ data }) => data).then(({ drinks }) => drinks) //?
-    .catch(err => new Error(err))
-  const normalized = list
-  console.log({ normalized })
-  return normalized
-}
-
-getListofDrinkObjects(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=v`)
-
-function autocomplete(queryString, currentList) {
-  let newList = []
-  if (queryString.length === 1) {
-    const _Q = get.drinkByName(queryString)
-
+export default (function() {
+	
+	async function extractName(prom) {
+    return await prom
+			.then(({ data }) => data)
+			.then(({ drinks }) => drinks)
+			.then(list => list.map(item => organizeInfo(item).name))
+			.catch(err => new Error(err))
   }
 
-}
+  async function getListofDrinkObjects(queryString) {
+    return await extractName(axios(queryString))
+  }
+
+  function filterListByQueryString(queryString, currentList) {
+    const strToFind = new RegExp(queryString)
+    return currentList.filter(str => strToFind.test(str))
+  }
+
+  function autocomplete(queryString, currentList) {
+    if (queryString === '') {
+      return
+    } else if (!currentList) {
+      return extractName(
+        getListofDrinkObjects(
+          get.drinkByName(queryString)
+        )
+      )
+    } else {
+      return filterListByQueryString(queryString, currentList)
+    }
+	}
+
+
+	return autocomplete
+
+})()
