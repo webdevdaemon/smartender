@@ -1,13 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const $Search = ({ children }) => (
+import SearchWrapper from '../../Components/SearchWrapper/SearchWrapper'
+
+const $Search = () => (
   <div className='search'>
-    <h2>{'Drink Search'}</h2>
-  </div>
+		<h2>{ 'Drink Search' }</h2>
+		<SearchWrapper />	
+	</div>
 )
-$Search.propTypes = {
-  children: PropTypes.any,
-}
 
 export default $Search

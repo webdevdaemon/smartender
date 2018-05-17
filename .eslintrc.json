@@ -23,7 +23,8 @@
     ],
     "plugins": [
         "env",
-        "react",
+				"react",
+				"react-app",
         "babel",
         "prettier"
     ],

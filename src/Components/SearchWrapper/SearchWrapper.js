@@ -1,20 +1,39 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import SearchFormWrapper from '../SearchFormWrapper'
+import SearchResultsListWrapper from '../SearchResultsListWrapper'
 
 class SearchWrapper extends Component {
-  state = {}
 
-  static propTypes = {}
+	constructor() {
+		super()
+		this.state = {
+			searchString: '',
+			results: [],
+			cache: {},
+		}
+	}
+
+  updateSearchString = (event) => this.setState({ searchString: event.target.value })
+	updateResultsArray = (results) => this.setState({ results })
+  updateCacheObject = (cache) => this.setState({ cache })
 
   render() {
-    let {children, ...$} = this.props
 
     return (
-    <div className="SearchWrapper">
-      <h2>
-        {children}
-      </h2>
-    </div>
+      <div className='search-wrapper'>
+				<h2>{ 'Find That Recipe!' }</h2>
+				<SearchFormWrapper
+					cache={ this.state.cache }
+					searchString={ this.state.searchString }
+					updateCacheObject={ this.updateCacheObject }
+					updateResultsArray={ this.updateResultsArray }
+					updateSearchString={ this.updateSearchString }
+				/>
+				<hr />
+				<SearchResultsListWrapper
+					results={ this.state.results }
+				/>
+      </div>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { image } from '../../_helpers/dbQueries'
+import { image } from '../../_helpers/queryStringGenerator.js'
 
 const VariableList = ({ list, header, match, ...props }) => (
   <div className="variable-list-wrapper">

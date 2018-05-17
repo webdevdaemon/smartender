@@ -1,6 +1,6 @@
-import { drinkObject as test } from './testObjects'
+// import { drinkObject as test } from './testObjects'
 
-const extractDrinkInfo = (function() {
+const normalize = (function() {
 	
 	/**
 	 * @name parseIngredients
@@ -10,26 +10,23 @@ const extractDrinkInfo = (function() {
 	 */
 
 	const parseIngredients = function(raw) {
-
 		const getKeys = recipe => {
       const rgxIngredient = new RegExp('strIngredient*d*')
       const ingredientKeys = Object.keys(recipe)
         .filter(key => rgxIngredient.test(key) && recipe[key],)
       return ingredientKeys
     }
-		
 		const getDetailsFromKeys = keys => keys.map((key, dex) => {
       const amt = `strMeasure${dex + 1}`
       return [raw[key], raw[amt]]
     })
-		
 		return getDetailsFromKeys(getKeys(raw))
   }
 	
 	/**
 	 * @name organizeInfo
-	 * @description accepts raw drink object from cocktailDB and returns a new object with property names altered to be more intuitive and easier to reason about.
-	 * @param {object} drinkObject 
+	 * @description accepts raw drink object from cocktailDB and returns a new object with property names altered to be more intuitive and easier to reason about. Additionally, the 'strIngredient' and 'strMeasure' properties are parsed and returned as a list of ingredient/measure pairs to be easily iterated and rendered into the UI representation of the recipe. ex: [['sour mix', '1 1/2 oz.'], ...recipe]
+	 * @param {object} drinkObject
 	 * @returns {object} normalized drinkObject
 	 */
 
@@ -60,8 +57,10 @@ const extractDrinkInfo = (function() {
     }
   }
 
-	return organizeInfo
+	return rawDrinkObject => organizeInfo(rawDrinkObject)
 	
 })()
 
-export default extractDrinkInfo
+// normalize(test)//?
+
+export { normalize }

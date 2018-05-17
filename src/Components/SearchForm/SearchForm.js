@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-class SearchForm extends Component {
-  static propTypes = {}
+const SearchForm = props => (
+	<form className='search-form'>{ props.children }</form>
+)
 
-  render() {
-    let {children, ...$} = this.props
-    return (<form>{children}</form>)
-  }
+SearchForm.propTypes = {
+	children: PropTypes.any
 }
 
 export default SearchForm

@@ -1,11 +1,29 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const SearchInput = () => (
-  <div>
-    <input type='search' />
-  </div>
-)
-SearchInput.propTypes = {}
+class SearchInput extends React.Component {
+  constructor() {
+		super()
+		
+  }
+	
+	static propTypes = {
+		searchString: PropTypes.string,
+		updateSearchString: PropTypes.func,
+	}
+
+  render() {
+    return (
+      <div>
+				<input
+					type='text'
+					value={ this.props.searchString }
+					onChange={ this.props.updateSearchString }
+				/>
+      </div>
+		)
+  }
+}
 
 
 export default SearchInput
