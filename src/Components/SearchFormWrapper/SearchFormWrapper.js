@@ -9,6 +9,7 @@ class SearchFormWrapper extends Component {
 	static propTypes = {
 		cache: PropTypes.object,
 		searchString: PropTypes.string,
+		initSearch: PropTypes.func,
 		updateCacheObject: PropTypes.func,
 		updateResultsArray: PropTypes.func,
 		updateSearchString: PropTypes.func,
@@ -16,13 +17,14 @@ class SearchFormWrapper extends Component {
 
   render() {
 		let { searchString, updateSearchString } = this.props
-		console.log(searchString, updateSearchString)
+		// console.log(searchString, updateSearchString)
     return (
       <div className='search-form-wrapper'>
         <SearchForm>
 					<SearchInput
-						value={ this.props.searchString }
-						updateSearchString={ this.props.updateSearchString }
+						value={ searchString }
+						updateSearchString={ updateSearchString }
+						
 					/>
         </SearchForm>
       </div>

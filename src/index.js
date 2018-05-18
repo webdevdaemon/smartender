@@ -6,7 +6,7 @@ import App from './App'
 // import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <App />,
+	<App cache={$_cache_$}/>,
   document.getElementById('root')
 )
 

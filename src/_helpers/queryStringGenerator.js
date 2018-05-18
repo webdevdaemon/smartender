@@ -10,8 +10,8 @@ glassType: (glassType = '') => `https://www.thecocktaildb.com/api/json/v1/1/filt
   ingredient: (ingredient = '') => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   category: (category = '') => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
   adultsOnly: (adultsOnly = true) => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${
-      adultsOnly ? 'Non_Alcoholic' : 'Alcoholic'
-    }`,
+		adultsOnly ? 'Non_Alcoholic' : 'Alcoholic'
+	}`,
 }
 
 const listAll = {

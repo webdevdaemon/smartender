@@ -1,9 +1,11 @@
 {
     "presets": [
-        "env", "react", "react-app"
+				"env",
+				"react", 
+				"react-app"
     ],
     "plugins": [
         "transform-es2015-spread",
-        "transform-object-rest-spread"
+				"transform-object-rest-spread"
     ]
 }

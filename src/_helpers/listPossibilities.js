@@ -19,6 +19,6 @@ export default (function() {
     }
     return extractList(queryAPI(convertFlagToQueryString(flag)), KEYS_BY_FLAG[flag])
   }
-  console.log('​listPossibilities ->  validateOutput("c")', validateOutput('g'))
+  console.log('​listPossibilities -> validateOutput("c")', validateOutput('g'))
   return input => validateOutput(input)
 })()

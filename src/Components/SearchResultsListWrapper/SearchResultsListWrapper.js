@@ -3,12 +3,9 @@ import PropTypes from 'prop-types'
 import SearchResultsList from '../SearchResultsList/SearchResultsList'
 
 class SearchResultsListWrapper extends Component {
-	state = {
-		list: []
-	}
+	state = { }
 
 	static propTypes = {
-		children: PropTypes.any,
 		results: PropTypes.array,
 	}
 
@@ -17,11 +14,10 @@ class SearchResultsListWrapper extends Component {
 	}
 
   render() {
-    let { children, results } = this.props
-    let { list } = this.state
+    let { results } = this.props
     return (
 			<div className='search-results-list-wrapper'>
-				<SearchResultsList list={list} />	
+				<SearchResultsList list={results} />	
       </div>
     )
   }

@@ -13,7 +13,7 @@ const normalize = (function() {
 		const getKeys = recipe => {
       const rgxIngredient = new RegExp('strIngredient*d*')
       const ingredientKeys = Object.keys(recipe)
-        .filter(key => rgxIngredient.test(key) && recipe[key],)
+        .filter(key => rgxIngredient.test(key) && recipe[key])
       return ingredientKeys
     }
 		const getDetailsFromKeys = keys => keys.map((key, dex) => {
@@ -63,4 +63,4 @@ const normalize = (function() {
 
 // normalize(test)//?
 
-export { normalize }
+export default normalize 
