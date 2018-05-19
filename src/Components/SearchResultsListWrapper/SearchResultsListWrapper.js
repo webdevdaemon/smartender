@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import SearchResultsList from '../SearchResultsList/SearchResultsList'
+import SearchResultsList from '../SearchResultsList'
+import SearchResultLineItem from '../SearchResultLineItem'
 
 class SearchResultsListWrapper extends Component {
-	state = { }
+  state = {}
 
-	static propTypes = {
-		results: PropTypes.array,
-	}
+  static propTypes = { list: PropTypes.array, }
 
-	refineResultsList() {
-		
-	}
+  splitInfo(compoundString) {
+		const info = compoundString.split("_")
+		console.log(info)
+		return info
+  }
+
+  createItem(info) {
+    return <SearchResultLineItem name={info[0]} id={info[1]} key={`li-${info[1]}`} />
+  }
 
   render() {
-    let { results } = this.props
+		const { list } = this.props
+		
     return (
-			<div className='search-results-list-wrapper'>
-				<SearchResultsList list={results} />	
+      <div className='search-results-list-wrapper'>
+        <SearchResultsList>
+					{
+						list.map(str => this.createItem(this.splitInfo(str)))
+					}
+        </SearchResultsList>
       </div>
     )
   }

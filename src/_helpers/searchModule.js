@@ -1,26 +1,31 @@
-import { get } from './queryStringGenerator.js'
+// @ts-check
+
 import normalize from './normalizeDrinkObject'
 import axios from 'axios'
 
 export default (function() {
+
   async function normalizeDrinkList(axiosResponse) {
-    const normalized = await axiosResponse
-      .then(({ data }) => data)
-      .then(({ drinks }) => drinks)
-      .then(list => list.map(item => normalize(item)))
-      .catch(err => new Error(err))
-    return normalized
+    return await axiosResponse
+        .then(({ data }) => data)
+        .then(({ drinks }) => drinks)
+        .then(list => list.length
+          ? list.map(item => normalize(item))
+          : [{ name: 'no drink matches',id: -1 }]
+      )
+        .catch(err => new Error(err))
   }
 
   async function listSearchResults(queryString) {
-		return await normalizeDrinkList(axios(queryString))
+    return await normalizeDrinkList(axios(queryString))
   }
 
   async function autoComp(queryString) {
-    const cL = Array.isArray(currentList) ? currentList : await currentList
-    if (queryString.length === 0) return
-		return await listSearchResults(get.drinkByName(queryString))
+    return queryString.length
+      ? await listSearchResults(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryString}`)
+      : []
   }
 
   return autoComp
+
 })()
