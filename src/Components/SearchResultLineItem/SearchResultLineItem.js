@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const SearchResultLineItem = ({ name, id }) =>
-	<li className='search-results-line-item' drinkID={id}>
-		<p>{name}</p>
+const SearchResultLineItem = props =>
+	<li className='search-results-line-item'>
+		<p>{`${props.name}`}</p>
 	</li>
 
 SearchResultLineItem.propTypes = {
 	name: PropTypes.string,
-	id: PropTypes.string,
+	drinkID: PropTypes.string,
 }
 
 export default SearchResultLineItem

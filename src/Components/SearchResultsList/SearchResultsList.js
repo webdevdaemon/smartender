@@ -1,20 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import SearchResultLineItem from '../SearchResultLineItem'
 
-class SearchResultsList extends Component {
 
-	static propTypes = {
-		children: PropTypes.any,
-	}
+const SearchResultsList = props => (
+	<ul className='search-results-list'>
+		{
+			props.listResults.map(({ name, id, ...rest }) => {
+				return (
+					<SearchResultLineItem name={name} key={`li-${id}`} drinkID={id} />
+				)
+			})
+		}
+	</ul>
+)
 
-	render() {
-		const { children } = this.props
-    return (
-      <ul className='search-results-list'>
-				{children}
-      </ul>
-    )
-  }
+SearchResultsList.propTypes = {
+	listResults: PropTypes.array,
 }
 
 export default SearchResultsList

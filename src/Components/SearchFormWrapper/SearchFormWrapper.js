@@ -1,32 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import SearchForm from '../SearchForm'
-import SearchInput from '../SearchInput'
 
 class SearchFormWrapper extends Component {
-  state = {}
 
 	static propTypes = {
-		cache: PropTypes.object,
 		searchString: PropTypes.string,
-		initSearch: PropTypes.func,
-		updateCacheObject: PropTypes.func,
-		updateResultsArray: PropTypes.func,
-		updateSearchString: PropTypes.func,
+		updateUI: PropTypes.func,
 	}
 
   render() {
-		let { searchString, updateSearchString } = this.props
-		// console.log(searchString, updateSearchString)
+    let { searchString, updateUI } = this.props
     return (
       <div className='search-form-wrapper'>
-        <SearchForm>
-					<SearchInput
-						value={ searchString }
-						updateSearchString={ updateSearchString }
-						
-					/>
-        </SearchForm>
+				<SearchForm
+					searchString={searchString}
+					updateUI={updateUI}
+				/>
       </div>
     )
   }

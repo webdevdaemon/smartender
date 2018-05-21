@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SearchForm = props => (
-	<form className='search-form'>{ props.children }</form>
+const SearchForm = ({ updateUI, searchString }) => (
+	<form className='search-form'>
+		<input
+			type='text'
+			value={searchString}
+			onChange={updateUI}
+		/>
+	</form>
 )
 
 SearchForm.propTypes = {
-	children: PropTypes.any
+	updateUI: PropTypes.func,
+	searchString: PropTypes.string,
 }
 
 export default SearchForm

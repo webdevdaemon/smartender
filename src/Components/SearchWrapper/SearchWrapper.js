@@ -6,54 +6,52 @@ import autoComp from '../../_helpers/searchModule'
 
 class SearchWrapper extends Component {
 
-  constructor() {
-    super()
-		this.state = {
-			searchString: '',
-			listResults: [],
-			cache: null,
-		}
-  }
+	state = {
+		searchString: '',
+		listResults: [],
+		cache: {},
+	}
 
-  updateSearchString = event => {
-    const searchString = event.target.value
-    this.setState(
-			async function(prevState) {
-				let listResults = []
-				const results = await autoComp(searchString)
-				results.forEach(({ name, id }) => listResults.push(`${name}_${id}`))
-        console.log(listResults)
-				return {
-					listResults,
-					searchString,
-				}
-      },
-      () => {
+	updateUI = event => {
+		let searchString = `${event.target.value}`,
+			{ cache } = this.state
+		
+		this.setState({ searchString })
+		console.log({ cache })
+		
+		if (cache.hasOwnProperty(searchString) ) {
+			this.setState({ listResults: cache[searchString] })
+			console.log('$$$ Cached Response')
+		} else {
+			autoComp(searchString)
+			.then(list => {
+				/* let patience = []
+				list.forEach(o => patience.push(o))
+				return patience */
+				return [...list]
+			}).then(list => {
+				this.setState({ listResults: list })
 				this.setState({
-					cache: new Map(
-						this.state.cache,
-						[searchString, this.state.listResults]
-					)
+					cache: Object.assign({}, cache, { [searchString]: [...list] })
 				})
-      }
-    )
-  }
-
-  render() {
-    const { cache, searchString, results, listResults } = this.state
+			}).catch(err => {
+				throw Error(`
+				autoComp ERROR!!! source @ updateUI in <SearchWrapper/>\n
+				\t\t invoked @ <SearchForm /> -> <input>:\n
+				${err.message}
+				`)
+			})
+			console.log('___ HTTP GET RESPONSE')
+		}
+	}
+	
+	render() {
     return (
       <div className='search-wrapper'>
         <h2>{'Find That Recipe!'}</h2>
-        <SearchFormWrapper
-          cache={cache}
-          searchString={searchString}
-          initSearch={this.initSearch}
-          updateCacheObject={this.updateCacheObject}
-          updateResultsArray={this.updateResultsArray}
-          updateSearchString={this.updateSearchString}
-        />
+        <SearchFormWrapper searchString={this.state.searchString} updateUI={this.updateUI} />
         <hr />
-				<SearchResultsListWrapper list={listResults} />
+        <SearchResultsListWrapper listResults={this.state.listResults} />
       </div>
     )
   }
