@@ -23,8 +23,7 @@ class SearchWrapper extends Component {
 			this.setState({ listResults: cache[searchString] })
 			console.log('$$$ Cached Response')
 		} else {
-			autoComp(searchString)
-			.then(list => {
+			autoComp(searchString).then(list => {
 				/* let patience = []
 				list.forEach(o => patience.push(o))
 				return patience */
