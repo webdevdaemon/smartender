@@ -1,5 +1,3 @@
-// import { drinkObject as test } from './testObjects'
-
 const normalize = (function() {
 	
 	/**
@@ -60,7 +58,5 @@ const normalize = (function() {
 	return rawDrinkObject => organizeInfo(rawDrinkObject)
 	
 })()
-
-// normalize(test)//?
 
 export default normalize 

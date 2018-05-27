@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import Home from '../Pages/Home'
 import $Search from '../Pages/$Search'
 import $Randomizer from '../Pages/$Randomizer'
+import $RecipePage from '../Pages/$RecipePage'
 import $BeverageBrowser from '../Pages/$BeverageBrowser'
 
 const PageRoutes = () => (
@@ -12,6 +13,14 @@ const PageRoutes = () => (
     <Route path="/search" component={$Search} />
     <Route path="/browser" component={$BeverageBrowser} />
     <Route path="/randomizer" component={$Randomizer} />
+		<Route path="/recipe/:id" render={
+			({match}) => {
+				console.log({match})
+				return (
+					<$RecipePage/>
+				)
+			}
+		} />
   </div>
 )
 
