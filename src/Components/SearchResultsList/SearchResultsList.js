@@ -1,22 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import SearchResultLineItem from '../SearchResultLineItem'
+import { BrowserRouter as Route, Link } from 'react-router-dom'
 
+class SearchResultsList extends Component {
+  
+  static propTypes = {
+    listResults: PropTypes.array,
+    match: PropTypes.object,
+  }
 
-const SearchResultsList = props => (
-	<ul className='search-results-list'>
-		{
-			props.listResults.map(({ name, id, ...rest }) => {
-				return (
-					<SearchResultLineItem name={name} key={`li-${id}`} drinkID={id} />
-				)
-			})
-		}
-	</ul>
-)
+  render() {
+    const {match, listResults} = this.props
 
-SearchResultsList.propTypes = {
-	listResults: PropTypes.array,
+    return (
+			<div className='search-results-list-wrapper'>
+				
+        <ul className='search-results-list'>
+          {listResults.map(
+						(obj) => {
+							const {name, id} = obj
+							return (
+
+								<Link to={`/recipe/${id}`}
+									className='search-results-line-item--link'
+									id={id}
+									key={`drink-link-${id}`}
+									onClick={(event) => {
+
+									}}>
+									
+									<SearchResultLineItem name={name}
+										key={`li-${id}`} drinkID={id}
+										match={match} />
+									
+								</Link>
+
+							)
+						}
+          )}
+				</ul>
+				
+      </div>
+    )
+  }
 }
+
 
 export default SearchResultsList

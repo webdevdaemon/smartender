@@ -1,5 +1,3 @@
-// import { drinkObject as test } from './testObjects'
-
 const normalize = (function() {
 	
 	/**
@@ -61,6 +59,12 @@ const normalize = (function() {
 	
 })()
 
-// normalize(test)//?
+console.log(
+	Object.entries({
+		1: '',
+		2: '2',
+		3: 'fjjf',
+	})
+)
 
 export default normalize 

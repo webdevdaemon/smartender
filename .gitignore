@@ -25,3 +25,5 @@ yarn-error.log*
 jstwister.config.js
 yarn.lock
 tests
+src/_helpers/getLinksFromNames.js
+src/registerServiceWorker.js

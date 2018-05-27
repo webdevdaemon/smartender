@@ -31,9 +31,7 @@ class $BeverageBrowser extends Component {
     )
   }
 
-  clickListItem = (evt) => {
-    return evt
-  }
+  clickListItem = evt => evt
 
   render() {
     let { match } = this.props
