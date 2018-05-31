@@ -1,23 +1,31 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Home from '../Pages/Home'
-import $Search from '../Pages/$Search'
-import $Randomizer from '../Pages/$Randomizer'
-import $RecipePage from '../Pages/$RecipePage'
-import $BeverageBrowser from '../Pages/$BeverageBrowser'
+import Home from '../Tabs/Home'
+import Tab_Search from '../Tabs/Tab_Search'
+import Tab_Randomizer from '../Tabs/Tab_Randomizer'
+import Tab_Recipe from '../Tabs/Tab_Recipe'
+import Tab_Browser from '../Tabs/Tab_Browser'
 
-const PageRoutes = () => (
+const PageRoutes = props => (
   <div className="app-wrapper">
-    <Route exact path="/" component={Home} />
-    <Route path="/search" component={$Search} />
-    <Route path="/browser" component={$BeverageBrowser} />
-    <Route path="/randomizer" component={$Randomizer} />
+    <Route exact path="/" render={
+			({match}) => <Home {...props} match={match}/>
+		} />
+    <Route path="/search" render={
+			({match}) => <Tab_Search {...props} match={match}/>
+		} />
+    <Route path="/browser" render={
+			({match}) => <Tab_Browser {...props} match={match}/>
+		} />
+    <Route path="/randomizer" render={
+			({match}) => <Tab_Randomizer {...props} match={match}/>
+		} />
 		<Route path="/recipe/:id" render={
 			({match}) => {
 				console.log({match})
 				return (
-					<$RecipePage/>
+					<Tab_Recipe/>
 				)
 			}
 		} />

@@ -5,7 +5,7 @@ import VariableList from '../../Components/VariableList'
 
 import INGREDIENTS from '../../_helpers/listIngredients'
 
-class $Ingredients extends Component {
+class Tab_Ingredients extends Component {
   state = {
     allIngredients: INGREDIENTS,
     currentValue: ' ',
@@ -32,4 +32,4 @@ class $Ingredients extends Component {
   }
 }
 
-export default $Ingredients
+export default Tab_Ingredients

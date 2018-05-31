@@ -20,25 +20,23 @@ class SearchWrapper extends Component {
 		match: PropTypes.object,
 	}
 
-	liftCache = updateObject => {
-		console.log(updateObject)
-		this.props.updateSearchCache(updateObject)
+	componentDidMount() {
+		console.log('SearchWrapper: \n', {props: this.props, state: this.state})
 	}
 
 	updateUI = event => {
 		let searchString = `${event.target.value}`, { cache } = this.state
 		this.setState({searchString})
 		if (cache.hasOwnProperty(searchString) ) {
-			this.setState({listResults: cache[searchString]}); console.log('$$$ Cached Response')
+			this.setState({listResults: cache[searchString]})
+			console.log('$$$ Cached Response')
 		}
 		else {
 			autoComp(searchString)
 				.then(list => {
-					const newCache = Object.assign( {}, cache, newCache )
+					const newCache = Object.assign( {}, cache, {[searchString]: [...list]} )
 					this.setState({listResults: list})
 					this.setState({cache: newCache})
-					this.liftCache(newCache)
-
 					console.log('___HTTP GET RESPONSE')
 			}).catch(err => new Error(err.message))
 		}

@@ -6,22 +6,20 @@ import Footer from '../../Sections/Footer'
 import PageRoutes from '../../_helpers/page-routes'
 import Nav from '../Nav'
 
-const Main = ({ children }) => (
+const Main = props => (
   <div className="main grid-layout">
-    <Header />
+		<Header {...props}/>
 
     <Page>
-      <PageRoutes />
+			<PageRoutes {...props}/>
     </Page>
 
     <Footer>
-      <Nav />
+			<Nav {...props}/>
     </Footer>
   </div>
 )
 
-Main.propTypes = {
-  children: PropTypes.any,
-}
+Main.propTypes = {}
 
 export default Main

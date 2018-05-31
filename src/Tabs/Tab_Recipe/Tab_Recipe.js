@@ -35,7 +35,7 @@ const InfoTable = (recipe = null) => {
 
 
 
-class $RecipePage extends Component{
+class Tab_Recipe extends Component{
 
 	constructor(props) {
 		super(props)
@@ -61,4 +61,4 @@ class $RecipePage extends Component{
 	}
 }
 
-export default $RecipePage
+export default Tab_Recipe

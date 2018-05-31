@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const $Randomizer = ({ children }) => (
+const Tab_Randomizer = ({ children }) => (
     <div className='randomizer'>
       <h2>{'Drink Randomizer'}</h2>
       {children}
     </div>
 )
 
-$Randomizer.propTypes = {
+Tab_Randomizer.propTypes = {
   children: PropTypes.any,
 }
 
-export default $Randomizer
+export default Tab_Randomizer

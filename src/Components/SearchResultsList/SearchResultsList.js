@@ -18,27 +18,18 @@ class SearchResultsList extends Component {
 				
         <ul className='search-results-list'>
           {listResults.map(
-						(obj) => {
+						obj => {
 							const {name, id} = obj
 							return (
-
 								<Link to={`/recipe/${id}`}
 									className='search-results-line-item--link'
 									id={id}
 									key={`drink-link-${id}`}
-									onClick={(event) => {
-
-									}}>
-									
-									<SearchResultLineItem name={name}
-										key={`li-${id}`} drinkID={id}
-										match={match} />
-									
+								>
+									{name}
 								</Link>
-
 							)
-						}
-          )}
+						})}
 				</ul>
 				
       </div>
