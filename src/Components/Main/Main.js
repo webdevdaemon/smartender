@@ -1,10 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Header from '../../Sections/Header'
 import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
 import PageRoutes from '../../_helpers/page-routes'
 import Nav from '../Nav'
+import Overlay from '../../Sections/Overlay'
 
 const Main = props => (
   <div className="main grid-layout">
@@ -12,7 +13,11 @@ const Main = props => (
 
     <Page>
 			<PageRoutes {...props}/>
-    </Page>
+		</Page>
+		
+		<Overlay>
+		
+		</Overlay>
 
     <Footer>
 			<Nav {...props}/>

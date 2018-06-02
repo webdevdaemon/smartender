@@ -1,41 +1,48 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {BrowserRouter as Route, Link} from 'react-router-dom'
+
+import Tab_Recipe from '../../Tabs/Tab_Recipe'
 import SearchResultLineItem from '../SearchResultLineItem'
-import { BrowserRouter as Route, Link } from 'react-router-dom'
 
 class SearchResultsList extends Component {
-  
-  static propTypes = {
+	
+	static propTypes = {
     listResults: PropTypes.array,
     match: PropTypes.object,
   }
 
   render() {
-    const {match, listResults} = this.props
-
+    const {listResults} = this.props
     return (
-			<div className='search-results-list-wrapper'>
-				
-        <ul className='search-results-list'>
-          {listResults.map(
-						obj => {
+			<div className="search-results-list-wrapper">
+				<ul className="search-results-list">
+					{
+						listResults.map(obj => {
 							const {name, id} = obj
 							return (
-								<Link to={`/recipe/${id}`}
-									className='search-results-line-item--link'
-									id={id}
-									key={`drink-link-${id}`}
-								>
-									{name}
+								<Link to={`/recipe/${id}`} key={`drink-link-${id}`}>
+									<SearchResultLineItem name={name}/>
 								</Link>
 							)
-						})}
+						})
+					}
 				</ul>
-				
-      </div>
+				<Route path="/recipe/:id" render={
+					({match}) => {
+						console.log('RecipePageMatch: \n', {match})
+						const recipeID = Number(match.params.id)
+						const recipe = listResults.find(
+							({id}) => Number(id) === recipeID
+						)
+						return (
+							<Tab_Recipe recipe={recipe} />
+						)
+					}}
+				/>
+			</div>
     )
   }
 }
-
 
 export default SearchResultsList

@@ -21,14 +21,14 @@ const PageRoutes = props => (
     <Route path="/randomizer" render={
 			({match}) => <Tab_Randomizer {...props} match={match}/>
 		} />
-		<Route path="/recipe/:id" render={
+		{/* <Route path="/recipe/:id" render={
 			({match}) => {
 				console.log({match})
 				return (
 					<Tab_Recipe/>
 				)
 			}
-		} />
+		} /> */}
   </div>
 )
 

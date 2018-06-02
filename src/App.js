@@ -16,10 +16,10 @@ class App extends Component {
 			updateSearchCache: this.updateSearchCache,
 			updateCurrentRecipe: this.updateCurrentRecipe,
 		}
-    return (
-      <BrowserRouter>
+		return (
+			<BrowserRouter>
 				<Main {...this.state} {...updateFunctions} />
-      </BrowserRouter>
+			</BrowserRouter>
     )
   }
 }

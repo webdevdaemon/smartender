@@ -2,18 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SearchResultsList from '../SearchResultsList'
 
-const SearchResultsListWrapper = ({ listResults, match }) => (
+const SearchResultsListWrapper = props => (
   <div className='search-results-list-wrapper'>
 		<SearchResultsList
-			listResults={listResults}
-			match={match}
+			listResults={props.listResults}
 		/>
   </div>
 )
 
 SearchResultsListWrapper.propTypes = {
 	listResults: PropTypes.array,
-	match: PropTypes.object,
 }
 
 export default SearchResultsListWrapper

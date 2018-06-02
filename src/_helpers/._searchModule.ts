@@ -22,7 +22,7 @@ export default (function() {
   }
 
   async function autoComp(queryString: string): Promise<any> {
-    return queryString.length
+    return queryString.length > 0
       ? await listSearchResults(
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryString}`,
         )
