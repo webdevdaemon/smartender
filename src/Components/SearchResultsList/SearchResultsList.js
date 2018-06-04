@@ -4,6 +4,7 @@ import {BrowserRouter as Route, Link} from 'react-router-dom'
 
 import Tab_Recipe from '../../Tabs/Tab_Recipe'
 import SearchResultLineItem from '../SearchResultLineItem'
+import PageRoutes from '../../_helpers/page-routes'
 
 class SearchResultsList extends Component {
 	
@@ -21,25 +22,18 @@ class SearchResultsList extends Component {
 						listResults.map(obj => {
 							const {name, id} = obj
 							return (
-								<Link to={`/recipe/${id}`} key={`drink-link-${id}`}>
-									<SearchResultLineItem name={name}/>
+							<li className='search-results-line-item'>
+									<Link to={{pathname: `/recipe/${id}`, state: {recipe: obj}}}
+										key={`${id}`} style={{width: '100%', height: '7vh',}}>
+									
+									{name}
+								
 								</Link>
+							</li>
 							)
 						})
 					}
 				</ul>
-				<Route path="/recipe/:id" render={
-					({match}) => {
-						console.log('RecipePageMatch: \n', {match})
-						const recipeID = Number(match.params.id)
-						const recipe = listResults.find(
-							({id}) => Number(id) === recipeID
-						)
-						return (
-							<Tab_Recipe recipe={recipe} />
-						)
-					}}
-				/>
 			</div>
     )
   }

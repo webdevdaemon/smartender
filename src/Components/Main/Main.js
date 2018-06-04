@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Header from '../../Sections/Header'
 import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
@@ -25,6 +25,11 @@ const Main = props => (
   </div>
 )
 
-Main.propTypes = {}
+Main.propTypes = {
+	searchCache: PropTypes.object,
+	currentRecipe: PropTypes.object,
+	updateSearchCache: PropTypes.func,
+	updateCurrentRecipe: PropTypes.func,
+}
 
 export default Main

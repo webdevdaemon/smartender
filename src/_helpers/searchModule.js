@@ -3,29 +3,25 @@ import axios from 'axios'
 
 export default (function() {
 
-  function normalizeDrinkList(axiosResponse) {
-    let output = axiosResponse
-      .then(({data}) => data)
-      .then(({drinks}) => drinks)
-			.then(list => list.length > 0 ? list.map(item => normalize(item)) : [])
-      .catch(err => new Error(err))
-    return output
-  }
+	const normalizeDrinkList = promise =>
+		promise.then(({data}) => data)
+			.then(({drinks}) => drinks)
+			.then(list => list.length
+				? list.map(item => normalize(item))
+				: [{name: 'no drink matches', id: -1}])
+			.catch(err => new Error(err))
 
-	async function listSearchResults(queryString) {
-		let output = await axios(queryString)
-			.then(response => normalizeDrinkList(response))
-      .then(list => [...list])
-      .catch(err => new Error(err))
-    return output
-  }
+	const listSearchResults = queryStr =>
+		normalizeDrinkList(axios(queryStr))
+			.catch(err => new Error(err))
 
-  async function autoComp(queryString) {
-    const output = await listSearchResults(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryString}`
-		)
+	async function autoComp(queryStr) {
+		let output = await
+			listSearchResults(
+				`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryStr}`
+			).then(list => [...list])
 		return output
-  }
+	}
 
-  return autoComp
+	return autoComp
 })()

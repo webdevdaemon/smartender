@@ -299,3 +299,16 @@ small,
     }
   }
 }
+
+.search-form {
+	background: #444;
+	margin: 0 auto;
+	padding: 1rem;
+	width: 90vw;
+	
+	.search-form-input {
+		background: #ffff55;
+		text-align: center;
+		width: 100%;
+	}
+}
