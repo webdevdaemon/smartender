@@ -1,109 +1,109 @@
+
+
 html {
-  font-size: 1em;
+    font-size: 10px;
 }
 
 body {
-  background-color: #d9dbf7;
-  color: #000035;
-  font-family: Raleway;
-  font-weight: 600;
-  line-height: 1.45;
+    background-color: #d9dbf7;
+    color: #000035;
+    font-weight: 600;
+    line-height: 1.45;
 }
 
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3, h4 {
-  margin: 0;
-  padding: 0;
-  font-weight: inherit;
-  line-height: 1.2;
-  text-align: center;
+    margin: 0;
+    padding: 0;
+    font-weight: inherit;
+    line-height: 1.2;
+    text-align: center;
 }
 
 h1 {
-  font-size: 3.157em;
+    font-size: 3.157em;
 }
 
 h2 {
-  font-size: 2.369em;
+    font-size: 2.369em;
 }
 
 h3 {
-  font-size: 1.777em;
+    font-size: 1.777em;
 }
 
 h4 {
-  font-size: 1.333em;
+    font-size: 1.333em;
 }
 
 small, .font_small {
-  font-size: 0.75em;
+    font-size: 0.75em;
 }
 
 .page {
-  display: block;
-  background: #d9dbf7;
-  color: #000035;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  grid-area: page;
+    display: block;
+    background: #d9dbf7;
+    color: #000035;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    grid-area: page;
 }
 
 .header {
-  display: grid;
-  background: #a5acaf;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  grid-area: header;
-  grid-template-rows: 100%;
-  grid-template-columns: 85% 1fr;
-  grid-template-areas: "masthead hamburger";
+    display: grid;
+    background: #a5acaf;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    grid-area: header;
+    grid-template-rows: 100%;
+    grid-template-columns: 85% 1fr;
+    grid-template-areas: 'masthead hamburger';
 }
 
 .footer {
-  display: block;
-  background: #a5acaf;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  grid-area: footer;
+    display: block;
+    background: #a5acaf;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    grid-area: footer;
 }
 
 .main {
-  display: grid;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  grid-template-columns: 100%;
-  grid-template-rows: 10vh 77vh 13vh;
-  grid-template-areas: "header" "page" "footer";
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-areas: 'header' 'page' 'footer';
+    grid-template-columns: auto;
+    grid-template-rows: 10vh 77vh 13vh;
+    height: 100vh;
+    width: 100vw;
 }
 
 .nav-link {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .masthead {
-  color: #ffb;
-  display: flex;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 0;
-  grid-area: masthead;
-  width: 100%;
+    color: #ffffbb;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    grid-area: masthead;
+    width: 100%;
 }
 
 .masthead h2.masthead-title, .masthead p.masthead-subtitle {
-  font-family: "Limelight";
-  font-size: 8vh;
-  text-align: left;
+    font-size: 8vh;
+    text-align: left;
 }

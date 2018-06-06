@@ -1,10 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {BrowserRouter as Route, Link} from 'react-router-dom'
-
-import Tab_Recipe from '../../Tabs/Tab_Recipe'
-import SearchResultLineItem from '../SearchResultLineItem'
-import PageRoutes from '../../_helpers/page-routes'
+import {Link} from 'react-router-dom'
 
 class SearchResultsList extends Component {
 	
@@ -20,18 +16,23 @@ class SearchResultsList extends Component {
 				<ul className="search-results-list">
 					{
 						listResults.map(obj => {
-							const {name, id} = obj
-							return (
-							<li className='search-results-line-item'>
-									<Link to={{pathname: `/recipe/${id}`, state: {recipe: obj}}}
-										key={`${id}`} style={{width: '100%', height: '7vh',}}>
-									
+						const {name, id} = obj
+						return (
+							<li className="search-results-line-item" key={`li-${id}`}>
+
+								<Link
+									to={{
+										pathname: `/recipe/${id}`,
+										state: {recipe: obj}
+									}}
+									style={{width: '100%', height: '7vh'}}
+									key={`li-${id}`}
+								>
 									{name}
-								
 								</Link>
+
 							</li>
-							)
-						})
+						)})
 					}
 				</ul>
 			</div>

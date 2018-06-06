@@ -17,8 +17,6 @@ class Tab_Ingredients extends Component {
       () => { this.setState({ chosen: this.state.allIngredients[this.state.currentValue] || '' }) })
   }
 
-  
-
   render() {
     let { currentValue, chosen: list } = this.state
 

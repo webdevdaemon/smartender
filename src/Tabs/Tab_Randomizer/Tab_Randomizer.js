@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import FeatureTitle from '../../Components/FeatureTitle'
 
 const Tab_Randomizer = ({ children }) => (
-    <div className='randomizer'>
-      <h2>{'Drink Randomizer'}</h2>
-      {children}
-    </div>
+	<div className='randomizer'>
+		<FeatureTitle title={'Rapid\nRecipe\nRandomizer'} />
+		
+	</div>
 )
 
-Tab_Randomizer.propTypes = {
-  children: PropTypes.any,
-}
+Tab_Randomizer.propTypes = { title: PropTypes.string, }
 
 export default Tab_Randomizer

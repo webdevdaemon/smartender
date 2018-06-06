@@ -15,21 +15,17 @@ class Tab_Browser extends Component {
     cachedLists: {},
   }
 
-  static propTypes = { match: PropTypes.any }
+  static propTypes = {match: PropTypes.any}
 
-  updateListState = async flag => {
-    let newList = await listPossibilities(flag)
-    this.setState(
-      prevState =>
-        prevState.visibleList.length === 0 ? { visibleList: newList } : { visibleList: [] },
-      () =>
-        this.setState({
-          visibleList: this.state.visibleList === [] || newList,
-          listHeader: HEADERS_BY_FLAG[flag],
-          currentFlag: flag,
-        }),
-    )
-  }
+	updateListState = flag => {
+		listPossibilities(flag)
+			.then(newList => {
+				this.setState({
+					visibleList: [...newList],
+					listHeader: HEADERS_BY_FLAG[flag],
+					currentFlag: flag,
+				})
+			})}
 
   clickListItem = evt => evt
 
@@ -62,9 +58,8 @@ class Tab_Browser extends Component {
           render={() => (
             <VariableList
               clickHandler={listItemClick}
-              updateList={update}
-              list={this.state.visibleList}
-              header={this.state.listHeader}
+							updateList={update}
+							{...this.state}
             />
           )}
         />
@@ -73,9 +68,8 @@ class Tab_Browser extends Component {
           render={() => (
             <VariableList
               clickHandler={listItemClick}
-              updateList={update}
-              list={this.state.visibleList}
-              header={this.state.listHeader}
+							updateList={update}
+							{...this.state}
             />
           )}
         />
@@ -84,9 +78,8 @@ class Tab_Browser extends Component {
           render={() => (
             <VariableList
               clickHandler={listItemClick}
-              updateList={update}
-              list={this.state.visibleList}
-              header={this.state.listHeader}
+							updateList={update}
+							{...this.state}
             />
           )}
         />
