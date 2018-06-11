@@ -15,11 +15,10 @@ const BackButton = () => (
     <FaAngleLeft height="7vh" width="7vh" />
   </div>
 )
-
 const Header = ({ children }) => (
   <div className="header">
     <BackButton />
-    <Masthead title="SmarTender" subTitle="" />
+    <Masthead title="brbckr" subTitle="" />
     <MenuButton />
   </div>
 )

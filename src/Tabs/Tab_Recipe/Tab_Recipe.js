@@ -4,8 +4,9 @@ import FeatureTitle from '../../Components/FeatureTitle/FeatureTitle'
 
 const RecipeHero = (src, title) => (
 	<div className='recipe-hero'>
-		<FeatureImage src={src} />
-		<FeatureTitle title={title} />
+		<FeatureImage src={src}>
+			<FeatureTitle title={title} />
+		</FeatureImage>
 	</div>
 )
 
@@ -40,29 +41,31 @@ const InfoTable = recipe => {
 
 const IngredientsTable = ingredients => (
 	<table className='ingredients-table'>
-		<tr>
-			<th>{'Ingredient'}</th>
-			<th>{'Amount'}</th>
-		</tr>	
 		{ingredients.map(arr => (
-			<tr>
-				<td>{arr[0]}</td>
-				<td>{arr[1]}</td>
+			<tr key={`k-${arr[0]}`}>
+				<td className='td-l'>{arr[0]}</td>
+				<td className='td-r'>{arr[1] || '--'}</td>
 			</tr>
 		))}
 	</table>
+)
+
+const HowTo = howTo => (
+	<p className="how-to">{howTo}</p>
 )
 
 class Tab_Recipe extends Component {
 	
 	render() {
 		const {recipe} = this.props.location.state
-		const {id, ingredients, thumbnail, name, ...rest} = recipe
+		const {id, ingredients, thumbnail, name, howTo, glass, ...rest} = recipe
     return (
 			<div className="recipe-page" id={id}>
-				{RecipeHero(thumbnail, name)}	
-				{IngredientsTable(ingredients)}
-        {InfoTable(rest)}
+				{RecipeHero(thumbnail, name)}
+				<div className='recipe-slide'>
+					{IngredientsTable([['Glass Type', glass], ...ingredients])}
+					{HowTo(howTo)}
+				</div>
       </div>
     )
   }

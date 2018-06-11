@@ -1,21 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
  
-const FeatureImage = ({src, vw}) =>
+const FeatureImage = ({src, vw, children}) =>
 	<div className='feature-image-wrapper'>
 		<div className='feature-image'
 			src={`${src}`}
 			style={{
 				backgroundImage: `url(${src})`,
-				backgroundPosition: 'center center',
+				backgroundPosition: 'contain',
 				height: '33vh',
 				width: `${vw}vw`,
-			}}></div>
+			}}>{children}</div>
 	</div>
 
 FeatureImage.propTypes = {
 	src: PropTypes.string,
 	vw: PropTypes.number,
+	children: PropTypes.any,
 }
 FeatureImage.defaultProps = {
 	vw: 100,

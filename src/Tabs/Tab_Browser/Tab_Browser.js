@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link, Route } from 'react-router-dom'
+import { NavLink, Route } from 'react-router-dom'
 import VariableList from '../../Components/VariableList'
 
 import listPossibilities from '../../_helpers/listPossibilities'
@@ -37,19 +37,19 @@ class Tab_Browser extends Component {
         <h2 className="variable-list-header">List Drinks By:</h2>
         <ul className="variable-list-nav-list">
           <li className="variable-list-nav-link">
-            <Link onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
+            <NavLink onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
               <p className="variable-list-nav-link-text">Ingredients</p>
-            </Link>
+            </NavLink>
           </li>
           <li className="variable-list-nav-link">
-            <Link onClick={() => update('g')} to={`${match.url}/by-glass`}>
+            <NavLink onClick={() => update('g')} to={`${match.url}/by-glass`}>
               <p className="variable-list-nav-link-text">Glass Types</p>
-            </Link>
+            </NavLink>
           </li>
           <li className="variable-list-nav-link">
-            <Link onClick={() => update('c')} to={`${match.url}/by-category`}>
+            <NavLink onClick={() => update('c')} to={`${match.url}/by-category`}>
               <p className="variable-list-nav-link-text">Categories</p>
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
