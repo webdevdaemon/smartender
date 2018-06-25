@@ -10,52 +10,22 @@ const RecipeHero = (src, title) => (
 	</div>
 )
 
-const InfoLine = ({entry, info}) => (
-  <div className={`${entry} line`}>
-    <div className={`${entry} label`}>
-			<p className={`${entry} label-text--left`}>
-				{`${entry}`}
-			</p>
-    </div>
-    <div className={`${entry} info`}>
-			<p className={`${entry} label-text--right`}>
-				{`${info}`}
-			</p>
-    </div>
-  </div>
-)
-
-const InfoTable = recipe => {
-  let mappableRecipe = Object.entries(recipe)
-  return (
-    <div className="info-table">
-			{mappableRecipe.map((pair, dex) => ( 
-				<InfoLine
-					entry={pair[0]}
-					info={pair[1]}
-					key={`key-${dex}`}
-				/>))}
-    </div>
-  )
-}
-
 const IngredientsTable = ingredients => (
 	<table className='ingredients-table'>
-		{ingredients.map(arr => (
-			<tr key={`k-${arr[0]}`}>
-				<td className='td-l'>{arr[0]}</td>
-				<td className='td-r'>{arr[1] || '--'}</td>
-			</tr>
-		))}
+		<tbody>
+			{ingredients.map(arr => (
+				<tr key={`k-${arr[0]}`}>
+					<td className='td-l'>{arr[0]}</td>
+					<td className='td-r'>{arr[1] || '--'}</td>
+				</tr>
+			))}
+		</tbody>
 	</table>
 )
 
-const HowTo = howTo => (
-	<p className="how-to">{howTo}</p>
-)
+const HowTo = howTo => <p className="how-to">{howTo}</p>
 
-class Tab_Recipe extends Component {
-	
+export default class Tab_Recipe extends Component {
 	render() {
 		const {recipe} = this.props.location.state
 		const {id, ingredients, thumbnail, name, howTo, glass, ...rest} = recipe
@@ -70,5 +40,3 @@ class Tab_Recipe extends Component {
     )
   }
 }
-
-export default Tab_Recipe

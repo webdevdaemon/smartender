@@ -1,34 +1,38 @@
 import React, {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import ButtonRandom from '../ButtonRandom'
+import normalize from '../../_helpers/normalizeDrinkObject'
 import axios from 'axios'
-import {get} from '../../_helpers/queryStringGenerator'
+
+const endpoint = `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+
+const RandomRedirect = async () => {
+  const random = await axios(endpoint)
+    .then(({data}) => data.drinks[0])
+    .then(drink => normalize(drink))
+  return (
+    <div>
+      <Redirect
+        to={{
+          pathname: `/recipe/${random.id}`,
+          state: random,
+        }}
+      />
+    </div>
+  )
+}
 
 class RandomizerWrapper extends Component {
-  state = { data: [] }
+  state = {pressed: false}
 
-  static propTypes    = { }
-  static defaultProps = { }
+  // componentDidMount() { this.setState({pressed: this.state.pressed ? false : false}) }
 
-  componentDidMount() {
-    axios(`https://www.thecocktaildb.com/api/json/v1/1/random.php`) //?
-    .then(x => {x}) //?
-  }
-
-
-  
-  
-  getRandom = () => {
-
-  }
+  isPressed = () => {this.setState({pressed: true})}
 
   render() {
-    let {children, ...rest} = this.props
-    let {...all} = this.state
-    return (
-      <div className='RandomizerWrapper'>
-        <ButtonRandom />
-      </div>
-    )
+    return this.state.pressed
+      ? (<div> <RandomRedirect /> </div>)
+      : (<div className='randomizer-wrapper'><ButtonRandom onClick={this.isPressed} /></div>)
   }
 }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
  
 const FeatureImage = ({src, vw, children}) =>
-	<div className='feature-image-wrapper'>
 		<div className='feature-image'
 			src={`${src}`}
 			style={{
@@ -10,7 +9,8 @@ const FeatureImage = ({src, vw, children}) =>
 				backgroundPosition: 'contain',
 				height: '33vh',
 				width: `${vw}vw`,
-			}}>{children}</div>
+		}}>
+		{children}
 	</div>
 
 FeatureImage.propTypes = {
