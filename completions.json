@@ -1,0 +1,206 @@
+{
+  "components": {
+    "Main": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Masthead": {
+      "attributes": [
+        "title",
+        "subTitle"
+      ],
+      "props": {
+        "title": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "'SMARTENDER'",
+            "computed": false
+          }
+        },
+        "subTitle": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "'4 \\'tenders BY \\'tenders'",
+            "computed": false
+          }
+        }
+      }
+    },
+    "Nav": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "SearchForm": {},
+    "SearchInput": {},
+    "SearchWrapper": {},
+    "Selector": {
+      "attributes": [
+        "currentValue",
+        "callParent"
+      ],
+      "props": {
+        "currentValue": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        },
+        "callParent": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "VariableList": {
+      "attributes": [
+        "list",
+        "header",
+        "match"
+      ],
+      "props": {
+        "list": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": ""
+        },
+        "header": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        },
+        "match": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Footer": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Header": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Overlay": {},
+    "Page": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "$BeverageBrowser": {
+      "attributes": [
+        "match"
+      ],
+      "props": {
+        "match": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "$Ingredients": {},
+    "$Randomizer": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "$Search": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Home": {},
+    "page-routes": {},
+    "App": {}
+  }
+}

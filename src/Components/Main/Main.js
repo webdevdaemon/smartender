@@ -1,39 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
-
 import Header from '../../Sections/Header'
 import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
+import PageRoutes from '../../_helpers/page-routes'
+import Nav from '../Nav'
 import Overlay from '../../Sections/Overlay'
 
-import Home from '../../Pages/Home'
-import $Search from '../../Pages/$Search'
-import $Randomizer from '../../Pages/$Randomizer'
-import $Ingredients from '../../Pages/$Ingredients'
-
-import Nav from '../Nav'
-
-const Main = ({ children }) => (
+const Main = props => (
   <div className="main grid-layout">
-    {/* <Overlay /> */}
-    <Header>
-      <Nav />
-    </Header>
+		<Header {...props}/>
+
     <Page>
-      <div className="app-wrapper">
-        <Route exact path="/" component={Home} />
-        <Route path="/search" component={$Search} />
-        <Route path="/randomizer" component={$Randomizer} />
-        <Route path="/ingredients" component={$Ingredients} />
-      </div>
-    </Page>
-    <Footer />
+			<PageRoutes {...props}/>
+		</Page>
+		
+		<Overlay>
+		
+		</Overlay>
+
+    <Footer>
+			<Nav {...props}/>
+    </Footer>
   </div>
 )
 
 Main.propTypes = {
-  children: PropTypes.any,
+	searchCache: PropTypes.object,
+	currentRecipe: PropTypes.object,
+	updateSearchCache: PropTypes.func,
+	updateCurrentRecipe: PropTypes.func,
 }
 
 export default Main

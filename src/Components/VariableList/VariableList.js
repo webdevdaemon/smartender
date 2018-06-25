@@ -1,25 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { image } from '../../_helpers/queryStringGenerator.js'
 
-const prefix = 'https://www.thecocktaildb.com/api/json/v1/1/'
+const ClickableListItem = (item, dex) => (
+	<li key={`${item}_0${dex}`} id={`${item}`} className='list-item-clickable'>
+   <div className='list-item-name'>
+     {item}
+   </div>
+ </li>
+)
 
-const VariableList = ({ list, char }) => (
+const VariableList = ({ visibleList, listHeader, match, ...props }) => (
   <div className="variable-list-wrapper">
-    <h4>{`Available Ingredients for Letter: ${char}`}</h4>
-    <ul className="variable-list ingredients-list">
-      {list.map(ing => (
-        <li className="ingredient" key={`I-${ing.substring(-3)}`}>
-          <a href={`filter.php?i=Gin`}>{ing}</a>
-        </li>
-      ))}
+    <h4>{listHeader}</h4>
+    <ul className="variable-list">
+			{
+				visibleList.sort().map((item, dex) => ClickableListItem(item, dex))
+			}
     </ul>
   </div>
 )
 
 VariableList.propTypes = {
-  list: PropTypes.array,
-  char: PropTypes.string,
+  updateList: PropTypes.func,
+  clickHandler: PropTypes.func,
+  visibleList: PropTypes.array,
+  listHeader: PropTypes.string,
+  match: PropTypes.any,
 }
 
 export default VariableList
-
