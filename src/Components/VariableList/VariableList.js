@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { image } from '../../_helpers/queryStringGenerator.js'
+// import { image } from '../../_helpers/queryStringGenerator.js'
 
 const ClickableListItem = (item, dex) => (
 	<li key={`${item}_0${dex}`} id={`${item}`} className='list-item-clickable'>

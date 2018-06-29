@@ -2,13 +2,13 @@ import React from 'react'
 
 import SearchWrapper from '../../Components/SearchWrapper/SearchWrapper'
 
-const Tab_Search = props => (
+const TabSearch = props => (
 	<div className='search'>
 		<h2>{'Drink Search'}</h2>
 		<SearchWrapper {...props}/>
 	</div>
 )
 
-Tab_Search.propTypes = {}
+TabSearch.propTypes = {}
 
-export default Tab_Search
+export default TabSearch

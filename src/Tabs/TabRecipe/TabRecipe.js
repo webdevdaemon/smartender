@@ -25,10 +25,10 @@ const IngredientsTable = ingredients => (
 
 const HowTo = howTo => <p className="how-to">{howTo}</p>
 
-export default class Tab_Recipe extends Component {
+export default class TabRecipe extends Component {
 	render() {
 		const {recipe} = this.props.location.state
-		const {id, ingredients, thumbnail, name, howTo, glass, ...rest} = recipe
+		const {id, ingredients, thumbnail, name, howTo, glass} = recipe
     return (
 			<div className="recipe-page" id={id}>
 				{RecipeHero(thumbnail, name)}

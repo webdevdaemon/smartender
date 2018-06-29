@@ -5,7 +5,7 @@ import VariableList from '../../Components/VariableList'
 
 import INGREDIENTS from '../../_helpers/listIngredients'
 
-class Tab_Ingredients extends Component {
+class TabIngredients extends Component {
   state = {
     allIngredients: INGREDIENTS,
     currentValue: ' ',
@@ -30,4 +30,4 @@ class Tab_Ingredients extends Component {
   }
 }
 
-export default Tab_Ingredients
+export default TabIngredients

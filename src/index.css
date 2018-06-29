@@ -1,3 +1,7 @@
+input {
+  outline: none !important;
+}
+
 a, a:-webkit-any-link {
   text-decoration: none !important;
 }

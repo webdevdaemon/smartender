@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import {Route} from 'react-router-dom'
 
 import Home from '../Tabs/Home'
-import Tab_Search from '../Tabs/Tab_Search'
-import Tab_Randomizer from '../Tabs/Tab_Randomizer'
-import Tab_Recipe from '../Tabs/Tab_Recipe'
-import Tab_Browser from '../Tabs/Tab_Browser'
+import TabSearch from '../Tabs/TabSearch'
+import TabRandomizer from '../Tabs/TabRandomizer'
+import TabRecipe from '../Tabs/TabRecipe'
+import TabBrowser from '../Tabs/TabBrowser'
 
 const PageRoutes = props => (
   <div className="app-wrapper">
@@ -14,17 +14,17 @@ const PageRoutes = props => (
 			({match}) => <Home {...props} match={match} />
 		}/>
     <Route path="/search" render={
-			({match}) => <Tab_Search {...props} match={match} />
+			({match}) => <TabSearch {...props} match={match} />
 		}/>
     <Route path="/browser" render={
-			({match}) => <Tab_Browser {...props} match={match} />
+			({match}) => <TabBrowser {...props} match={match} />
 		}/>
     <Route path="/randomizer" render={
-			({match}) => <Tab_Randomizer {...props} match={match} />
+			({match}) => <TabRandomizer {...props} match={match} />
 		}/>
 		<Route path="/recipe/:id" render={
 			props => (
-				<Tab_Recipe {...props} />
+				<TabRecipe {...props} />
 			)
 		} />
   </div>

@@ -8,6 +8,10 @@ $lightest: #ddddff;
 $fbody: 'roboto', 'avenir', sans-serif;
 $f1: 'Fredoka One';
 
+input {
+    outline: none !important;
+}
+
 a, a:-webkit-any-link {
     text-decoration: none !important;
 }

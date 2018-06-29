@@ -7,7 +7,7 @@ import listPossibilities from '../../_helpers/listPossibilities'
 
 const HEADERS_BY_FLAG = { c: 'Categories', g: 'Glass Types', i: 'Ingredients' }
 
-class Tab_Browser extends Component {
+class TabBrowser extends Component {
   state = {
     visibleList: [],
     listHeader: 'Browse by Category, Ingredient, or Glass Type',
@@ -88,4 +88,4 @@ class Tab_Browser extends Component {
   }
 }
 
-export default Tab_Browser
+export default TabBrowser

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import FeatureTitle from '../../Components/FeatureTitle'
 import RandomizerWrapper from '../../Components/RandomizerWrapper'
 
-const Tab_Randomizer = props => (
+const TabRandomizer = props => (
 	<div className='randomizer'>
 		<FeatureTitle title={'Rapid\nRecipe\nRandomizer'} />
 		<RandomizerWrapper />
 	</div>
 )
 
-Tab_Randomizer.propTypes = {
+TabRandomizer.propTypes = {
 	title: PropTypes.string,
 }
 
-export default Tab_Randomizer
+export default TabRandomizer
