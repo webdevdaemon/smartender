@@ -16,10 +16,10 @@ export default (function() {
 			.catch(err => new Error(err))
 
 	async function autoComp(queryStr) {
-		let output = await
-			listSearchResults(
-				`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryStr}`
-			).then(list => [...list])
+		let output = await listSearchResults(
+			`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${queryStr}`)
+			.then(list => [...list])
+			.catch(err => new Error(err))		
 		return output
 	}
 

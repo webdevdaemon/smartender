@@ -59,12 +59,4 @@ const normalize = (function() {
 	
 })()
 
-// console.log(
-// 	Object.entries({
-// 		1: '',
-// 		2: '2',
-// 		3: 'fjjf',
-// 	})
-// )
-
 export default normalize 
