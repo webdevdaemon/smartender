@@ -7,6 +7,10 @@ $darkest: #003333;
 $lightest: #ddddff;
 $fbody: 'roboto', 'avenir', sans-serif;
 $f1: 'Fredoka One';
+$grad1: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+$grad2: linear-gradient(145deg, #005858 0%, #003333 100%);
+$grad3: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+$grad4: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
 
 input {
     outline: none !important;
@@ -47,7 +51,11 @@ html {
 }
 
 body {
-    background-color: $darkest;
+    // background-color: $darkest;
+    // background-image: $grad1;
+    // background-image: $grad2;
+    // background-image: $grad3;
+    background-image: $grad4;
     color: $lightest;
     font-family: $fbody;
     font-weight: 100;
@@ -103,7 +111,7 @@ small, .font_small {
 }
 
 .page {
-    background: $darkest;
+    background-image: $grad2;
     color: $lightest;
     grid-area: page;
     margin: 0;
