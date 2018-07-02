@@ -6,6 +6,7 @@ class App extends Component {
 	state = {
 		searchCache: {},
 		currentRecipe: {},
+		history: [],
   }
 
   updateSearchCache = searchCache => {this.setState({searchCache})}

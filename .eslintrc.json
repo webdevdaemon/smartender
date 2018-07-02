@@ -1,24 +1,18 @@
 {
   "parser": "babel-eslint",
   "env": {
-    "browser": true, "es6": true, "node": true
+    "browser": true, 
+    "es6": true, 
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 9,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "restParams": true,
-      "spread": true,
-      "impliedStrict": true,
-      "jsx": true
-    },
     "sourceType": "module"
   },
   "plugins": [
 		"env",
 		"react",
-		"react-app",
-		"prettier"
+		"react-app"
 	],
   "rules": {
     "brace-style": [
@@ -48,7 +42,6 @@
     "react/jsx-indent": [0, 2],
 		"react/jsx-no-undef": 0,
     "react/jsx-no-unused-vars": 0,
-    "react/jsx-pascal-case": 0,
     "jsx-a11y/href-no-hash": 0
   }
 }

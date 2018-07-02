@@ -15,7 +15,9 @@ class TabBrowser extends Component {
     cachedLists: {},
   }
 
-  static propTypes = {match: PropTypes.any}
+  static propTypes = {
+    match: PropTypes.object,
+  }
 
 	updateListState = flag => {
 		listPossibilities(flag)

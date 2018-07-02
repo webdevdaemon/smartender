@@ -10,12 +10,14 @@ const MenuButton = () => (
     <FaBars height="5vh" width="5vh" />
   </div>
 )
+
 const BackButton = () => (
   <div className="back-button">
     <FaAngleLeft height="7vh" width="7vh" />
   </div>
 )
-const Header = ({ children }) => (
+
+const Header = props => (
   <div className="header">
     <BackButton />
     <Masthead title="brbckr" subTitle="" />
