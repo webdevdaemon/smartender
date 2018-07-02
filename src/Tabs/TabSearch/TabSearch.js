@@ -4,7 +4,7 @@ import SearchWrapper from '../../Components/SearchWrapper/SearchWrapper'
 
 const TabSearch = props => (
 	<div className='search'>
-		<h2>{'Drink Search'}</h2>
+		<h2 className='tab-header'>{'Recipe Search'}</h2>
 		<SearchWrapper {...props}/>
 	</div>
 )

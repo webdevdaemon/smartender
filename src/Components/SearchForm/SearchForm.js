@@ -2,14 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const SearchForm = ({ updateUI, searchString }) => (
-	<form className="search-form">
+	<div className="search-form">
 		<input
 			className="search-form-input"
+			placeholder=""
 			type="text"
 			value={searchString}
 			onChange={e => updateUI(e)}
+			onSubmit={e => e.preventDefault()}
 		/>
-	</form>
+	</div>
 )
 
 SearchForm.propTypes = {

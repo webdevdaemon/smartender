@@ -1,31 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {withRouter} from 'react-router-dom'
 
 import Masthead from '../../Components/Masthead'
-import FaBars from 'react-icons/lib/fa/bars'
+import FaPlus from 'react-icons/lib/fa/plus'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 
-const MenuButton = () => (
+const AddRecipeButton = () => (
   <div className="menu-button">
-    <FaBars height="5vh" width="5vh" />
+    <FaPlus height="7vh" width="7vh" />
   </div>
 )
 
-const BackButton = () => (
-  <div className="back-button">
-    <FaAngleLeft height="7vh" width="7vh" />
-  </div>
-)
+const BackButton = ({location, history}) => {
+  console.dir({location, history})
+  return (
+    <a onClick={history.goBack} className="back-button">
+      <FaAngleLeft height="7vh" width="7vh" />
+    </a>
+  )
+}
 
 const Header = props => (
   <div className="header">
-    <BackButton />
+    <BackButton {...props}/>
     <Masthead title="brbckr" subTitle="" />
-    <MenuButton />
+    <AddRecipeButton />
   </div>
 )
 
 Header.propTypes = {
   children: PropTypes.any,
 }
-export default Header
+export default withRouter(Header)

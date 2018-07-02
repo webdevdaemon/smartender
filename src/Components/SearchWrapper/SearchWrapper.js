@@ -16,27 +16,30 @@ class SearchWrapper extends Component {
 		}
 	}
 
-	static propTypes = {match: PropTypes.object}
-	
-	runAutoComp = str => autoComp(str)
-		.then(list => {
-			this.setState({listResults: list})
-			this.setState({cache: {...this.state.cache,[str]: list}})
-		}).catch(err => new Error(err.message))
+	static propTypes = { match: PropTypes.object }
 
-	updateUI = evt => {
+	runAutoComp = (str) =>
+		autoComp(str)
+			.then((list) => {
+				this.setState({ listResults: list })
+				this.setState({ cache: { ...this.state.cache, [str]: list } })
+			})
+			.catch((err) => new Error(err.message))
+
+	updateUI = (evt) => {
 		const searchString = evt.target.value
-		this.setState({searchString})
+		this.setState({ searchString })
 		if (this.state.cache.hasOwnProperty(searchString)) {
-			this.setState({listResults: this.state.cache[searchString]})
-		} else {this.runAutoComp(searchString)}
+			this.setState({ listResults: this.state.cache[searchString] })
+		} else {
+			this.runAutoComp(searchString)
+		}
 	}
 
 	render() {
-		const {searchString, listResults} = this.state
+		const { searchString, listResults } = this.state
 		return (
-			<div className='search-wrapper'>
-				<h2>{'Find That Recipe!'}</h2>
+			<div className="search-wrapper">
 				<SearchFormWrapper searchString={searchString} updateUI={this.updateUI} />
 				<hr />
 				<SearchResultsListWrapper listResults={listResults} match={this.props.match} />

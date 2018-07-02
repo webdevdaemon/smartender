@@ -22,6 +22,11 @@ a, a:-webkit-any-link {
 
 :root {
     box-sizing: border-box;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .app-wrapper {
@@ -44,8 +49,21 @@ a, a:-webkit-any-link {
     height: 80%;
 }
 
+.overlay {
+    background: rgba(0,0,0,0.25);
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+}
+
 html {
-    font-size: 1em;
+    font-size: 10px;
     overflow: hidden;
     box-sizing: inherit;
 }
@@ -108,6 +126,10 @@ small, .font_small {
     color: $darkest;
     padding: 4px 24px 4px 16px;
     text-shadow: 2px 1px 0 $silver;
+}
+
+.tab-header {
+    margin: 1vh auto;
 }
 
 .page {
@@ -363,16 +385,20 @@ small, .font_small {
 
 .search-form {
     background: transparent;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh auto;
     padding: 0;
     width: 90vw;
 
     .search-form-input {
+        margin: 0 auto;
         background: #000000;
         color: #ffffff;
         font-size: 2em;
         text-align: center;
-        width: 100%;
+        width: 66%;
     }
 }
 
