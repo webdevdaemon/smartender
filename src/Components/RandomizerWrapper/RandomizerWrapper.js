@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import ButtonRandom from '../ButtonRandom'
 
 const RandomizerWrapper = ({id, recipe}) => (
