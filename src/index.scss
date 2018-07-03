@@ -51,7 +51,6 @@ a, a:-webkit-any-link {
 
 .overlay {
     background: rgba(0,0,0,0.25);
-    display: none;
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -59,6 +58,7 @@ a, a:-webkit-any-link {
     left: 0;
     bottom: 0;
     right: 0;
+    visibility: hidden;
     z-index: 1000;
 }
 
@@ -210,8 +210,8 @@ small, .font_small {
             margin: 5px auto;
 
             &.active {
-                background: #555555;
-                color: $lightest;
+                background: #444444;
+                color: #616161;
             }
         }
 

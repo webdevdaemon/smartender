@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-const labels = [
+const BUTTON_LABELS = [
 	"Bartender's Choice!",
 	"Surprise Me...",
 	"...You Tell Me",
@@ -11,18 +11,24 @@ const labels = [
 	"Something Strong",
 ]
 
-const ButtonRandom = ({onClick}) => (
-	<button
-		className="button-random"
-		onClick={onClick}
-	>
-		{labels[Math.floor(Math.random() * 6)]}
-	</button>
-)
+class ButtonRandom extends Component {
+	render() {
+		const {id, recipe} = this.props
+		return (
+			<Link className="button-random" to={{
+				pathname: `/recipe/${id}`,
+				state: {recipe: {...recipe}},
+			}}>{ BUTTON_LABELS[Math.floor(Math.random() * 6)] }</Link >
+		)
+	}
+}
 
 ButtonRandom.propTypes = {
-	onClick: PropTypes.func,
+	id: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+	]),
+	recipe: PropTypes.object,
 }
-ButtonRandom.defaultProps = {}
 
 export default ButtonRandom
