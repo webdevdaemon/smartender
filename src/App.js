@@ -2,17 +2,16 @@ import React, {Component} from 'react'
 import Main from './Components/Main'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
-import {drinkNames} from './_db/drinkNames'
-
-// const DRINK_NAMES = {...drinkNames}
 
 class App extends Component {
 	constructor(props) {
 		super(props)
-	
 		this.state = {
 			drinks: {},
 			recipes: {},
+			ingredients: {},
+			glasses: {},
+			categories: {},
 		}
 	}
 	
@@ -25,20 +24,43 @@ class App extends Component {
 			context: this,
 			state: 'recipes',
 		})
+		this.recipesRef = base.syncState('ingredients', {
+			context: this,
+			state: 'ingredients',
+		})
+		this.recipesRef = base.syncState('glasses', {
+			context: this,
+			state: 'glasses',
+		})
+		this.recipesRef = base.syncState('categories', {
+			context: this,
+			state: 'categories',
+		})
 	}
-
 	componentWillUnmount() {
 		base.removeBinding(this.drinksRef)
 		base.removeBinding(this.recipesRef)
+		base.removeBinding(this.ingredientsRef)
+		base.removeBinding(this.glassesRef)
+		base.removeBinding(this.categoriesRef)
 	}
 
 	addDrinkName = drinkName => {
-		// const uniqueId = `${drinkName}-${Date.now()}`
+		const uniqueId = `${drinkName}-${Date.now()}`
 		const alpha = /\w/.test(drinkName[0])
 			? `${drinkName[0]}`.toLowerCase()
 			: "_"
-		const listToMerge = {[alpha]: [...this.state.drinks[alpha], drinkName]}
-		const drinks = Object.assign({}, this.state.drinks, listToMerge)
+		const listToMerge = {
+			[alpha]: {
+				...this.state.drinks[alpha],
+				"drinkName": uniqueId,
+			}
+		}
+		const drinks = {
+			{}, .
+			..this.state.drinks,
+			listToMerge
+	}
 		this.setState({drinks: {...drinks}})
 	}
 

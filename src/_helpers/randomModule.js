@@ -12,7 +12,7 @@ const random = (
 
     const getDrinkById = id =>
       browse.getBy.id(id)
-        .then(recipe => ({...recipe}))
+        .then(recipe => recipe)
         .catch(err => new Error(err))      
 
     return async () => await getDrinkById(await getRandomId())

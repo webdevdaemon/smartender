@@ -11,42 +11,12 @@ import TabBrowser from '../Tabs/TabBrowser'
 
 const PageRoutes = props => (
   <div className="app-wrapper">
-		
-		<Route exact path="/" render={
-			props => (
-				<Home {...props}/>
-			)}
-		/>
-		
-    <Route path="/search" render={
-			props => (
-				<TabSearch {...props}/>
-			)}
-		/>
-		
-    <Route path="/browser" render={
-			props => (
-				<TabBrowser {...props}/>
-			)}
-		/>
-		
-		<Route path="/add" render={
-			props => (
-				<TabAdd {...props} />
-			)}
-		/>
-		
-    <Route path="/randomizer" render={
-			props => (
-				<TabRandomizer {...props}/>
-			)}
-		/>
-		
-		<Route path="/recipe/:id" render={
-			props => (
-				<TabRecipe {...props} />
-			)}/>
-
+		<Route exact path="/" render={props => <Home {...props}/>}/>
+		<Route path="/search" render={props => <TabSearch {...props}/>}/>
+		<Route path="/browser" render={props => <TabBrowser {...props}/>}/>
+		<Route path="/add" render={props => <TabAdd {...props}/>}/>
+		<Route path="/randomizer" render={props => <TabRandomizer {...props}/>}/>
+		<Route path="/recipe/:id" render={props => <TabRecipe {...props}/>}/>
   </div>
 )
 
