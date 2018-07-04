@@ -119,6 +119,7 @@ small, .font_small {
   border-radius: 0 50px 50px 0;
   background: #ddddff;
   color: #003333;
+  font-size: 15vmin;
   padding: 4px 24px 4px 16px;
   text-shadow: 2px 1px 0 #a5acaf;
 }
@@ -128,7 +129,8 @@ small, .font_small {
 }
 
 .page {
-  background-image: linear-gradient(145deg, #005858 0%, #003333 100%);
+  background-image: linear-gradient(125deg, #29323c 0%, #3d4956 100%);
+  background-blend-mode: multiply,multiply;
   color: #ddddff;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -641,9 +643,29 @@ small, .font_small {
   text-align: left;
 }
 
+.randomizer-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60vh;
+}
+
 .button-random {
   background: #ddddff;
+  border-radius: 0.5rem;
   color: #003333;
   font-family: "Fredoka One", sans-serif;
   font-size: 7vmin;
+  margin: auto;
+  padding: 1vh 2vw;
 }

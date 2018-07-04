@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom'
 
 import Home from '../Tabs/Home'
 import TabSearch from '../Tabs/TabSearch'
+import TabAdd from '../Tabs/TabAdd'
 import TabRandomizer from '../Tabs/TabRandomizer'
 import TabRecipe from '../Tabs/TabRecipe'
 import TabBrowser from '../Tabs/TabBrowser'
@@ -26,6 +27,12 @@ const PageRoutes = props => (
     <Route path="/browser" render={
 			props => (
 				<TabBrowser {...props}/>
+			)}
+		/>
+		
+		<Route path="/add" render={
+			props => (
+				<TabAdd {...props} />
 			)}
 		/>
 		

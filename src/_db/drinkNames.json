@@ -1,0 +1,58 @@
+{
+  "drinks": {
+    "_": [""],
+    "a": [""],
+    "b": [""],
+    "c": [""],
+    "d": [""],
+    "e": [""],
+    "f": [""],
+    "g": [""],
+    "h": [""],
+    "i": [""],
+    "j": [""],
+    "k": [""],
+    "l": [""],
+    "m": [""],
+    "n": [""],
+    "o": [""],
+    "p": [""],
+    "q": [""],
+    "r": [""],
+    "s": [""],
+    "t": [""],
+    "u": [""],
+    "v": [""],
+    "w": [""],
+    "x": [""],
+    "y": [""],
+    "z": [""]
+  },
+  "recipes": {
+    "example drink": [
+      {
+        "name": "example drink",
+        "id": "exampledrink1",
+        "ingredients": [
+          ["water", "1oz"],
+          ["cola", "1oz"],
+          ["liquid nitrogen", "1gal"]
+        ],
+        "howTo": "mix then drink",
+        "alcoholic": true,
+        "glass": "beer mug"
+      } , {
+        "name": "example drink",
+        "id": "exampledrink2",
+        "ingredients": [
+          ["water", "1oz"],
+          ["diet cola", "1oz"],
+          ["frozen yogurt", "1gal"]
+        ],
+        "howTo": "mix then drink",
+        "alcoholic": true,
+        "glass": "beer mug"
+      }
+    ]
+  }
+}
