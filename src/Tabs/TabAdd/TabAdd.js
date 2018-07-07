@@ -4,7 +4,7 @@ class TabAdd extends Component {
   render() {
     return (
       <div className='TabAdd'>
-        TabAdd
+        {'Feature coming SOON: Add Recipe'}
       </div>
     )
   }

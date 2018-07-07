@@ -12,7 +12,7 @@ const config = {
 }
 
 const app = firebase.initializeApp(config)
-
+const auth = app.auth()
 const base = Rebase.createClass(app.database())
 
-export {base}
+export {base, app, auth}

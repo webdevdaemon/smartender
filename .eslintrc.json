@@ -1,29 +1,16 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "browser": true, 
-    "es6": true, 
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 9,
-    "sourceType": "module"
-  },
-  "plugins": [
-		"env",
-		"react",
-		"react-app"
-	],
+  "env": {"browser": true, "es6": true, "node": true},
+  "parserOptions": {"ecmaVersion": 9, "sourceType": "module"},
+  "plugins": ["env", "react", "react-app", "babel"],
   "rules": {
-    "brace-style": [
-      0, 
-      "1tbs", {
-        "allowSingleLine": true
-        }
-      ],
+    "brace-style": [0, "1tbs", {"allowSingleLine": true}],
     "linebreak-style": 0,
     "no-console": 0,
-    "indent": [ 0, 2, {
+    "indent": [
+      0,
+      2,
+      {
         "ImportDeclaration": 4,
         "flatTernaryExpressions": false,
         "ObjectExpression": 2,
@@ -40,8 +27,9 @@
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-indent-props": [0, 2],
     "react/jsx-indent": [0, 2],
-		"react/jsx-no-undef": 0,
+    "react/jsx-no-undef": 0,
     "react/jsx-no-unused-vars": 0,
-    "jsx-a11y/href-no-hash": 0
+    "jsx-a11y/href-no-hash": 0,
+    "babel/semi": [0, "never"]
   }
 }

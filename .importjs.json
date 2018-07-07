@@ -3,6 +3,7 @@
     "./src/Components/**/*.js",
     "./src/Sections/**/*.js",
     "./src/Pages/**/*.js",
+    "./src/Tabs/**/*.js",
     "./src/**/*.js",
     "./src/*.js",
     "./src"

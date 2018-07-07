@@ -32,7 +32,7 @@ const Nav = () => (
       <li className='nav-link'>
         <NavLink to="/add">
           <FaPlus />
-          <p className='footer-nav-text'>{'Add Recipe'}</p>
+          <p className='footer-nav-text'>{'Add'}</p>
         </NavLink>
       </li>
       <li className='nav-link'>
