@@ -15,15 +15,9 @@ class SearchResultsList extends Component {
 					const {name, id} = obj
 					return (
 						<li className='search-results-line-item' key={`li-${id}`}>
-							<Link
-								to={{
-									pathname: `/recipe/${id}`,
-									state: {recipe: obj}
-								}}
-								style={{width: '100%', height: '7vh'}}
-								key={`li-${id}`}
-							>{name}
-							</Link>
+							<Link style={{width: '100%', height: '7vh'}} key={`li-${id}`}
+								to={{pathname: `/recipe/${id}`, state: {recipe: obj}}}
+							>{name}</Link>
 						</li>
 					)})}
      </ul>
