@@ -12,7 +12,7 @@ const Nav = () => (
   <div className="nav">
     <ul>
       <li className='nav-link'>
-        <NavLink to="/browser">
+        <NavLink to="/browse">
           <FaList />
           <p className='footer-nav-text'>{'Browse'}</p>
         </NavLink>

@@ -4,75 +4,108 @@ import { NavLink, Route } from 'react-router-dom'
 import VariableList from '../../Components/VariableList'
 
 import listPossibilities from '../../_helpers/listPossibilities'
+import ListNavLink from '../../Components/ListNavLink/ListNavLink'
+import browse from '../../_helpers/browseModule'
 
-const HEADERS_BY_FLAG = { c: 'Categories', g: 'Glass Types', i: 'Ingredients' }
+
+const HEADERS_BY_FLAG = {c: 'Category', g: 'Glass Type', i: 'Ingredient'}
+const DEFAULT_HEADER = 'Browse by Category, Ingredient, or Glass Type'
 
 class TabBrowser extends Component {
   state = {
-    visibleList: [],
-    listHeader: 'Browse by Category, Ingredient, or Glass Type',
+    isTags: true,
+    list: [],
+    listHeader: DEFAULT_HEADER,
     currentFlag: '',
-    cachedLists: {},
   }
 
   static propTypes = {
     match: PropTypes.object,
   }
 
-  updateListState = (flag) => {
-    listPossibilities(flag).then((newList) => {
-      this.setState({
-        visibleList: [...newList],
-        listHeader: HEADERS_BY_FLAG[flag],
-        currentFlag: flag,
+  switchList = flag => {
+    listPossibilities(flag)
+      .then((list) => list.map(str => ({name: str})))
+      .then((newList) => {
+        this.setState({
+          isTags: true,
+          list: [...newList],
+          listHeader: HEADERS_BY_FLAG[flag],
+          currentFlag: flag,
+        })
       })
-    })
+      .catch(err => Error(err))
   }
-
-  clickListItem = (evt) => evt
+  
+  onClickTag = ({tag, flag = this.state.currentFlag}) => {
+    browse.listBy.tag({tag, flag})
+      .then((newList) => {
+        this.setState({
+          isTags: false,
+          list: [...newList],
+          listHeader: `${tag}`,
+          currentFlag: flag,
+        })
+      })
+  } 
 
   render() {
     let { match } = this.props
-    let update = this.updateListState,
-      listItemClick = this.clickListItem
+    let switchListTo = this.switchList, onClickTag = this.onClickTag
     return (
       <div className="beverage-browser">
-        <h2 className="variable-list-header">{'List Drinks By:'}</h2>
+        
+      <h2 className="variable-list-header">{'List Drinks By:'}</h2>
+
         <ul className="variable-list-nav-list">
-          <li className="variable-list-nav-link">
-            <NavLink onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
-              <p className="variable-list-nav-link-text">Ingredients</p>
-            </NavLink>
-          </li>
-          <li className="variable-list-nav-link">
-            <NavLink onClick={() => update('g')} to={`${match.url}/by-glass`}>
-              <p className="variable-list-nav-link-text">Glass Types</p>
-            </NavLink>
-          </li>
-          <li className="variable-list-nav-link">
-            <NavLink onClick={() => update('c')} to={`${match.url}/by-category`}>
-              <p className="variable-list-nav-link-text">Categories</p>
-            </NavLink>
-          </li>
+          {
+            Object.entries(HEADERS_BY_FLAG)
+              .map(([flag, listName]) =>
+                ListNavLink({
+                  listName,
+                  baseUrl: '/browse',
+                  onClick: (() => switchListTo(flag)),
+                  routestate:   {...this.state},
+                }))
+          }
         </ul>
 
         <Route
-          path={`${match.url}/by-ingredient`}
+          path={'/browse/tags-by-ingredient'}
           render={() => (
-            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
+            <VariableList
+              clickHandler={onClickTag} 
+              {...this.state} 
+            />
           )}
         />
         <Route
-          path={`${match.url}/by-glass`}
+          path={'/browse/tags-by-glass'}
           render={() => (
-            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
+            <VariableList
+              clickHandler={onClickTag} 
+              {...this.state} 
+            />
           )}
         />
         <Route
-          path={`${match.url}/by-category`}
+          path={'/browse/tags-by-category'}
           render={() => (
-            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
+            <VariableList
+              clickHandler={onClickTag} 
+              {...this.state} 
+            />
           )}
+        />
+        <Route
+          path={'/browse/by-tag/:name'}
+          render={() => {
+            return (
+              <VariableList
+                clickHandler={onClickTag} 
+                {...this.state} 
+              />
+            )}}
         />
       </div>
     )

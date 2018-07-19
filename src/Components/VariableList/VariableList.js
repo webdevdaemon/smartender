@@ -1,32 +1,59 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-// import { image } from '../../_helpers/queryStringGenerator.js'
+import {NavLink} from 'react-router-dom'
 
-const ClickableListItem = (item, dex) => (
-	<li key={`${item}_0${dex}`} id={`${item}`} className='list-item-clickable'>
-   <div className='list-item-name'>
-     {item}
-   </div>
- </li>
+const Tag = ({name, click}) => (
+  <li className='variable-list-item tag'>
+    <NavLink to={{
+      pathname: `/browse/recipes-by-tag/${name}`,
+    }}
+      onClick={() => click({tag: name})}>
+      <p>{name}</p>
+    </NavLink>
+  </li>
 )
 
-const VariableList = ({ visibleList, listHeader, match, ...props }) => (
-  <div className="variable-list-wrapper">
-    <h4>{listHeader}</h4>
-    <ul className="variable-list">
-			{
-				visibleList.sort().map((item, dex) => ClickableListItem(item, dex))
-			}
-    </ul>
-  </div>
+const Recipe = ({name, id}) => (
+  <li className='variable-list-item recipe'>
+    <NavLink to={{
+      pathname: `/recipe/${id}`,
+      state: {
+        recipe: {id, incomplete: true}
+      },
+    }}>
+      <p>{name}</p>
+    </NavLink>
+  </li>
 )
 
-VariableList.propTypes = {
-  updateList: PropTypes.func,
-  clickHandler: PropTypes.func,
-  visibleList: PropTypes.array,
-  listHeader: PropTypes.string,
-  match: PropTypes.any,
+class VariableList extends Component {
+
+  static propTypes = {
+    isTags: PropTypes.bool,
+    onClickTag: PropTypes.func,
+    list: PropTypes.array,
+    listHeader: PropTypes.string,
+  }
+
+  render() {
+    const {isTags, list, listHeader, onClickTag} = this.props
+    return (
+      <div className="variable-list-wrapper">
+        <h4>{listHeader}</h4>
+        <ul className="variable-list">
+          {isTags ?
+              list.map((item, dex) =>
+                <Tag name={item.name} key={`li-${dex}`} click={onClickTag} />
+              )
+              :
+              list.map((item, dex) =>
+                <Recipe name={item.name} key={`li-${dex}`} id={item.id} />
+              )}
+        </ul>
+      </div>
+    )
+  }
 }
+
 
 export default VariableList
