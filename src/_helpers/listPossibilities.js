@@ -1,17 +1,16 @@
 import axios from 'axios'
-import {errorListPossibilities} from '../errorMessages'
 
 const KEYS_BY_FLAG = {c: 'strCategory', g: 'strGlass', i: 'strIngredient1'}
 
 export default (function() {
-  const preQuery = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?'
-	const convertFlagToQueryString = flag => `${preQuery}${flag}=list`
+  const prefix = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?'
+	const convertFlagToQueryString = flag => `${prefix}${flag}=list`
 	const extractList = (axiosResponse, objKey) =>
 		axiosResponse
 			.then(({data}) => data)
 			.then(({drinks}) => drinks)
 			.then(drinks => drinks.map(o => o[objKey]))
-			.catch(err => new Error(errorListPossibilities))
+			.catch(err => Error(err))
 	const isValidFlag = flag => flag.length === 1 && /[cgi]/.test(flag)
 	function getPossibilities(flag) {
 		const listKey = KEYS_BY_FLAG[flag]
@@ -22,7 +21,7 @@ export default (function() {
 	function listPossibilities(flag) {
 		return isValidFlag(flag)
 			? getPossibilities(flag)
-			: new Error(errorListPossibilities)
+			: Error('ERROR: suspect => listPossibilities')
 	}
   return listPossibilities
 })()

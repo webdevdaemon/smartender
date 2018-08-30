@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
+
 
 import Masthead from '../../Components/Masthead'
 import FaPlus from 'react-icons/lib/fa/plus'
@@ -13,7 +14,7 @@ const AddRecipeButton = () => (
 )
 
 const BackButton = ({location, history}) => {
-  console.dir({location, history})
+  console.log({location, history})
   return (
     <a onClick={history.goBack} className="back-button">
       <FaAngleLeft height="7vh" width="7vh" />

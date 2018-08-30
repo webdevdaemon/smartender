@@ -49,18 +49,17 @@ class App extends Component {
 		const uniqueId = `${drinkName}-${Date.now()}`
 		const alpha = /\w/.test(drinkName[0])
 			? `${drinkName[0]}`.toLowerCase()
-			: "_"
+			: '_'
 		const listToMerge = {
 			[alpha]: {
 				...this.state.drinks[alpha],
-				"drinkName": uniqueId,
+				drinkName: uniqueId,
 			}
 		}
 		const drinks = {
-			{}, .
-			..this.state.drinks,
-			listToMerge
-	}
+			...this.state.drinks,
+			...listToMerge
+		}
 		this.setState({drinks: {...drinks}})
 	}
 
