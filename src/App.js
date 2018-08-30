@@ -52,14 +52,6 @@ class App extends Component {
 		})
 	}
 	
-	componentWillUnmount() {
-		base.removeBinding(this.drinksRef)
-		base.removeBinding(this.recipesRef)
-		base.removeBinding(this.ingredientsRef)
-		base.removeBinding(this.glassesRef)
-		base.removeBinding(this.categoriesRef)
-	}
-
 	addDrinkName = drinkName => {
 		const uniqueId = `${drinkName}-${Date.now()}`
 		const alpha = /\w/.test(drinkName[0])
