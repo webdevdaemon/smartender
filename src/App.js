@@ -14,8 +14,22 @@ class App extends Component {
 			categories: {},
 		}
 	}
+
+	render() {
+		const addFns = {
+			addDrinkName: this.addDrinkName,
+			addDrinkRecipe: this.addDrinkRecipe,
+		}
+		return (
+			<BrowserRouter>
+				<Main {...this.state}
+					addDrinkFunctions={addFns}
+				/>
+			</BrowserRouter>
+		)
+	}
 	
-	componentWillMount() {
+	componentDidMount() {
 		this.drinksRef = base.syncState('drinks', {
 			context: this,
 			state: 'drinks',
@@ -37,6 +51,7 @@ class App extends Component {
 			state: 'categories',
 		})
 	}
+	
 	componentWillUnmount() {
 		base.removeBinding(this.drinksRef)
 		base.removeBinding(this.recipesRef)
@@ -67,20 +82,6 @@ class App extends Component {
 		console.log(arguments[0])
 		return {}
 	}
-
-	render() {
-		const addFns = {
-			addDrinkName: this.addDrinkName,
-			addDrinkRecipe: this.addDrinkRecipe,
-		}
-		return (
-			<BrowserRouter>
-				<Main {...this.state}
-					addDrinkFunctions={addFns}
-				/>
-			</BrowserRouter>
-    )
-  }
 }
 
 export default App
