@@ -414,14 +414,14 @@ a, a:-webkit-any-link {
 }
 
 .search-results-line-item {
-  border-radius: 6px;
-  background: #ddddff;
-  color: #003333;
+  border-radius: 10px;
+  height: 8vmin;
+  background: #26202F;
   width: 97%;
-  margin: 2px auto;
+  margin: .5vh auto;
   padding: 3px 0;
-  font-family: "roboto", "avenir", sans-serif;
-  font-size: 4vmin;
+  font-family: "Lato-hairline", "avenir", sans-serif;
+  font-weight: 100;
 }
 
 .recipe-hero {

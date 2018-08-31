@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.5.0",
     "@firebase/app-types": "^0.3.2",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",

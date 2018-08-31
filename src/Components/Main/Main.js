@@ -5,20 +5,13 @@ import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
 import PageRoutes from '../../_helpers/page-routes'
 import Nav from '../Nav'
-import Overlay from '../../Sections/Overlay'
 
 const Main = props => (
   <div className="main grid-layout">
 		<Header {...props}/>
-
     <Page>
 			<PageRoutes {...props}/>
 		</Page>
-		
-		<Overlay>
-		
-		</Overlay>
-
     <Footer>
 			<Nav {...props}/>
     </Footer>
