@@ -1,4 +1,11 @@
-.home {
+.search-results-list-wrapper .search-results-list .search-result-line-item {
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(43, 43, 43, 0.63) 89%, r rgba(0, 0, 0, 0.65) 100%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(43, 43, 43, 0.63) 89%, rgba(0, 0, 0, 0.65) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(43, 43, 43, 0.63) 89%, rgba(0, 0, 0, 0.65) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff', endColorstr='#a6000000', GradientType=0);
+}
+
+.home, .back-button, .menu-button {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -9,6 +16,8 @@
   justify-content: center;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 :root {
@@ -224,19 +233,11 @@ a, a:-webkit-any-link {
 }
 
 .back-button {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   grid-area: back;
-  justify-content: center;
 }
 
 .menu-button {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   grid-area: menu;
-  justify-content: center;
 }
 
 .masthead {
@@ -413,15 +414,43 @@ a, a:-webkit-any-link {
   padding: 0;
 }
 
-.search-results-line-item {
+.search-results-list-wrapper .search-results-list .search-result-line-item {
+  height: 10vmax;
   border-radius: 10px;
-  height: 8vmin;
-  background: #26202F;
-  width: 97%;
-  margin: .5vh auto;
-  padding: 3px 0;
-  font-family: "Lato-hairline", "avenir", sans-serif;
+  width: 90%;
+  padding: 0;
+  margin: 2.5vmax auto;
+  overflow: hidden;
+}
+
+.search-results-list-wrapper .search-results-list .search-result-line-item a.link {
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-results-list-wrapper .search-results-list .search-result-line-item a.link p.name {
+  color: #ddddff;
+  font-family: "Fredoka One";
+  font-size: 4vh;
+  max-width: 55%;
+  margin: 0 2vw;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.search-results-list-wrapper .search-results-list .search-result-line-item a.link p.excerpt {
+  color: #ddddff;
+  font-family: 'Lato', sans-serif;
   font-weight: 100;
+  font-size: 1vh;
+  max-width: 45%;
+  width: 100%;
+  text-align: right;
 }
 
 .recipe-hero {
