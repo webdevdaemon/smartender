@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import SearchResultLineItem from '../SearchResultLineItem/SearchResultLineItem'
@@ -12,7 +12,7 @@ const recipeCardStyle = {
   alignItems: 'center',
 }
 
-class SearchResultsList extends Component {
+class SearchResultsList extends PureComponent {
   static propTypes = {listResults: PropTypes.array, match: PropTypes.object}
 
   render() {
