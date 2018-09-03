@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Card, Elevation } from '@blueprintjs/core'
 
-const SearchResultLineItem = ({ children, data, className }) => {
+const SearchResultLineItem = ({children, data}) => {
   return (
     <Card
       interactive
@@ -11,6 +11,7 @@ const SearchResultLineItem = ({ children, data, className }) => {
       elevation={Elevation.THREE}
       style={{
         backgroundImage: `url(${data.thumbnail})`,
+        backgroundColor: 'rgba(0, 0, 0, 0.33)',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
       }}
