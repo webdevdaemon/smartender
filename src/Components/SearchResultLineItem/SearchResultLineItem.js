@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Card, Elevation } from '@blueprintjs/core'
+import {Card, Elevation} from '@blueprintjs/core'
 
 const SearchResultLineItem = ({children, data}) => {
   return (
@@ -11,7 +11,6 @@ const SearchResultLineItem = ({children, data}) => {
       elevation={Elevation.THREE}
       style={{
         backgroundImage: `url(${data.thumbnail})`,
-        backgroundColor: 'rgba(0, 0, 0, 0.33)',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
       }}
@@ -22,7 +21,7 @@ const SearchResultLineItem = ({children, data}) => {
 }
 
 SearchResultLineItem.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 export default SearchResultLineItem

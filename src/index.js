@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
-
+import './index.css'
+import {FocusStyleManager} from '@blueprintjs/core'
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
@@ -10,4 +10,5 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
+FocusStyleManager.onlyShowFocusOnTabs()
 registerServiceWorker()

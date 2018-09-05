@@ -5,8 +5,9 @@ $silver: #a5acaf;
 $grey: #4f4f4f;
 $darkest: #003333;
 $lightest: #ddddff;
-$fbody: 'roboto', 'avenir', sans-serif;
-$f1: 'Fredoka One';
+$fbody: 'encode sans narrow', 'avenir', sans-serif;
+// $f1: 'encode sans wide';
+$f1: 'croissant one';
 $grad1: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
 $grad2: linear-gradient(145deg, #005858 0%, #003333 100%);
 $grad3: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
@@ -114,6 +115,8 @@ a, a:-webkit-any-link {
 
 .tab-header {
     margin: 1vh auto;
+    font-size: 4vh;
+    font-weight: bold;
 }
 
 .logo-font {
@@ -121,8 +124,8 @@ a, a:-webkit-any-link {
     border-radius: 0 100px 100px 0;
     background: $lightest;
     color: $darkest;
-    font-size: 15vmin;
-    padding: 4px 24px 4px 16px;
+    font-size: 12vmin;
+    padding: 4px 40px 4px 16px;
     text-shadow: 2px 1px 0 $silver;
 }
 
@@ -259,11 +262,13 @@ a, a:-webkit-any-link {
 .back-button {
     @extend %center-center;
     grid-area: back;
+    color: $darkest;
 }
 
 .menu-button {
     @extend %center-center;
     grid-area: menu;
+    color: $darkest;
 }
 
 .masthead {
@@ -396,22 +401,54 @@ a, a:-webkit-any-link {
     margin-top: 6px;
 }
 
+.search-wrapper {
+    position: relative;
+}
+
+.search-form-wrapper {
+    position: sticky;
+    top: 0;
+    transform: translateY(-2px);
+}
+
 .search-form {
-    background: transparent;
+    background: $lightest;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1vh auto;
+    margin: 0 auto;
     padding: 0;
-    width: 90vw;
-
+    width: 100vw;
+    label {
+        display: none;
+    }
+    input::-webkit-input-placeholder {
+        color: $silver !important;
+    }
+    input:-moz-placeholder {
+        color: $silver !important;
+    }
+    input::-moz-placeholder {
+        color: $silver !important;
+    }
+    input:-ms-input-placeholder {
+        color: $silver !important;
+    }
     .search-form-input {
         margin: 0 auto;
-        background: #000000;
-        color: #ffffff;
-        font-size: 2em;
+        border: none;
+        background: transparent;
+        color: $darkest;
+        font-size: 4vh;
         text-align: center;
-        width: 66%;
+        width: 70%;
+        transition: all 1s ease-in-out;
+        &.pulse {
+            transform: scale(1.1);
+        }
+        &.shrink {
+            transform: scale(0.9);
+        }
     }
 }
 
@@ -433,39 +470,34 @@ a, a:-webkit-any-link {
         margin: 0;
         padding: 0;
         .search-result-line-item {
-            @extend %gradTopLitTransparency;
             height: 20vmax;
-            border-radius: 10px;
+            border-radius: 20px;
             padding: 0;
             width: 90%;
             margin: 2.5vmax auto;
             overflow: hidden;
-            a.link {
-                background: rgba(0, 0, 0, 0.75);
+            transition: all 0.66s ease-in-out;
+            .link {
+                background: rgba(0, 0, 0, 0.25);
                 width: 100%;
                 height: 100%;
                 padding: 1vh 2vw;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                p.name {
+                &:hover {
+                    background: rgba(0, 0, 0, 0.25);
+                }
+                .name {
                     color: $lightest;
                     font-family: $f1;
-                    font-size: 4vh;
-                    max-width: 55%;
+                    font-size: 8vh;
+                    max-width: 100%;
                     margin: 0 2vw;
                     padding: 0;
                     width: 100%;
                     text-align: left;
-                }
-                p.excerpt {
-                    color: $lightest;
-                    font-family: 'Lato', sans-serif;
-                    font-weight: 100;
-                    font-size: 1vh;
-                    max-width: 45%;
-                    width: 100%;
-                    text-align: right;
+                    line-height: 1;
                 }
             }
         }

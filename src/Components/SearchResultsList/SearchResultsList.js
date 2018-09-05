@@ -13,7 +13,10 @@ const recipeCardStyle = {
 }
 
 class SearchResultsList extends PureComponent {
-  static propTypes = {listResults: PropTypes.array, match: PropTypes.object}
+  static propTypes = {
+    listResults: PropTypes.array,
+    match: PropTypes.object,
+  }
 
   render() {
     const {listResults} = this.props
@@ -25,7 +28,7 @@ class SearchResultsList extends PureComponent {
           return (
             <SearchResultLineItem key={`li-${id}`} data={data}>
               <Link
-                className='link'
+                className="link"
                 style={recipeCardStyle}
                 key={`li-${id}`}
                 to={{
@@ -37,11 +40,6 @@ class SearchResultsList extends PureComponent {
                 }}
               >
                 <p className="name">{name}</p>
-                <p className="excerpt">
-                  {
-                    `${howTo.substring(0, 75)}...`
-                    || 'Put in glass. Put in mouth. Swallow. Be Merry!'
-                  }</p>
               </Link>
             </SearchResultLineItem>
           )

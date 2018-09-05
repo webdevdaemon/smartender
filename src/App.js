@@ -2,12 +2,10 @@ import React, {Component} from 'react'
 import Main from './Components/Main'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
-import {FocusStyleManager, Classes} from '@blueprintjs/core'
-
+import {Classes} from '@blueprintjs/core'
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
 
-FocusStyleManager.onlyShowFocusOnTabs()
 
 class App extends Component {
   constructor(props) {
@@ -32,11 +30,7 @@ class App extends Component {
     }
     return (
       <BrowserRouter>
-        <Main
-          {...this.state}
-          addDrinkFunctions={addFns}
-          className={Classes.DARK}
-        />
+        <Main {...this.state} addDrinkFunctions={addFns} />
       </BrowserRouter>
     )
   }

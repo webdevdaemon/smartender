@@ -1,29 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter, Link } from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 import Masthead from '../../Components/Masthead'
 import FaPlus from 'react-icons/lib/fa/plus'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 
 const AddRecipeButton = () => (
-  <Link
-    to={{
-      pathname: '/add'
-    }}
-  >
+  <Link to={{pathname: '/add'}}>
     <div className="menu-button">
-      <FaPlus height="7vh" width="7vh" />
+      <FaPlus height="5.5vh" width="5.5vh" />
     </div>
   </Link>
 )
 
-const BackButton = ({ location, history, ...props }) => {
-  console.log({ location, history })
+const BackButton = ({location, history, ...props}) => {
+  console.log({location, history})
   return (
     <a
       onClick={() => {
-        console.log({ location, history, props })
+        console.log({location, history, props})
         return history.goBack()
       }}
       className="back-button"
@@ -42,6 +38,7 @@ const Header = props => (
 )
 
 Header.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 }
+
 export default withRouter(Header)

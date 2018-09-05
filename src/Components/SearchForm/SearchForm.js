@@ -1,22 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SearchInput from '../SearchInput/SearchInput'
 
-const SearchForm = ({ updateUI, searchString }) => (
-	<div className="search-form">
-		<input
-			className="search-form-input"
-			placeholder=""
-			type="text"
-			value={searchString}
-			onChange={e => updateUI(e)}
-			onSubmit={e => e.preventDefault()}
-		/>
-	</div>
-)
+class SearchForm extends React.Component {
+  constructor(props) {
+		super(props)
+	}
+
+  render() {
+    return (
+      <div className="search-form">
+        <SearchInput {...this.props} />
+      </div>
+    )
+  }
+}
 
 SearchForm.propTypes = {
-	updateUI: PropTypes.func,
-	searchString: PropTypes.string,
+  updateUI: PropTypes.func,
+  searchString: PropTypes.string,
 }
 
 export default SearchForm
