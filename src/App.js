@@ -1,13 +1,17 @@
 import React, {Component} from 'react'
-import Main from './Components/Main'
 import {BrowserRouter} from 'react-router-dom'
-import {base} from './base'
 import {Classes} from '@blueprintjs/core'
+import {base} from './base'
+
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import firebase from 'firebase'
+import Main from './Components/Main'
+
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
 
-
 class App extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -22,72 +26,22 @@ class App extends Component {
       listResults: [],
     }
   }
+  render = () => (<BrowserRouter><Main {...this.state} /></BrowserRouter>)
   
-  render() {
-    const addFns = {
-      addDrinkName: this.addDrinkName,
-      addDrinkRecipe: this.addDrinkRecipe,
-    }
-    return (
-      <BrowserRouter>
-        <Main {...this.state} addDrinkFunctions={addFns} />
-      </BrowserRouter>
-    )
-  }
+  updateListResults = (listResults) => {this.setState({listResults})}
   
-  updateListResults = listResults => this.setState({listResults})
-
-  isCached = obj => {
-    // const [key, val] = Object.entries(obj)[0]
-    this.setState(({searchCache}) => ({searchCache: {...searchCache, ...obj}}))
-  }
-  
-  addDrinkName = drinkName => {
-    const uniqueId = `${drinkName}-${Date.now()}`
-    const alpha = /\w/.test(drinkName[0])
-    ? `${drinkName[0]}`.toLowerCase()
-    : '_'
-    const listToMerge = {
-      [alpha]: {
-        ...this.state.drinks[alpha],
-        drinkName: uniqueId,
-      }
-    }
-    const drinks = {
-      ...this.state.drinks,
-      ...listToMerge
-    }
-    this.setState({drinks: {...drinks}})
-  }
-  
-  addDrinkRecipe = drinkRecipe => {
-    console.log(arguments[0])
-    return {}
-  }
-  
-  $sync(endpoint) {
+  dbSync(endpoint) {
     return base.syncState(endpoint, {
       context: this, state: endpoint,
     })
   }
 
-  $bind(endpoint) {
+  dbBind(endpoint) {
     return base.bindToState(endpoint, {
       context: this, state: endpoint,
     })
   }
 
-  /**
-   * predicate function that returns true if user is an admin
-   * @param {String} username
-   * @returns {Bool}
-   */
-  determineUserAccessLevel = (username = 'cmorganwebdev') => {
-    return username === 'cmorganwebdev'
-  }
-
-
-  
   componentDidMount() {
     this.drinksRef = base.syncState('drinks', {
       context: this,
@@ -113,9 +67,7 @@ class App extends Component {
       context: this,
       state: 'searchCache',
     })
-
-
   }
-}       
+}  
 
 export default App

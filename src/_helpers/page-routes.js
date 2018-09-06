@@ -8,9 +8,11 @@ import TabAdd from '../Tabs/TabAdd'
 import TabRandomizer from '../Tabs/TabRandomizer'
 import TabRecipe from '../Tabs/TabRecipe'
 import TabBrowser from '../Tabs/TabBrowser'
+import TabAccount from '../Tabs/TabAccount'
 
 const PageRoutes = props => (
   <div className="app-wrapper">
+		<Route path="/account" render={props => <TabAccount {...props}/>}/>
 		<Route exact path="/" render={props => <Home {...props}/>}/>
 		<Route path="/search" render={props => <TabSearch {...props}/>}/>
 		<Route path="/browser" render={props => <TabBrowser {...props}/>}/>
