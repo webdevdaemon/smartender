@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
-import {Classes} from '@blueprintjs/core'
+// import {Classes} from '@blueprintjs/core'
 import {base} from './base'
 
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import firebase from 'firebase'
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+// import firebase from 'firebase'
 import Main from './Components/Main'
 
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'

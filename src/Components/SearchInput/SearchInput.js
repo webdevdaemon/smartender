@@ -7,7 +7,10 @@ class SearchInput extends Component {
     this.inputRef = React.createRef()
   }
 
-  static propTypes = {}
+  static propTypes = {
+    searchString: PropTypes.string,
+    updateUI: PropTypes.func.isRequired,
+  }
 
   componentDidMount = () => {
     this.inputRef.current.focus()

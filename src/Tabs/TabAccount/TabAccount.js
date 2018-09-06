@@ -48,3 +48,5 @@ class TabAccount extends React.Component {
     )
   }
 }
+
+export default TabAccount

@@ -31,3 +31,4 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 export {base}
 export {uiConfig}
+export {ui}
