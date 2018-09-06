@@ -1,3 +1,3 @@
-import TabAccount from './TabAccount';
+import TabAccount from './TabAccount'
 
-export default TabAccount;
+export default TabAccount
