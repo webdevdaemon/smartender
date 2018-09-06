@@ -3519,7 +3519,7 @@ firebase@^5.2.0:
     "@firebase/polyfill" "0.3.3"
     "@firebase/storage" "0.2.3"
 
-firebaseui@^3.4.0:
+firebaseui@^3.2.0, firebaseui@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/firebaseui/-/firebaseui-3.4.0.tgz#ca9ebc708aeab5bf2e6e060c4caf12674d9db186"
   dependencies:
@@ -6675,6 +6675,12 @@ react-dom@^16.4.1:
 react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
+
+react-firebaseui@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-firebaseui/-/react-firebaseui-3.0.7.tgz#a9e5473c64e72d5ded3928c9023a0d54d2141fee"
+  dependencies:
+    firebaseui "^3.2.0"
 
 react-icon-base@2.1.0:
   version "2.1.0"
