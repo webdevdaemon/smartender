@@ -11,10 +11,11 @@ import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
 
 class App extends Component {
-  
   constructor(props) {
     super(props)
     this.state = {
+      authenticated: false,
+      admin: false,
       user: null,
       drinks: {},
       recipes: {},
@@ -26,19 +27,42 @@ class App extends Component {
       listResults: [],
     }
   }
-  render = () => (<BrowserRouter><Main {...this.state} /></BrowserRouter>)
-  
-  updateListResults = (listResults) => {this.setState({listResults})}
-  
+  render() {
+    const fns = {setAuthState: this._setAuthState}
+    return (
+      <BrowserRouter>
+        <Main {...this.state} {...fns} />
+      </BrowserRouter>
+    )
+  }
+
+  updateListResults = listResults => {
+    this.setState({listResults})
+  }
+  setAuthStatus = (authenticated = false) => {
+    this.setState({authenticated})
+    console.log(`Auth Status: ${authenticated ? 'logged in' : 'logged out'}`)
+  }
+  setUserObject = (user = {}) => {
+    this.setState({user})
+    console.log('USER DATA: \n', {user})
+  }
+  _setAuthState = user => {
+    user && this.setUserObject(user)
+    this.setAuthStatus(!!user)
+  }
+
   dbSync(endpoint) {
     return base.syncState(endpoint, {
-      context: this, state: endpoint,
+      context: this,
+      state: endpoint,
     })
   }
 
   dbBind(endpoint) {
     return base.bindToState(endpoint, {
-      context: this, state: endpoint,
+      context: this,
+      state: endpoint,
     })
   }
 
@@ -68,6 +92,6 @@ class App extends Component {
       state: 'searchCache',
     })
   }
-}  
+}
 
 export default App

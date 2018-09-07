@@ -8,21 +8,28 @@ import Nav from '../Nav'
 
 const Main = props => (
   <div className="main grid-layout">
-		<Header {...props}/>
+    <Header {...props} />
     <Page>
-			<PageRoutes {...props}/>
-		</Page>
+      <PageRoutes {...props} />
+    </Page>
     <Footer>
-			<Nav {...props}/>
+      <Nav {...props} />
     </Footer>
   </div>
 )
 
 Main.propTypes = {
-	searchCache: PropTypes.object,
-	currentRecipe: PropTypes.object,
-	updateSearchCache: PropTypes.func,
-	updateCurrentRecipe: PropTypes.func,
+  authenticated: PropTypes.bool,
+  admin: PropTypes.bool,
+  user: PropTypes.object,
+  drinks: PropTypes.object,
+  recipes: PropTypes.object,
+  ingredients: PropTypes.object,
+  glasses: PropTypes.object,
+  categories: PropTypes.object,
+  searchCache: PropTypes.object,
+  searchCacheRoster: PropTypes.any,
+  listResults: PropTypes.array,
 }
 
 export default Main

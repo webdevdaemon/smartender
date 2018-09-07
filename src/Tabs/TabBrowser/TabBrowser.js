@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { NavLink, Route } from 'react-router-dom'
+import {NavLink, Route} from 'react-router-dom'
 import VariableList from '../../Components/VariableList'
+import {UL} from '@blueprintjs/core'
 
 import listPossibilities from '../../_helpers/listPossibilities'
 
-const HEADERS_BY_FLAG = { c: 'Categories', g: 'Glass Types', i: 'Ingredients' }
+const HEADERS_BY_FLAG = {c: 'Categories', g: 'Glass Types', i: 'Ingredients'}
 
 class TabBrowser extends Component {
   state = {
@@ -19,25 +20,26 @@ class TabBrowser extends Component {
     match: PropTypes.object,
   }
 
-	updateListState = flag => {
-		listPossibilities(flag)
-			.then(newList => {
-				this.setState({
-					visibleList: [...newList],
-					listHeader: HEADERS_BY_FLAG[flag],
-					currentFlag: flag,
-				})
-			})}
+  updateListState = flag => {
+    listPossibilities(flag).then(newList => {
+      this.setState({
+        visibleList: [...newList],
+        listHeader: HEADERS_BY_FLAG[flag],
+        currentFlag: flag,
+      })
+    })
+  }
 
   clickListItem = evt => evt
 
   render() {
-    let { match } = this.props
-    let update = this.updateListState, listItemClick = this.clickListItem
+    let {match} = this.props
+    let update = this.updateListState,
+      listItemClick = this.clickListItem
     return (
       <div className="beverage-browser">
         <h2 className="variable-list-header">List Drinks By:</h2>
-        <ul className="variable-list-nav-list">
+        <UL className="variable-list-nav-list">
           <li className="variable-list-nav-link">
             <NavLink onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
               <p className="variable-list-nav-link-text">Ingredients</p>
@@ -53,36 +55,23 @@ class TabBrowser extends Component {
               <p className="variable-list-nav-link-text">Categories</p>
             </NavLink>
           </li>
-        </ul>
-
+        </UL>
         <Route
           path={`${match.url}/by-ingredient`}
           render={() => (
-            <VariableList
-              clickHandler={listItemClick}
-							updateList={update}
-							{...this.state}
-            />
+            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
           )}
         />
         <Route
           path={`${match.url}/by-glass`}
           render={() => (
-            <VariableList
-              clickHandler={listItemClick}
-							updateList={update}
-							{...this.state}
-            />
+            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
           )}
         />
         <Route
           path={`${match.url}/by-category`}
           render={() => (
-            <VariableList
-              clickHandler={listItemClick}
-							updateList={update}
-							{...this.state}
-            />
+            <VariableList clickHandler={listItemClick} updateList={update} {...this.state} />
           )}
         />
       </div>

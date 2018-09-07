@@ -2,8 +2,13 @@ import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from 'firebase'
 
+const h_ = 'bp3-heading'
+
 class TabAccount extends React.Component {
-  state = {isSignedIn: false}
+  constructor(props) {
+    super(props)
+    this.state = {authenticated: false}
+  }
 
   // Configure FirebaseUI.
   uiConfig = {
@@ -12,16 +17,20 @@ class TabAccount extends React.Component {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     ],
-    callbacks: { // Avoid redirects after sign-in.
+    callbacks: {
+      // Avoid redirects after sign-in.
       signInSuccessWithAuthResult: () => false,
     },
   }
 
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
-    this.unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged(user => this.setState({isSignedIn: !!user}))
+    const {setAuthState} = this.props
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      this.setState({authenticated: !!user, user})
+      setAuthState(user)
+      console.log({user})
+    })
   }
 
   // Make sure we un-register Firebase observers when the component unmounts.
@@ -30,10 +39,12 @@ class TabAccount extends React.Component {
   }
 
   render() {
-    if (!this.state.isSignedIn) {
+    {}
+    if (!this.state.authenticated) {
       return (
         <div>
-          <h1>My App</h1>
+          <h2 className={`${h_}`}>Account Info</h2>
+          <h4>Login/Signup for Details</h4>
           <p>Please sign-in:</p>
           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
         </div>
@@ -41,8 +52,19 @@ class TabAccount extends React.Component {
     }
     return (
       <div>
-        <h1>My App</h1>
+        <h1>My Account</h1>
         <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+
+        <ul>
+          {/*Object.entries(this.props.user).map(([key, val]) => (
+            <li>
+              <h3>{key}</h3>
+              {' => '}
+              <h3>{val}</h3>
+            </li>
+          ))*/}
+        </ul>
+
         <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
       </div>
     )

@@ -12,13 +12,41 @@ import TabAccount from '../Tabs/TabAccount'
 
 const PageRoutes = props => (
   <div className="app-wrapper">
-		<Route path="/account" render={props => <TabAccount {...props}/>}/>
-		<Route exact path="/" render={props => <Home {...props}/>}/>
-		<Route path="/search" render={props => <TabSearch {...props}/>}/>
-		<Route path="/browser" render={props => <TabBrowser {...props}/>}/>
-		<Route path="/add" render={props => <TabAdd {...props}/>}/>
-		<Route path="/randomizer" render={props => <TabRandomizer {...props}/>}/>
-		<Route path="/recipe/:id" render={props => <TabRecipe {...props}/>}/>
+		<Route path="/account" render={
+			({match}) => (
+				<TabAccount {...props} match={match}/>
+			)
+		} />
+		<Route exact path="/" render={
+			({match}) => (
+				<Home {...props} match={match}/>
+			)
+		} />
+		<Route path="/search" render={
+			({match}) => (
+				<TabSearch {...props} match={match}/>
+			)
+		} />
+		<Route path="/browser" render={
+			({match}) => (
+				<TabBrowser {...props} match={match}/>
+			)
+		} />
+		<Route path="/add" render={
+			({match}) => (
+				<TabAdd {...props} match={match}/>
+			)
+		} />
+		<Route path="/randomizer" render={
+			({match}) => (
+				<TabRandomizer {...props} match={match}/>
+			)
+		} />
+		<Route path="/recipe/:id" render={
+			({match}) => (
+				<TabRecipe {...props} match={match}/>
+			)
+		} />
   </div>
 )
 

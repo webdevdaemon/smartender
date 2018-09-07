@@ -14,9 +14,9 @@ import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 //   </Link>
 // )
 
-const UserButton = () => (
+const UserButton = ({authenticated}) => (
   <Link to={{pathname: '/account'}}>
-    <div className="menu-button">
+    <div className="bp3-button bp3-intent">
       <FaUser height="5.5vh" width="5.5vh" />
     </div>
   </Link>
