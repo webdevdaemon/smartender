@@ -39,7 +39,7 @@ class TabBrowser extends Component {
     return (
       <div className="beverage-browser">
         <h2 className="variable-list-header">List Drinks By:</h2>
-        <UL className="variable-list-nav-list">
+        <ul className="variable-list-nav-list">
           <li className="variable-list-nav-link">
             <NavLink onClick={() => update('i')} to={`${match.url}/by-ingredient`}>
               <p className="variable-list-nav-link-text">Ingredients</p>
@@ -55,7 +55,7 @@ class TabBrowser extends Component {
               <p className="variable-list-nav-link-text">Categories</p>
             </NavLink>
           </li>
-        </UL>
+        </ul>
         <Route
           path={`${match.url}/by-ingredient`}
           render={() => (

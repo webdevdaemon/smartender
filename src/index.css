@@ -138,47 +138,22 @@ a, a:-webkit-any-link {
   width: 100%;
 }
 
-.page-variable-list {
-  display: grid;
-  grid-template-areas: 'v-list-head' 'v-list-nav' 'v-list';
-  grid-template-columns: 100vw;
-  grid-template-rows: 10vh 10vh auto;
+.beverage-browser {
+  position: relative;
 }
 
-.page-variable-list .variable-list-wrapper {
-  grid-area: v-list;
-  margin: 0;
-  padding: 0;
-}
-
-.page-variable-list .variable-list-wrapper h4 {
-  background: #ddddff;
-  color: #003333;
-  display: block;
-  margin: 0;
-  padding: 0.33em 0;
-  position: sticky;
-  top: calc(7vh - 1px);
-}
-
-.page-variable-list .variable-list-header {
+.variable-list-header {
   background: #003333;
-  font-size: 1.5em;
   grid-area: v-list-head;
-  height: 7vh;
-  line-height: 7vh;
-  position: sticky;
-  top: -1px;
-  z-index: 10;
 }
 
-.page-variable-list .variable-list-nav-list {
-  align-items: center;
+.variable-list-nav-list {
+  align-items: stretch;
   background: #003333;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
   display: flex;
-  flex-direction: row;
   grid-area: v-list-nav;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style: none;
   margin: 0;
   padding: 6px 0;
@@ -186,14 +161,13 @@ a, a:-webkit-any-link {
   top: -1px;
 }
 
-.page-variable-list .variable-list-nav-list .variable-list-nav-link {
+.variable-list-nav-list .variable-list-nav-link {
   background: transparent;
   height: 100%;
   text-align: center;
-  width: 33.33%;
 }
 
-.page-variable-list .variable-list-nav-list .variable-list-nav-link a {
+.variable-list-nav-list .variable-list-nav-link a {
   background: #ddddff;
   color: #555555;
   border-radius: 5px;
@@ -202,24 +176,24 @@ a, a:-webkit-any-link {
   margin: 5px auto;
 }
 
-.page-variable-list .variable-list-nav-list .variable-list-nav-link a.active {
+.variable-list-nav-list .variable-list-nav-link a.active {
   background: #444444;
   color: #616161;
 }
 
-.page-variable-list .variable-list-nav-list .variable-list-nav-link .variable-list-nav-link-text {
+.variable-list-nav-list .variable-list-nav-link .variable-list-nav-link-text {
   font-family: "croissant one";
   font-size: 4.5vmin;
   font-weight: 300;
   text-decoration: none;
 }
 
-.page-variable-list .variable-list-nav-link-text {
+.variable-list-nav-link-text {
   font-size: 5vmin;
   text-decoration: none;
 }
 
-.page-variable-list .variable-list {
+.variable-list {
   height: auto;
   list-style: none;
   margin: 0;
