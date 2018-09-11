@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{	listResults:array,>}
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchResultsList from '../SearchResultsList'

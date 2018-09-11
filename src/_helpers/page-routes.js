@@ -13,38 +13,38 @@ import TabAccount from '../Tabs/TabAccount'
 const PageRoutes = props => (
   <div className="app-wrapper">
 		<Route path="/account" render={
-			({match}) => (
+			({match, ...props}) => (
 				<TabAccount {...props} match={match}/>
 			)
 		} />
 		<Route exact path="/" render={
-			({match}) => (
+			({match, ...props}) => (
 				<Home {...props} match={match}/>
 			)
 		} />
 		<Route path="/search" render={
-			({match}) => (
+			({match, ...props}) => (
 				<TabSearch {...props} match={match}/>
 			)
 		} />
 		<Route path="/browser" render={
-			({match}) => (
+			({match, ...props}) => (
 				<TabBrowser {...props} match={match}/>
 			)
 		} />
 		<Route path="/add" render={
-			({match}) => (
+			({match, ...props}) => (
 				<TabAdd {...props} match={match}/>
 			)
 		} />
 		<Route path="/randomizer" render={
-			({match}) => (
+			({match, ...props}) => (
 				<TabRandomizer {...props} match={match}/>
 			)
 		} />
 		<Route path="/recipe/:id" render={
-			({match}) => (
-				<TabRecipe {...props} match={match}/>
+			({match, location, history, ...props}) => (
+				<TabRecipe {...props} match={match} location={location} history={history}/>
 			)
 		} />
   </div>

@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{		match:object,	>}
+*/
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -16,7 +19,10 @@ class SearchWrapper extends Component {
 		}
 	}
 
-	static propTypes = { match: PropTypes.object }
+	static propTypes = {
+		match: PropTypes.object,
+
+	}
 
 	runAutoComp = (str) =>
 		autoComp(str)

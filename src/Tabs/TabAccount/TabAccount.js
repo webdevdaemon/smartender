@@ -39,7 +39,6 @@ class TabAccount extends React.Component {
   }
 
   render() {
-    {}
     if (!this.state.authenticated) {
       return (
         <div>

@@ -7,7 +7,6 @@ $darkest: #003333;
 $lightest: #ddddff;
 $fbody: 'encode sans narrow', 'avenir', sans-serif;
 $f1: 'croissant one';
-
 $grad1: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
 $grad2: linear-gradient(145deg, #005858 0%, #003333 100%);
 $grad3: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
@@ -153,7 +152,6 @@ a, a:-webkit-any-link {
 }
 
 .page {
-    // background-image: $grad2;
     background-image: linear-gradient(125deg, #29323c 0%, #3d4956 100%);
     background-blend-mode: multiply,multiply;
     color: $lightest;
@@ -169,28 +167,6 @@ a, a:-webkit-any-link {
     bottom: $height_footer;
     width: 100%;
 }
-
-// .page-variable-list {
-//     display: grid;
-//     grid-template-areas: 'v-list-head' 'v-list-nav' 'v-list';
-//     grid-template-columns: 100vw;
-//     grid-template-rows: 10vh 10vh auto;
-//     .variable-list-wrapper {
-//         grid-area: v-list;
-//         margin: 0;
-//         padding: 0;
-
-//         h4 {
-//             background: $lightest;
-//             color: $darkest;
-//             display: block;
-//             margin: 0;
-//             padding: 0.33em 0;
-//             position: sticky;
-//             top: calc(7vh - 1px);
-//         }
-//     }
-// }
 
 .beverage-browser {
     position: relative;
@@ -255,6 +231,26 @@ a, a:-webkit-any-link {
     z-index: 1;
 }
 
+.list-item-clickable {
+    border-bottom: solid 1px #888888;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    font-weight: bold;
+    height: 5vh;
+    margin: 0;
+    padding: 2px 10px;
+
+    .list-item-name {
+        display: block;
+        height: 5vh;
+        margin: 0 auto 1px auto;
+        padding: 0;
+        width: 100%;
+    }
+}
 
 .back-button {
     @extend %center-center;
@@ -319,26 +315,6 @@ a, a:-webkit-any-link {
     margin: 0;
     padding: 0;
     width: 100vw;
-}
-
-.list-item-clickable {
-    border-bottom: solid 1px #888888;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vh;
-    font-weight: bold;
-    height: 5vh;
-    margin: 0;
-    padding: 2px 10px;
-    .list-item-name {
-        display: block;
-        height: 5vh;
-        margin: 0 auto 1px auto;
-        padding: 0;
-        width: 100%;
-    }
 }
 
 .nav {
@@ -466,37 +442,41 @@ a, a:-webkit-any-link {
         list-style: none;
         margin: 0;
         padding: 0;
-        .search-result-line-item {
-            height: 20vmax;
-            border-radius: 20px;
+    }
+}
+
+.search-result-line-item {
+    height: 20vmax;
+    border-radius: 20px;
+    padding: 0;
+    width: 90%;
+    margin: 2.5vmax auto;
+    overflow: hidden;
+    transition: all 0.66s ease-in-out;
+
+    .link {
+        background: rgba(0, 0, 0, 0.25);
+        width: 100%;
+        height: 100%;
+        padding: 1vh 2vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .name {
+            color: $lightest;
+            font-family: $f1;
+            font-size: 8vh;
+            max-width: 100%;
+            margin: 0 2vw;
             padding: 0;
-            width: 90%;
-            margin: 2.5vmax auto;
-            overflow: hidden;
-            transition: all 0.66s ease-in-out;
-            .link {
-                background: rgba(0, 0, 0, 0.25);
-                width: 100%;
-                height: 100%;
-                padding: 1vh 2vw;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                &:hover {
-                    background: rgba(0, 0, 0, 0.25);
-                }
-                .name {
-                    color: $lightest;
-                    font-family: $f1;
-                    font-size: 8vh;
-                    max-width: 100%;
-                    margin: 0 2vw;
-                    padding: 0;
-                    width: 100%;
-                    text-align: left;
-                    line-height: 1;
-                }
-            }
+            width: 100%;
+            text-align: left;
+            line-height: 1;
         }
     }
 }
@@ -544,11 +524,13 @@ a, a:-webkit-any-link {
 }
 
 .ingredients-table {
+    position: sticky;
+    top: 0;
+    transform: translateY(-1px);
     text-align: center;
-    font-family: 'avenir', 'helvetica', sans-serif;
     width: 100vw;
-    background: $lightest;
-    color: $darkest;
+    background: $darkest;
+    color: $lightest;
     border-spacing: 0;
     td {
         width: 50%;
@@ -557,10 +539,11 @@ a, a:-webkit-any-link {
         border-top: solid 1px black;
     }
     .td-l {
-        width: 62%;
+        width: 50%;
+        text-align: left;
     }
     .td-r {
-        width: 38%;
+        width: 50%;
         text-align: left;
     }
 }
@@ -576,11 +559,13 @@ a, a:-webkit-any-link {
 }
 
 .how-to {
-    background: #000000;
+    background: $lightest;
+    color: $darkest;
     padding: 6px 12px;
-    font-family: 'lucida grande', serif;
-    font-size: 1.5em;
-    font-weight: 300;
+    font-size: 1.6em;
+    font-weight: lighter;
+    letter-spacing: 1.25px;
+    font-style: italic;
     text-align: left;
 }
 
@@ -596,8 +581,23 @@ a, a:-webkit-any-link {
     background: $lightest;
     border-radius: 0.5rem;
     color: $darkest;
-    font-family: $f1, sans-serif;
+    font-family: $f1;
     font-size: 7vmin;
     margin: auto;
     padding: 1vh 2vw;
+}
+
+.add-recipe {
+    @extend %center-center;
+    height: 100%;
+    width: 100%;
+    .add-recipe-form {
+        height: 100%;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+    }
 }
