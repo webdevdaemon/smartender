@@ -9,6 +9,8 @@ const TabSearch = props => (
 	</div>
 )
 
-TabSearch.propTypes = {}
+TabSearch.propTypes = {
+	
+}
 
 export default TabSearch

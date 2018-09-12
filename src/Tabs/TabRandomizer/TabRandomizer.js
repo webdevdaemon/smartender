@@ -35,7 +35,7 @@ class TabRandomizer extends Component {
 		const {loading, recipe, id} = this.state
 		return (
 			loading ? (
-				<div className='randomizer-loading'><span>Loading...</span></div>
+				<div className='loading'><span>Loading...</span></div>
 			) : (
 					<div className='randomizer'>
 						<FeatureTitle title={'Recipe-Randomizer'} />

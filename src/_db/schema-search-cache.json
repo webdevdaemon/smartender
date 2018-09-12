@@ -1,0 +1,15 @@
+{
+  "searchCache": {
+    "--": [{
+      "id": -1,
+      "name": "drink",
+      "glass": "glass",
+      "category": "category",
+      "iba": "classic",
+      "howTo": "excerpt",
+      "thumbnail": "https://url.com/example",
+      "ingredients": [["key1", "value"], ["key2", "value"], ["key3", "value"], ["key4", "value"]],
+      "alcoholic": true
+      }]
+    }
+}

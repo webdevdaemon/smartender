@@ -1,84 +1,90 @@
 import React, {Component} from 'react'
-import Main from './Components/Main'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
+import Main from './Components/Main'
+
+import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
+import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
 
 class App extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			drinks: {},
-			recipes: {},
-			ingredients: {},
-			glasses: {},
-			categories: {},
-		}
-	}
-	
-	componentWillMount() {
-		this.drinksRef = base.syncState('drinks', {
-			context: this,
-			state: 'drinks',
-		})
-		this.recipesRef = base.syncState('recipes', {
-			context: this,
-			state: 'recipes',
-		})
-		this.recipesRef = base.syncState('ingredients', {
-			context: this,
-			state: 'ingredients',
-		})
-		this.recipesRef = base.syncState('glasses', {
-			context: this,
-			state: 'glasses',
-		})
-		this.recipesRef = base.syncState('categories', {
-			context: this,
-			state: 'categories',
-		})
-	}
-	componentWillUnmount() {
-		base.removeBinding(this.drinksRef)
-		base.removeBinding(this.recipesRef)
-		base.removeBinding(this.ingredientsRef)
-		base.removeBinding(this.glassesRef)
-		base.removeBinding(this.categoriesRef)
-	}
+  constructor(props) {
+    super(props)
+    this.state = {
+      authenticated: false,
+      admin: false,
+      user: null,
+      drinks: {},
+      recipes: {},
+      ingredients: {},
+      glasses: {},
+      categories: {},
+      searchCache: {},
+      searchCacheRoster: new Set(),
+      listResults: [],
+    }
+  }
 
-	addDrinkName = drinkName => {
-		const uniqueId = `${drinkName}-${Date.now()}`
-		const alpha = /\w/.test(drinkName[0])
-			? `${drinkName[0]}`.toLowerCase()
-			: '_'
-		const listToMerge = {
-			[alpha]: {
-				...this.state.drinks[alpha],
-				drinkName: uniqueId,
-			}
-		}
-		const drinks = {
-			...this.state.drinks,
-			...listToMerge
-		}
-		this.setState({drinks: {...drinks}})
-	}
+  updateListResults = listResults => {
+    this.setState({listResults})
+  }
+  setAuthStatus = authenticated => {
+    this.setState({authenticated})
+    console.log(
+      `Auth Status: ${authenticated ? 'logged in' : 'logged out'}`)
+  }
+  setUserObject = (user = {}) => {
+    this.setState({user})
+    console.log('USER DATA: \n', {user})
+  }
+  setAuthState = (user) => {
+    this.setAuthStatus(!!user)
+    this.setUserObject(user)
+  }
+  dbSync(endpoint) {
+    return base.syncState(endpoint, {
+      context: this,
+      state: endpoint,
+    })
+  }
+  dbBind(endpoint) {
+    return base.bindToState(endpoint, {
+      context: this,
+      state: endpoint,
+    })
+  }
+  componentDidMount() {
+    this.drinksRef = base.syncState('drinks', {
+      context: this,
+      state: 'drinks',
+    })
+    this.recipesRef = base.syncState('recipes', {
+      context: this,
+      state: 'recipes',
+    })
+    this.recipesRef = base.syncState('ingredients', {
+      context: this,
+      state: 'ingredients',
+    })
+    this.recipesRef = base.syncState('glasses', {
+      context: this,
+      state: 'glasses',
+    })
+    this.recipesRef = base.syncState('categories', {
+      context: this,
+      state: 'categories',
+    })
+    this.searchCacheRef = base.syncState('searchCache', {
+      context: this,
+      state: 'searchCache',
+    })
+  }
 
-	addDrinkRecipe = drinkRecipe => {
-		console.log(arguments[0])
-		return {}
-	}
-
-	render() {
-		const addFns = {
-			addDrinkName: this.addDrinkName,
-			addDrinkRecipe: this.addDrinkRecipe,
-		}
-		return (
-			<BrowserRouter>
-				<Main {...this.state}
-					addDrinkFunctions={addFns}
-				/>
-			</BrowserRouter>
+  render() {
+    const fns = {setAuthState: this.setAuthState}
+    return (
+      <BrowserRouter>
+        <Main {...this.state} setAuthState={this.setAuthState} />
+      </BrowserRouter>
     )
   }
 }

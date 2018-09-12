@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import {Button, Intent, Elevation} from '@blueprintjs/core'
 
 const BUTTON_LABELS = [
 	'Bartender\'s Choice!',
@@ -14,12 +15,11 @@ const BUTTON_LABELS = [
 class ButtonRandom extends Component {
 	render() {
 		const {id, recipe} = this.props
-		return (
-			<Link className="button-random" to={{
-				pathname: `/recipe/${id}`,
-				state: {recipe: {...recipe}},
-			}}>{ BUTTON_LABELS[Math.floor(Math.random() * 6)] }</Link >
-		)
+		return <Link to={{pathname: `/recipe/${id}`, state: {recipe: {...recipe}}}}>
+        <Button intent={Intent.PRIMARY} large={true} elevation={Elevation.THREE} id="button-random">
+          {BUTTON_LABELS[Math.floor(Math.random() * 6)]}
+        </Button>
+      </Link>
 	}
 }
 

@@ -47,7 +47,7 @@ const INGREDIENTS = {
     'Bacardi Limon',
     'Bacardi',
     'Bacon',
-    ['Bailey', "'", 's irish cream'].join(""),
+    ['Bailey', '\'', 's irish cream'].join(''),
     'Baileys irish cream',
     'Banana liqueur',
     'Banana rum',
@@ -413,7 +413,7 @@ const INGREDIENTS = {
   P: [
     'Papaya juice',
     'Papaya',
-    `Parfait d${"'"}amour`,
+    `Parfait d${'\''}amour`,
     'Parmesan Cheese',
     'Parmesan',
     'Parmigiano-Reggiano',
