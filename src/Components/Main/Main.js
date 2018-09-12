@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{  setAuthState:Function.isRequired,  authenticated:boolean.isRequired,  admin:boolean,  user:object,  drinks:object,  recipes:object,  ingredients:object,  glasses:object,  categories:object,  searchCache:object,  searchCacheRoster:any,  listResults:array,>}
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import Header from '../../Sections/Header'
@@ -19,7 +22,8 @@ const Main = props => (
 )
 
 Main.propTypes = {
-  authenticated: PropTypes.bool,
+  setAuthState: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
   admin: PropTypes.bool,
   user: PropTypes.object,
   drinks: PropTypes.object,

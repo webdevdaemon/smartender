@@ -1,10 +1,6 @@
 import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
-// import {Classes} from '@blueprintjs/core'
 import {base} from './base'
-
-// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-// import firebase from 'firebase'
 import Main from './Components/Main'
 
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
@@ -27,45 +23,35 @@ class App extends Component {
       listResults: [],
     }
   }
-  render() {
-    const fns = {setAuthState: this._setAuthState}
-    return (
-      <BrowserRouter>
-        <Main {...this.state} {...fns} />
-      </BrowserRouter>
-    )
-  }
 
   updateListResults = listResults => {
     this.setState({listResults})
   }
-  setAuthStatus = (authenticated = false) => {
+  setAuthStatus = authenticated => {
     this.setState({authenticated})
-    console.log(`Auth Status: ${authenticated ? 'logged in' : 'logged out'}`)
+    console.log(
+      `Auth Status: ${authenticated ? 'logged in' : 'logged out'}`)
   }
   setUserObject = (user = {}) => {
     this.setState({user})
     console.log('USER DATA: \n', {user})
   }
-  _setAuthState = user => {
-    user && this.setUserObject(user)
+  setAuthState = (user) => {
     this.setAuthStatus(!!user)
+    this.setUserObject(user)
   }
-
   dbSync(endpoint) {
     return base.syncState(endpoint, {
       context: this,
       state: endpoint,
     })
   }
-
   dbBind(endpoint) {
     return base.bindToState(endpoint, {
       context: this,
       state: endpoint,
     })
   }
-
   componentDidMount() {
     this.drinksRef = base.syncState('drinks', {
       context: this,
@@ -91,6 +77,15 @@ class App extends Component {
       context: this,
       state: 'searchCache',
     })
+  }
+
+  render() {
+    const fns = {setAuthState: this.setAuthState}
+    return (
+      <BrowserRouter>
+        <Main {...this.state} setAuthState={this.setAuthState} />
+      </BrowserRouter>
+    )
   }
 }
 

@@ -26,7 +26,9 @@ class TabAccount extends React.Component {
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
     const {setAuthState} = this.props
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+    this.unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged(user => {
       this.setState({authenticated: !!user, user})
       setAuthState(user)
       console.log({user})
@@ -52,7 +54,9 @@ class TabAccount extends React.Component {
     return (
       <div>
         <h1>My Account</h1>
-        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+        <p>{`Welcome ${
+          firebase.auth().currentUser.displayName
+          }! You are now signed-in!`}</p>
 
         <ul>
           {/*Object.entries(this.props.user).map(([key, val]) => (
