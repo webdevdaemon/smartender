@@ -199,6 +199,9 @@ a, a:-webkit-any-link {
   margin: 0;
   padding: 0;
   z-index: 1;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .list-item-clickable {
@@ -284,6 +287,9 @@ a, a:-webkit-any-link {
   margin: 0;
   padding: 0;
   width: 100vw;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav {
@@ -423,6 +429,9 @@ a, a:-webkit-any-link {
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .search-result-line-item {
@@ -580,6 +589,9 @@ a, a:-webkit-any-link {
 .add-recipe {
   height: 100%;
   width: 100%;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .add-recipe .add-recipe-form {
