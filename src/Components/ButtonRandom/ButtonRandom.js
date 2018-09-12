@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
 const BUTTON_LABELS = [
-	"Bartender's Choice!",
-	"Surprise Me...",
-	"...You Tell Me",
-	"Something Good...",
-	"What's Good Here?",
-	"Something Strong",
+	'Bartender\'s Choice!',
+	'Surprise Me...',
+	'...You Tell Me',
+	'Something Good...',
+	'What\'s Good Here?',
+	'Something Strong',
 ]
 
 class ButtonRandom extends Component {
