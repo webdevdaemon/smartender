@@ -4,7 +4,6 @@ import {INGREDIENTS, GLASS_TYPES} from '../../_helpers/_data/index'
 import SelectFieldSet from '../../Components/SelectFieldSet/SelectFieldSet'
 import {InputGroup, Switch, TextArea, Alignment} from '@blueprintjs/core'
 
-
 const FORM_DEFAULT_VALUES = {
   name: '',
   alcoholic: true,
