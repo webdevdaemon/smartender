@@ -455,7 +455,7 @@
     },
     "k": {
       "kahlua": true,
-      "key largo schnapps": true,
+      "key l,rgo schnapps": true,
       "kirschwasser": true,
       "kiwi liqueur": true,
       "kiwi": true,
@@ -730,5 +730,18 @@
       "zima": true, 
       "zucchini": true
     }
+  },
+  "searchCache": {
+    "--": [{
+      "id": -1,
+      "name": "drink",
+      "glass": "glass",
+      "category": "category",
+      "iba": "classic",
+      "howTo": "excerpt",
+      "thumbnail": "https://url.com/example",
+      "ingredients": [["key1", "value"],["key2", "value"],["key3", "value"],["key4", "value"]],
+      "alcoholic": true
+    }]
   }
 }
