@@ -46,7 +46,6 @@ const PageRoutes = props => {
 }
 
 PageRoutes.propTypes = {
-  searchCache: PropTypes.object,
   currentRecipe: PropTypes.object,
   updateSearchCache: PropTypes.func,
   updateCurrentRecipe: PropTypes.func,
