@@ -25,7 +25,7 @@ const searchUtils = (() => {
   }
 })()
 
-export default cacheUtils
+export default searchUtils
 
 
 
