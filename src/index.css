@@ -53,7 +53,10 @@ p {
   font-weight: 700;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: inherit;
   line-height: 1.2;
   margin: 0;
@@ -78,7 +81,8 @@ h4 {
   font-size: 3vmax;
 }
 
-small, .font_small {
+small,
+.font_small {
   font-size: 0.75em;
 }
 
@@ -86,7 +90,8 @@ input {
   outline: none !important;
 }
 
-a, a:-webkit-any-link {
+a,
+a:-webkit-any-link {
   text-decoration: none !important;
 }
 
@@ -131,7 +136,7 @@ a, a:-webkit-any-link {
 
 .page {
   background-image: linear-gradient(125deg, #29323c 0%, #3d4956 100%);
-  background-blend-mode: multiply,multiply;
+  background-blend-mode: multiply, multiply;
   color: #ddddff;
   grid-area: page;
   margin: 0;
@@ -314,7 +319,7 @@ a, a:-webkit-any-link {
 
 .main {
   display: grid;
-  grid-template-areas: 'header' 'page' 'footer';
+  grid-template-areas: "header" "page" "footer";
   grid-template-columns: 100%;
   grid-template-rows: 8vh 80vh 12vh;
   height: 100vh;

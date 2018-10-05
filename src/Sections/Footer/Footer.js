@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Footer = ({ children }) =>
-  <div className="footer">
+  <footer className="footer">
     {children}
-  </div>
+  </footer>
 
 Footer.propTypes = {
   children: PropTypes.any,

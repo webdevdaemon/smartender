@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {NavLink, Route} from 'react-router-dom'
 import VariableList from '../../Components/VariableList'
-import {UL} from '@blueprintjs/core'
+// import {UL} from '@blueprintjs/core'
 
 import listPossibilities from '../../_helpers/listPossibilities'
 

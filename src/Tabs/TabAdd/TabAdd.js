@@ -4,13 +4,13 @@ import {INGREDIENTS, GLASS_TYPES} from '../../_helpers/_data/index'
 import SelectFieldSet from '../../Components/SelectFieldSet/SelectFieldSet'
 import {InputGroup, Switch, TextArea, Alignment} from '@blueprintjs/core'
 
-const FORM_DEFAULT_VALUES = {
-  name: '',
-  alcoholic: true,
-  glass: 'cocktail glass',
-  ingredients: {},
-  howTo: 'mix stuff like...',
-}
+// const FORM_DEFAULT_VALUES = {
+//   name: '',
+//   alcoholic: true,
+//   glass: 'cocktail glass',
+//   ingredients: {},
+//   howTo: 'mix stuff like...',
+// }
 const FORM_PROMPTS_BY_KEY = {
   name: 'Name Your Drink',
   alcoholic: 'Is It Alcoholic?',
@@ -34,7 +34,12 @@ class TabAdd extends Component {
   }
 
   render() {
-    const { name, alcoholic, glass, ingredients, howTo } = this.state
+    const {name,
+      alcoholic,
+      glass,
+      // ingredients,
+      howTo
+    } = this.state
     return (
       <div className='add-recipe'>
         <FeatureTitle title={'Add Recipe'} />
