@@ -2,9 +2,11 @@ import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
 import Main from './Components/Main'
+import cacheUtils from './_helpers/cacheUtils'
 
-import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
+
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
+import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +25,14 @@ class App extends Component {
       listResults: [],
     }
   }
+
+  rosterize = () => {}
+  cachify = () => {}
+  isCached = () => {
+    
+  }
+  getCached = () => {}
+
 
   updateListResults = listResults => {
     this.setState({listResults})

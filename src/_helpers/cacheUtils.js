@@ -17,9 +17,15 @@ const searchUtils = (() => {
     return currentCache[queryString]
   }
 
-
-
+  return {
+    rosterize: addToRoster,
+    cachify: addToCache,
+    getCached: getCachedResults,
+    isCached,
+  }
 })()
+
+export default cacheUtils
 
 
 
