@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
 import Main from './Components/Main'
-import cacheUtils from './_helpers/cacheUtils'
+// import cacheUtils from './_helpers/cacheUtils'
 
 
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
@@ -28,12 +28,9 @@ class App extends Component {
 
   rosterize = () => {}
   cachify = () => {}
-  isCached = () => {
-    
-  }
+  isCached = () => {}
   getCached = () => {}
-
-
+  
   updateListResults = listResults => {
     this.setState({listResults})
   }
@@ -90,10 +87,11 @@ class App extends Component {
   }
 
   render() {
-    const fns = {setAuthState: this.setAuthState}
     return (
       <BrowserRouter>
-        <Main {...this.state} setAuthState={this.setAuthState} />
+        <Main {...this.state}
+          setAuthState={this.setAuthState}
+        />
       </BrowserRouter>
     )
   }
