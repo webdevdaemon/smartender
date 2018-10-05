@@ -10,5 +10,4 @@ Footer.propTypes = {
   children: PropTypes.any,
 }
 
-
 export default Footer
