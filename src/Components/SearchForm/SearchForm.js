@@ -1,19 +1,18 @@
+/**
+ * @augments {Component<{  updateUI:Function.isRequired,  searchString:string,>}
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchInput from '../SearchInput/SearchInput'
 
-class SearchForm extends React.Component {
-  render() {
-    return (
-      <div className="search-form">
-        <SearchInput {...this.props} />
-      </div>
-    )
-  }
-}
+const SearchForm = ({updateUI, searchString}) => (
+  <div className="search-form">
+    <SearchInput updateUI={updateUI} searchString={searchString} />
+  </div>
+)
 
 SearchForm.propTypes = {
-  updateUI: PropTypes.func,
+  updateUI: PropTypes.func.isRequired,
   searchString: PropTypes.string,
 }
 

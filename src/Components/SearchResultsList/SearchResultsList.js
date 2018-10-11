@@ -1,7 +1,7 @@
 /**
-* @augments {Component<{    listResults:array,    match:object,  >}
-*/
-import React, {PureComponent} from 'react'
+ * @augments {Component<{ listResults:array, match:object, >}
+ */
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import SearchResultLineItem from '../SearchResultLineItem/SearchResultLineItem'
@@ -10,12 +10,11 @@ const recipeCardStyle = {
   width: '100%',
   height: '100%',
   display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
   alignItems: 'center',
+  justifyContent: 'flex-start',
 }
 
-class SearchResultsList extends PureComponent {
+class SearchResultsList extends Component {
   static propTypes = {
     listResults: PropTypes.array,
     match: PropTypes.object,

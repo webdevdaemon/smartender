@@ -14,31 +14,52 @@ import TabBrowser from '../Tabs/TabBrowser'
 import TabAccount from '../Tabs/TabAccount'
 
 const PageRoutes = props => {
-	const _props = {...props}
+  const _props = {...props}
   return (
     <div className="app-wrapper">
       <Route
-        path="/account"
-        render={({match, ...props}, _props) => <TabAccount {..._props} {...props} match={match} />}
+        exact
+        path="/"
+        render={props => <Home {...props} {..._props} match={props.match} />}
       />
-      <Route exact path="/" render={({match, ...props}, _props) => <Home {...props} match={match} />} />
+      <Route
+        path="/account"
+        render={props => (
+          <TabAccount {...props} {..._props} match={props.match} />
+        )}
+      />
       <Route
         path="/search"
-        render={({match, ...props}, _props) => <TabSearch {..._props} {...props} match={match} />}
+        render={props => (
+          <TabSearch {...props} {..._props} match={props.match} />
+        )}
       />
       <Route
         path="/browser"
-        render={({match, ...props}, _props) => <TabBrowser {..._props} {...props} match={match} />}
+        render={props => (
+          <TabBrowser {...props} {..._props} match={props.match} />
+        )}
       />
-      <Route path="/add" render={({match, ...props}, _props) => <TabAdd {..._props} {...props} match={match} />} />
+      <Route
+        path="/add"
+        render={props => <TabAdd {...props} {..._props} match={props.match} />}
+      />
       <Route
         path="/randomizer"
-        render={({match, ...props}, _props) => <TabRandomizer {..._props} {...props} match={match} />}
+        render={props => (
+          <TabRandomizer {...props} {..._props} match={props.match} />
+        )}
       />
       <Route
         path="/recipe/:id"
-        render={({match, location, history, ...props}) => (
-          <TabRecipe {..._props} {...props} match={match} location={location} history={history} />
+        render={props => (
+          <TabRecipe
+            {...props}
+            {..._props}
+            match={props.match}
+            location={props.location}
+            history={props.history}
+          />
         )}
       />
     </div>
@@ -46,11 +67,12 @@ const PageRoutes = props => {
 }
 
 PageRoutes.propTypes = {
+  updateUI: PropTypes.func.isRequired,
+  setAuthState: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
   currentRecipe: PropTypes.object,
   updateSearchCache: PropTypes.func,
   updateCurrentRecipe: PropTypes.func,
-  setAuthState: PropTypes.func.isRequired,
-  authenticated: PropTypes.bool.isRequired,
   admin: PropTypes.bool,
   user: PropTypes.object,
   drinks: PropTypes.object,

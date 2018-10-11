@@ -20,6 +20,7 @@
     "react-dom": "^16.4.1",
     "react-firebaseui": "^3.0.7",
     "react-icons": "^2.2.7",
+    "react-icons-kit": "^1.1.13",
     "react-router-dom": "^4.4.0-alpha.1",
     "react-scripts": "1.0.17",
     "yup": "^0.26.3"
@@ -28,6 +29,7 @@
     "@types/re-base": "^3.2.0",
     "autoprefixer": "^9.1.5",
     "babel-eslint": "^8.2.2",
+    "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^5.0.0",

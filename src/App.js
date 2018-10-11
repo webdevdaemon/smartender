@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
 import Main from './Components/Main'
-// import cacheUtils from './_helpers/cacheUtils'
 
+import autoComp from './_helpers/searchModule'
 
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
 import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
@@ -15,35 +15,50 @@ class App extends Component {
       authenticated: false,
       admin: false,
       user: null,
+      avatar: null,
       drinks: {},
       recipes: {},
       ingredients: {},
       glasses: {},
       categories: {},
       searchCache: {},
-      searchCacheRoster: new Set(),
-      listResults: [],
+      searchString: '',
+      listResults: [{name: 'no results'}],
     }
   }
 
-  rosterize = () => {}
-  cachify = () => {}
-  isCached = () => {}
-  getCached = () => {}
-  
+  runAutoComp = str =>
+    autoComp(str)
+      .then(list => {
+        this.setState({listResults: list})
+        this.setState({searchCache: {...this.state.searchCache, [str]: list}})
+      })
+      .catch(err => new Error(err.message))
+
+  updateUI = evt => {
+    evt.persist()
+    const searchString = evt.target.value
+    this.setState({searchString})
+    if (this.state.searchCache.hasOwnProperty(searchString)) {
+      this.setState({listResults: this.state.searchCache[searchString]})
+    } else {
+      this.runAutoComp(searchString)
+    }
+  }
+
   updateListResults = listResults => {
     this.setState({listResults})
   }
   setAuthStatus = authenticated => {
     this.setState({authenticated})
-    console.log(
-      `Auth Status: ${authenticated ? 'logged in' : 'logged out'}`)
   }
-  setUserObject = (user = {}) => {
-    this.setState({user})
-    console.log('USER DATA: \n', {user})
+  setUserObject = userObj => {
+    this.setState({user: userObj})
   }
-  setAuthState = (user) => {
+  setUserAvatar = avatarUrl => {
+    this.setState({avatar: avatarUrl})
+  }
+  setAuthState = user => {
     this.setAuthStatus(!!user)
     this.setUserObject(user)
   }
@@ -85,13 +100,14 @@ class App extends Component {
       state: 'searchCache',
     })
   }
-
   render() {
     return (
       <BrowserRouter>
-        <Main {...this.state}
-          setAuthState={this.setAuthState}
-        />
+          <Main
+            updateUI={this.updateUI}
+            setAuthState={this.setAuthState}
+            {...this.state}
+          />
       </BrowserRouter>
     )
   }

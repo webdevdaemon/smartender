@@ -1,31 +1,35 @@
+const rqr = paramName => {
+  throw new Error(`Missing param: ${paramName}`)
+}
+
 const searchUtils = (() => {
-  // add querystring to [RosterSet] (Set)
-  function addToRoster(queryString = '', roster = new Set()) {
-    if (!roster) return new Set(queryString)
-    return new Set(roster.add(queryString))
-  }
-  // add key/value to [Cache] (no mutation)
-  function addToCache(cacheObj = {}, currentCache = {}) {
-    return {...currentCache, ...cacheObj}
-  }
-  // check [RosterSet] for string 
-  function isCached(queryString = '', roster = new Set()) {
-    return roster.has(queryString)
-  }
-  // return cached value from [Cache]
-  function getCachedResults(queryString = '', currentCache = {}) {
-    return currentCache[queryString]
+  
+  function update({
+    cache = {},
+    roster = new Set(),
+    query = rqr('query'),
+    data = rqr('data'),
+  }) {
+    return {
+      cache: {
+        ...cache,
+        [query]: data
+      },
+      roster: roster.add(query),
+    }
   }
 
-  return {
-    rosterize: addToRoster,
-    cachify: addToCache,
-    getCached: getCachedResults,
-    isCached,
+  function check({
+    cache = rqr('cache'),
+    roster = rqr('roster'),
+    query = rqr('query'),
+  }) {
+    return (!roster.has(query)) ? false : cache[query]
   }
+
+  return {check, update}
+
 })()
 
-export default searchUtils
-
-
-
+const {check, update} = searchUtils
+export {searchUtils, check, update}

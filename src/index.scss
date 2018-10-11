@@ -6,7 +6,7 @@ $silver: #a5acaf;
 $grey: #4f4f4f;
 $darkest: #003333;
 $lightest: #ddddff;
-$fbody: 'encode sans narrow',
+$fbody: 'montserrat',
 'avenir',
 sans-serif;
 $f1: 'croissant one';
@@ -42,7 +42,6 @@ $grad4: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%
     max-height: 100vh;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 html {
@@ -53,10 +52,6 @@ html {
 }
 
 body {
-    // background-color: $darkest;
-    // background-image: $grad1;
-    // background-image: $grad2;
-    // background-image: $grad3;
     background-image: $grad4;
     color: $lightest;
     font-family: $fbody;
@@ -143,24 +138,56 @@ a:-webkit-any-link {
     height: 80%;
 }
 
-.overlay {
-    background: rgba(0, 0, 0, 0.25);
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
+.header {
+    -webkit-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -3px 2px rgba(0, 0, 0, 0.5);
+    background: $lightest;
+    color: $darkest;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
     top: 0;
-    left: 0;
+    height: calc(10vh+4px);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    -webkit-transition: all .33s linear;
+    transition: all .33s linear;
+    z-index: 500;
+    &.scrolling {
+        top: -$height_header;
+        height: 100%;
+    }
+}
+
+.footer {
+    background: $silver;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: $height_footer;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    position: absolute;
+    top: auto;
     bottom: 0;
+    left: 0;
     right: 0;
-    visibility: hidden;
-    z-index: 1000;
+    -webkit-transition: all .33s linear;
+    transition: all .33s linear;
+    z-index: 500;
+    &.scrolling {
+        bottom: -$height_footer;
+        height: 100%;
+    }
 }
 
 .page {
     background-image: linear-gradient(125deg, #29323c 0%, #3d4956 100%);
     background-blend-mode: multiply, multiply;
     color: $lightest;
-    grid-area: page;
     margin: 0;
     max-height: $height_page;
     min-height: $height_page;
@@ -171,6 +198,16 @@ a:-webkit-any-link {
     top: $height_header;
     bottom: $height_footer;
     width: 100%;
+    -webkit-transition: all .33s linear;
+    transition: all .33s linear;
+    z-index: 500;
+    &.scrolling {
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+    }
 }
 
 .beverage-browser {
@@ -179,7 +216,6 @@ a:-webkit-any-link {
 
 .variable-list-header {
     background: $darkest;
-    grid-area: v-list-head;
 }
 
 .variable-list-nav-list {
@@ -274,13 +310,13 @@ a:-webkit-any-link {
 
 .back-button {
     @extend %center-center;
+    width: initial;
     grid-area: back;
     color: $darkest;
 }
 
 .menu-button {
     @extend %center-center;
-    grid-area: menu;
     color: $darkest;
 }
 
@@ -311,35 +347,8 @@ a:-webkit-any-link {
     }
 }
 
-.header {
-    background: $lightest;
-    color: $darkest;
-    display: grid;
-    grid-area: header;
-    grid-template-areas: 'back masthead menu';
-    grid-template-columns: 17.5% 65% 17.5%;
-    grid-template-rows: 100%;
-    height: calc(10vh+4px);
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-.footer {
-    background: $silver;
-    display: block;
-    grid-area: footer;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
 .main {
     display: grid;
-    grid-template-areas: 'header''page''footer';
-    grid-template-columns: 100%;
-    grid-template-rows: $height_header $height_page $height_footer;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -537,7 +546,6 @@ a:-webkit-any-link {
     -webkit-transition: all 0.66s ease-in-out;
     transition: all 0.66s ease-in-out;
     .link {
-        background: rgba(0, 0, 0, 0.25);
         width: 100%;
         height: 100%;
         padding: 1vh 2vw;
@@ -646,7 +654,7 @@ a:-webkit-any-link {
 }
 
 .feature-title-wrapper {
-    height: 10vh;
+    background: transparent;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -661,14 +669,14 @@ a:-webkit-any-link {
     -ms-flex-pack: center;
     justify-content: center;
     margin: 3vh auto 2vh auto;
+    padding: 0;
     .feature-title-text {
-        -webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.25);
-        box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.25);
         background: $lightest;
-        border-radius: 0.5em;
+        border-radius: 6px;
         color: $darkest;
         font-size: 8vmin;
         padding: 6px 12px;
+        margin: 0;
     }
 }
 
@@ -678,8 +686,7 @@ a:-webkit-any-link {
     padding: 6px 12px;
     font-size: 1.6em;
     font-weight: lighter;
-    letter-spacing: 1.25px;
-    font-style: italic;
+    letter-spacing: 0.4px;
     text-align: left;
 }
 

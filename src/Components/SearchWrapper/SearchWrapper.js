@@ -1,53 +1,27 @@
 /**
- * @augments {Component<{		match:object,	>}
- */
+* @augments {Component<{    match:object,    updateUI:Function.isRequired,    searchString:string,    listResults:array,  >}
+*/
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-
-import autoComp from '../../_helpers/searchModule'
 
 import SearchResultsListWrapper from '../SearchResultsListWrapper'
 import SearchFormWrapper from '../SearchFormWrapper'
 
 class SearchWrapper extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchString: '',
-      listResults: [],
-      cache: {},
-    }
-  }
-
   static propTypes = {
     match: PropTypes.object,
-  }
-
-  runAutoComp = str =>
-    autoComp(str)
-      .then(list => {
-        this.setState({listResults: list})
-        this.setState({cache: {...this.state.cache, [str]: list}})
-      })
-      .catch(err => new Error(err.message))
-
-  updateUI = evt => {
-    const searchString = evt.target.value
-    this.setState({searchString})
-    if (this.state.cache.hasOwnProperty(searchString)) {
-      this.setState({listResults: this.state.cache[searchString]})
-    } else {
-      this.runAutoComp(searchString)
-    }
+    updateUI: PropTypes.func.isRequired,
+    searchString: PropTypes.string,
+    listResults: PropTypes.array,
   }
 
   render() {
-    const {searchString, listResults} = this.state
+    const {searchString, listResults, updateUI, match} = this.props
     return (
       <div className="search-wrapper">
-        <SearchFormWrapper searchString={searchString} updateUI={this.updateUI} />
+        <SearchFormWrapper searchString={searchString} updateUI={updateUI} />
         <hr />
-        <SearchResultsListWrapper listResults={listResults} match={this.props.match} />
+        <SearchResultsListWrapper listResults={listResults} match={match} />
       </div>
     )
   }

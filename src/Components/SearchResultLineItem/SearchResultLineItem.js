@@ -11,6 +11,7 @@ const SearchResultLineItem = ({children, data}) => {
       elevation={Elevation.THREE}
       style={{
         backgroundImage: `url(${data.thumbnail})`,
+        bockgroundPosition: '0% 60%',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
       }}

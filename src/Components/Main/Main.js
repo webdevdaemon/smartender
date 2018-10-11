@@ -13,7 +13,7 @@ const Main = props => (
   <div className="main grid-layout">
     <Header {...props} />
     <Page>
-      <PageRoutes {...props} />
+      <PageRoutes {...props} setAuthState={props.setAuthState} />
     </Page>
     <Footer>
       <Nav {...props} />
@@ -22,6 +22,7 @@ const Main = props => (
 )
 
 Main.propTypes = {
+  updateUI: PropTypes.func.isRequired,
   setAuthState: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
   admin: PropTypes.bool,
