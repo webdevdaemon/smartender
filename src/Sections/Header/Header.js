@@ -6,19 +6,25 @@ import Masthead from '../../Components/Masthead'
 import FaUser from 'react-icons/lib/fa/user'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 
-// const AddRecipeButton = () => (
-//   <Link to={{pathname: '/add'}}>
-//     <div className="menu-button">
-//       <FaPlus height="5.5vh" width="5.5vh" />
-//     </div>
-//   </Link>
-// )
-
-const UserButton = ({authenticated}) => (
+const UserButton = ({avatar}) => (
   <Link to={{pathname: '/account'}}>
-    <div className="bp3-button bp3-intent">
-      <FaUser height="5.5vh" width="5.5vh" />
-    </div>
+    {avatar ? (
+      <div className='avatar-wrapper account-button'>
+        <div
+          className="avatar"
+          style={{
+            display: 'block',
+            backgroundImage: `url(${avatar})`,
+            backgroundSize: 'cover',
+
+          }}
+        />
+      </div>
+    ) : (
+      <button className="bp3-button bp3-intent">
+        <FaUser height="5.5vh" width="5.5vh" />
+      </button>
+    )}
   </Link>
 )
 
@@ -41,7 +47,7 @@ const Header = props => (
   <div className="header">
     <BackButton {...props} />
     <Masthead title="brbckr" subTitle="" />
-    <UserButton />
+    <UserButton avatar={props.authenticated && props.avatar} />
   </div>
 )
 

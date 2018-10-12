@@ -1,7 +1,8 @@
 import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from 'firebase'
-import {PropTypes} from 'prop-types'
+import {uiConfig} from '../../base'
+import PropTypes from 'prop-types'
 
 const h_ = 'bp3-heading'
 
@@ -33,7 +34,7 @@ class TabAccount extends React.Component {
   }
 
   // Configure FirebaseUI.
-  uiConfig = {
+  /* uiConfig = {
     signInFlow: 'popup', // Popup signin flow rather than redirect flow.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -43,18 +44,20 @@ class TabAccount extends React.Component {
       // Avoid redirects after sign-in.
       signInSuccessWithAuthResult: () => false,
     },
-  }
+  } */
 
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
     const {setAuthState} = this.props
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        authenticated: !!user,
-        user,
-      })
-      setAuthState(user)
-      console.log({user})
+      if (user) {
+        const _user = firebase.auth().currentUser
+        console.log({_user})
+        setAuthState(_user)
+      } else {
+        const _user = null
+        setAuthState(_user)
+      }
     })
   }
 
@@ -66,13 +69,13 @@ class TabAccount extends React.Component {
   render() {
     const {user} = this.state
     console.log({user})
-    return !this.state.authenticated ? (
+    return !firebase.auth().currentUser ? (
       <div className="section">
         <h2 className={`${h_}`}>Account Info</h2>
         <h4>Login/Signup for Details</h4>
         <p>Please sign-in:</p>
         <StyledFirebaseAuth
-          uiConfig={this.uiConfig}
+          uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}
         />
       </div>
@@ -82,9 +85,10 @@ class TabAccount extends React.Component {
         <p>{`Welcome ${
           firebase.auth().currentUser.displayName
         }! You are now signed-in!`}</p>
+        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
         <ul className="menu-list">
-          {Object.entries(user).map(([key, val]) => {
+          {Object.entries(firebase.auth().currentUser).map(([key, val]) => {
             return (
               <li className="">
                 <p className="">{`${key}: ${val}`}</p>
@@ -92,8 +96,6 @@ class TabAccount extends React.Component {
             )
           })}
         </ul>
-
-        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
       </div>
     )
   }

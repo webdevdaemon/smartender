@@ -3422,7 +3422,7 @@ a.panel-block:hover, label.panel-block:hover { background-color: whitesmoke; }
 
 .footer { background-color: #fafafa; padding: 3rem 1.5rem 6rem; }
 
-.home, .back-button, .menu-button, .add-recipe { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-direction: column; -webkit-box-orient: vertical; -webkit-box-direction: normal; flex-direction: column; -ms-flex-align: center; -webkit-box-align: center; align-items: center; -ms-flex-pack: center; -webkit-box-pack: center; justify-content: center; margin: 0; padding: 0; height: 100%; width: 100%; }
+.home, .back-button, .menu-button, .add-recipe, .avatar-wrapper { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-direction: column; -webkit-box-orient: vertical; -webkit-box-direction: normal; flex-direction: column; -ms-flex-align: center; -webkit-box-align: center; align-items: center; -ms-flex-pack: center; -webkit-box-pack: center; justify-content: center; margin: 0; padding: 0; height: 100%; width: 100%; }
 
 :root { -webkit-box-sizing: border-box; box-sizing: border-box; max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; }
 
@@ -3496,7 +3496,7 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 
 .masthead { -webkit-box-align: center; -ms-flex-align: center; align-items: center; color: #003333; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; grid-area: masthead; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin: 0; padding: 0; width: 100%; }
 
-.masthead h2 { font-family: "croissant one"; font-size: 8vmin; line-height: 10vh; text-align: center; }
+.masthead .masthead-title { font-family: "croissant one"; font-size: 7vmin; line-height: 8vh; text-align: center; }
 
 .main { display: -ms-grid; display: grid; height: 100vh; margin: 0; padding: 0; width: 100vw; overflow-y: scroll; /* has to be scroll, not auto */ -webkit-overflow-scrolling: touch; }
 
@@ -3546,13 +3546,13 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 
 .search-result-line-item .link:hover { background: rgba(0, 0, 0, 0.25); }
 
-.search-result-line-item .link .name { color: #ddddff; font-family: "croissant one"; font-size: 8vh; max-width: 100%; margin: 0 2vw; padding: 0; width: 100%; text-align: left; line-height: 1; }
+.search-result-line-item .link .name { background: rgba(255, 255, 255, 0.5); border-radius: 20px; color: #003333; font-family: "croissant one"; font-size: 8vh; max-width: 100%; margin: 0 2vw; padding: 1vh 2vw 3vh 2vw; width: 100%; text-align: left; line-height: 1; }
 
 .recipe-hero { max-height: 33vh; position: fixed; top: 8vh; }
 
 .recipe-slide { position: absolute; top: 33vh; }
 
-.feature-image { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-position: center center; height: 700px; }
+.feature-image { background-size: cover; background-repeat: no-repeat; background-position: center center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; height: 700px; }
 
 .info-table .line { background: #ddddff; color: #003333; }
 
@@ -3587,3 +3587,9 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 .loading { display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; width: 100%; margin: 0; padding: 0; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
 .loading span { display: block; font-size: 5vh; font-weight: 900; text-shadow: 3px 3px 1px #000; }
+
+.nested-scroll, ul { overscroll-behavior: none; }
+
+.avatar-wrapper { height: 8vh; width: 8vh; }
+
+.avatar-wrapper .avatar { border: solid 1px #003333; border-radius: 100%; height: 6vh; width: 6vh; margin: auto; }

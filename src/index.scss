@@ -152,12 +152,59 @@ a:-webkit-any-link {
     margin: 0;
     padding: 0;
     width: 100%;
-    -webkit-transition: all .33s linear;
-    transition: all .33s linear;
+    -webkit-transition: all 0.33s linear;
+    transition: all 0.33s linear;
     z-index: 500;
     &.scrolling {
         top: calc(0 - $height_header);
         height: 100%;
+    }
+    /* ===================== */
+    .avatar-wrapper {
+        @extend %center-center;
+        height: 8vh;
+        width: 8vh;
+        .avatar {
+            border: solid 1px $darkest;
+            border-radius: 100%;
+            height: 6vh;
+            width: 6vh;
+            margin: auto;
+        }
+    }
+    /* ===================== */
+    .masthead {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        color: $darkest;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        grid-area: masthead;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        .masthead-title {
+            font-family: $f1;
+            font-size: 7vmin;
+            line-height: $height_header;
+            text-align: center;
+        }
+    }
+    /* ===================== */
+    .back-button {
+        @extend %center-center;
+        width: initial;
+        grid-area: back;
+        color: $darkest;
     }
 }
 
@@ -175,8 +222,8 @@ a:-webkit-any-link {
     bottom: 0;
     left: 0;
     right: 0;
-    -webkit-transition: all .33s linear;
-    transition: all .33s linear;
+    -webkit-transition: all 0.33s linear;
+    transition: all 0.33s linear;
     z-index: 500;
     &.scrolling {
         bottom: calc(0 - $height_footer);
@@ -198,8 +245,8 @@ a:-webkit-any-link {
     top: $height_header;
     bottom: $height_footer;
     width: 100%;
-    -webkit-transition: all .33s linear;
-    transition: all .33s linear;
+    -webkit-transition: all 0.33s linear;
+    transition: all 0.33s linear;
     z-index: 500;
     &.scrolling {
         top: 0;
@@ -305,45 +352,6 @@ a:-webkit-any-link {
         margin: 0 auto 1px auto;
         padding: 0;
         width: 100%;
-    }
-}
-
-.back-button {
-    @extend %center-center;
-    width: initial;
-    grid-area: back;
-    color: $darkest;
-}
-
-.menu-button {
-    @extend %center-center;
-    color: $darkest;
-}
-
-.masthead {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    color: $darkest;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    grid-area: masthead;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    h2 {
-        font-family: $f1;
-        font-size: 8vmin;
-        line-height: 10vh;
-        text-align: center;
     }
 }
 
@@ -562,12 +570,14 @@ a:-webkit-any-link {
             background: rgba(0, 0, 0, 0.25);
         }
         .name {
-            color: $lightest;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            color: $darkest;
             font-family: $f1;
             font-size: 8vh;
             max-width: 100%;
             margin: 0 2vw;
-            padding: 0;
+            padding: 1vh 2vw 3vh 2vw;
             width: 100%;
             text-align: left;
             line-height: 1;
@@ -587,6 +597,9 @@ a:-webkit-any-link {
 }
 
 .feature-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -600,7 +613,6 @@ a:-webkit-any-link {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-position: center center;
     height: 700px;
 }
 
@@ -760,6 +772,11 @@ a:-webkit-any-link {
         display: block;
         font-size: 5vh;
         font-weight: 900;
-        text-shadow: 3px 3px 1px #000;
+        text-shadow: 3px 3px 1px #000000;
     }
+}
+
+.nested-scroll,
+ul {
+    overscroll-behavior: none;
 }

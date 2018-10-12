@@ -23,7 +23,7 @@ class App extends Component {
       categories: {},
       searchCache: {},
       searchString: '',
-      listResults: [{name: 'no results'}],
+      listResults: [],
     }
   }
 
@@ -36,7 +36,7 @@ class App extends Component {
       .catch(err => new Error(err.message))
 
   updateUI = evt => {
-    evt.persist()
+    // evt.persist()
     const searchString = evt.target.value
     this.setState({searchString})
     if (this.state.searchCache.hasOwnProperty(searchString)) {
@@ -45,69 +45,34 @@ class App extends Component {
       this.runAutoComp(searchString)
     }
   }
-
-  updateListResults = listResults => {
-    this.setState({listResults})
-  }
-  setAuthStatus = authenticated => {
-    this.setState({authenticated})
-  }
-  setUserObject = userObj => {
-    this.setState({user: userObj})
-  }
-  setUserAvatar = avatarUrl => {
-    this.setState({avatar: avatarUrl})
-  }
+  updateListResults = listResults => {this.setState({listResults})}
   setAuthState = user => {
-    this.setAuthStatus(!!user)
-    this.setUserObject(user)
-  }
-  dbSync(endpoint) {
-    return base.syncState(endpoint, {
-      context: this,
-      state: endpoint,
+    this.setState({
+      user, 
+      authenticated: !!user,
+      avatar: user ? user.photoURL : null,
     })
   }
-  dbBind(endpoint) {
-    return base.bindToState(endpoint, {
-      context: this,
-      state: endpoint,
-    })
-  }
+
+  dbSync(endpoint) {return base.syncState(endpoint, {context: this, state: endpoint})}
+  dbBind(endpoint) {return base.bindToState(endpoint, {context: this, state: endpoint})}
   componentDidMount() {
-    this.drinksRef = base.syncState('drinks', {
-      context: this,
-      state: 'drinks',
-    })
-    this.recipesRef = base.syncState('recipes', {
-      context: this,
-      state: 'recipes',
-    })
-    this.recipesRef = base.syncState('ingredients', {
-      context: this,
-      state: 'ingredients',
-    })
-    this.recipesRef = base.syncState('glasses', {
-      context: this,
-      state: 'glasses',
-    })
-    this.recipesRef = base.syncState('categories', {
-      context: this,
-      state: 'categories',
-    })
-    this.searchCacheRef = base.syncState('searchCache', {
-      context: this,
-      state: 'searchCache',
-    })
+    this.drinksRef  = base.syncState('drinks', {context: this, state: 'drinks'})
+    this.recipesRef = base.syncState('recipes', {context: this, state: 'recipes'})
+    this.recipesRef = base.syncState('ingredients', {context: this, state: 'ingredients'})
+    this.recipesRef = base.syncState('glasses', {context: this, state: 'glasses'})
+    this.recipesRef = base.syncState('categories', {context: this, state: 'categories'})
+    this.searchCacheRef = base.syncState('searchCache', {context: this, state: 'searchCache'})
   }
+
   render() {
     return (
       <BrowserRouter>
-          <Main
-            updateUI={this.updateUI}
-            setAuthState={this.setAuthState}
-            {...this.state}
-          />
+        <Main
+          updateUI={this.updateUI}
+          setAuthState={this.setAuthState}
+          {...this.state}
+        />
       </BrowserRouter>
     )
   }

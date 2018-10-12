@@ -3,33 +3,31 @@ const rqr = paramName => {
 }
 
 const searchUtils = (() => {
-  
-  function update({
+  function update ({
     cache = {},
     roster = new Set(),
     query = rqr('query'),
-    data = rqr('data'),
+    data = rqr('data')
   }) {
     return {
       cache: {
         ...cache,
         [query]: data
       },
-      roster: roster.add(query),
+      roster: roster.add(query)
     }
   }
 
-  function check({
+  function check ({
     cache = rqr('cache'),
     roster = rqr('roster'),
-    query = rqr('query'),
+    query = rqr('query')
   }) {
     return (!roster.has(query)) ? false : cache[query]
   }
 
-  return {check, update}
-
+  return { check, update }
 })()
 
-const {check, update} = searchUtils
-export {searchUtils, check, update}
+const { check, update } = searchUtils
+export { searchUtils, check, update }
