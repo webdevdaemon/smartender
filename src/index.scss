@@ -156,7 +156,7 @@ a:-webkit-any-link {
     transition: all .33s linear;
     z-index: 500;
     &.scrolling {
-        top: -$height_header;
+        top: calc(0 - $height_header);
         height: 100%;
     }
 }
@@ -179,7 +179,7 @@ a:-webkit-any-link {
     transition: all .33s linear;
     z-index: 500;
     &.scrolling {
-        bottom: -$height_footer;
+        bottom: calc(0 - $height_footer);
         height: 100%;
     }
 }
