@@ -23,5 +23,7 @@ export default (function() {
 			? getPossibilities(flag)
 			: Error('ERROR: suspect => listPossibilities')
 	}
+	// listPossibilities('c') //?
   return listPossibilities
 })()
+

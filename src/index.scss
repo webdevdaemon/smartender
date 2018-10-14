@@ -355,17 +355,6 @@ a:-webkit-any-link {
     }
 }
 
-.main {
-    display: grid;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    overflow-y: scroll;
-    /* has to be scroll, not auto */
-    -webkit-overflow-scrolling: touch;
-}
-
 .nav {
     background: $lightest;
     display: -webkit-box;

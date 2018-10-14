@@ -9,8 +9,9 @@ const browse = (function() {
       strDrink: name, idDrink: id, strDrinkThumb: thumbnail
     }) => ({name, id, thumbnail})
 
-    const getListByIngredientName = async (ingredient) => {
-      const list = await axios(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+    const getListByTag = async (tag, flag = 'i') => {
+      const list = await
+        axios(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?${flag}=${tag}`)
         .then(({data}) => data)
         .then(({drinks}) => drinks)
         .then(drinks => drinks.map(normalizeSimpleObject))
@@ -26,19 +27,22 @@ const browse = (function() {
         .catch(err => new Error(err))
       return drink
     }
-
-    return {
-      listBy: {
-        i: getListByIngredientName,
-      },
-      getBy: {
-        id: getDrinkById,
-      },
+  
+    const getDrinkByName = async (name) => {
+      const drink = await axios(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
+        .then(({data}) => data)
+        .then(({drinks}) => drinks[0])
+        .then(drink => normalize(drink))
+        .catch(err => new Error(err))
+      return drink
     }
+
+    return {getDrinkById, getDrinkByName, getListByTag}
 
   }
 )()
-
-export default browse
-// browse.listBy.i('pineapple') // ?
-// browse.getBy.id(12158) // ?
+const {getDrinkById, getDrinkByName, getListByTag} = browse
+export {browse, getDrinkById, getDrinkByName, getListByTag}
+browse.getListByTag('pineapple') // ?
+browse.getDrinkById(12158) // ?
+browse.getDrinkByName('sazerac') //?

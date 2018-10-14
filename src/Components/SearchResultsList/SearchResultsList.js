@@ -6,16 +6,27 @@ import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import SearchResultLineItem from '../SearchResultLineItem/SearchResultLineItem'
 
-const recipeCardStyle = {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
+const cardStyle = {
+  recipe: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  tag: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
 }
+
 
 class SearchResultsList extends Component {
   static propTypes = {
+    isTags: PropTypes.bool,
     listResults: PropTypes.array,
     match: PropTypes.object,
   }
@@ -27,18 +38,18 @@ class SearchResultsList extends Component {
         {!listResults.length ? (
           <h3>{'No Matching Recipes...'}</h3>
         ) : (
-          listResults.map(obj => {
-            const {name, id, howTo, ...data} = obj
+          listResults.map(recipeObj => {
+            const {name, id, howTo, ...data} = recipeObj
             return (
               <SearchResultLineItem key={`li-${id}`} data={data}>
                 <Link
                   className="link"
-                  style={recipeCardStyle}
+                  style={cardStyle.recipe}
                   key={`li-${id}`}
                   to={{
                     pathname: `/recipe/${id}`,
                     state: {
-                      recipe: obj,
+                      recipe: () => recipeObj,
                       listResults,
                     },
                   }}

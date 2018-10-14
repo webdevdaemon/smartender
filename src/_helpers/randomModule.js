@@ -1,5 +1,5 @@
 import axios from 'axios'
-import browse from './browseModule'
+import {browse} from './browseModule'
 
 const random = (
   function() {
@@ -11,7 +11,7 @@ const random = (
         .catch(err => new Error(err))
 
     const getDrinkById = id =>
-      browse.getBy.id(id)
+      browse.getDrinkById(id)
         .then(recipe => recipe)
         .catch(err => new Error(err))      
 

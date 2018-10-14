@@ -27,7 +27,7 @@ const HowTo = howTo => <p className="how-to">{howTo}</p>
 
 export default class TabRecipe extends Component {
 	render() {
-		const {recipe} = this.props.location.state
+		const recipe = this.props.location.state.recipe()
 		const {id, ingredients, thumbnail, name, howTo, glass} = recipe
     return (
 			<div className="recipe-page" id={id}>

@@ -10,15 +10,20 @@ import PageRoutes from '../../_helpers/page-routes'
 import Nav from '../Nav'
 
 const Main = props => (
-  <div className="main grid-layout">
-    <Header {...props} />
+  <main className="main grid-layout">
+    <Header
+      setAuthState={props.setAuthState}
+      authenticated={props.authenticated}
+      admin={props.admin}
+      user={props.user}
+    />
     <Page>
       <PageRoutes {...props} setAuthState={props.setAuthState} />
     </Page>
     <Footer>
       <Nav {...props} />
     </Footer>
-  </div>
+  </main>
 )
 
 Main.propTypes = {

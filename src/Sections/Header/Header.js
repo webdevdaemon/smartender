@@ -6,53 +6,43 @@ import Masthead from '../../Components/Masthead'
 import FaUser from 'react-icons/lib/fa/user'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 
-const UserButton = ({avatar}) => (
-  <Link to={{pathname: '/account'}}>
-    {avatar ? (
-      <div className='avatar-wrapper account-button'>
-        <div
-          className="avatar"
-          style={{
-            display: 'block',
-            backgroundImage: `url(${avatar})`,
-            backgroundSize: 'cover',
-
-          }}
-        />
-      </div>
-    ) : (
-      <button className="bp3-button bp3-intent">
-        <FaUser height="5.5vh" width="5.5vh" />
-      </button>
-    )}
-  </Link>
-)
-
-const BackButton = ({location, history, ...props}) => {
-  console.log({location, history})
-  return (
-    <a
-      onClick={() => {
-        console.log({location, history, props})
-        return history.goBack()
-      }}
-      className="back-button"
-    >
-      <FaAngleLeft height="7vh" width="7vh" />
-    </a>
-  )
-}
-
 const Header = props => (
-  <div className="header">
+  <header className="header">
     <BackButton {...props} />
-    <Masthead title="brbckr" subTitle="" />
+    <Masthead title="brbckr" />
     <UserButton avatar={props.authenticated && props.avatar} />
-  </div>
+  </header>
 )
 
 Header.propTypes = {
-  children: PropTypes.any,
+  setAuthState: PropTypes.func,
+  authenticated: PropTypes.bool,
+  admin: PropTypes.bool,
+  user: PropTypes.object,
+}
+
+function UserButton({avatar}) {
+  return (
+    <Link to={{pathname: '/account'}}>
+      {avatar ? (
+        <div className="avatar-wrapper account-button">
+          <div className="avatar" style={{backgroundImage: `url(${avatar})`}} />
+        </div>
+      ) : (
+        <button className="bp3-button bp3-intent">
+          <FaUser height="5.5vh" width="5.5vh" />
+        </button>
+      )}
+    </Link>
+  )
+}
+
+function BackButton({location, history, ...props}) {
+  return (
+    <a onClick={() => {history.goBack()}} className="back-button" >
+      <FaAngleLeft height="7vh" width="7vh" />
+    </a>
+  )
 }
 
 export default withRouter(Header)
