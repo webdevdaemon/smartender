@@ -36,7 +36,7 @@ class SearchResultsList extends Component {
     return (
       <ul className="search-results-list">
         {!listResults.length ? (
-          <h3>{'No Matching Recipes...'}</h3>
+          <p>{'Need to find something?'}</p>
         ) : (
           listResults.map(recipeObj => {
             const {name, id, howTo, ...data} = recipeObj

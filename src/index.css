@@ -3714,6 +3714,11 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 
 .list-item-clickable .list-item-name { display: block; height: 5vh; margin: 0 auto 1px auto; padding: 0; width: 100%; }
 
+<<<<<<< HEAD
+=======
+.main { display: -ms-grid; display: grid; height: 100vh; margin: 0; padding: 0; width: 100vw; overflow-y: scroll; /* has to be scroll, not auto */ -webkit-overflow-scrolling: touch; }
+
+>>>>>>> a1948187cbd891dcfbe52c1f9092df0d267f597f
 .nav { background: #ddddff; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin: 0; padding: 0; width: 100vw; height: 100%; }
 
 .nav ul { background: transparent; display: -webkit-box; display: -ms-flexbox; display: flex; list-style: none; margin: 0; padding: 0; width: 100%; height: 100%; }
@@ -3772,15 +3777,15 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 
 .info-table .line .label { display: inline-block; text-align: center; width: 25%; }
 
-.info-table .line .label .label-text--left { font-family: serif; font-weight: bold; }
+.info-table .line .label .label-text--left { font-family: "montserrat", "avenir", sans-serif; font-weight: bold; }
 
-.info-table .line .info { display: inline-block; width: 75%; font-weight: 100; text-align: center; }
+.info-table .line .info { display: inline-block; width: 75%; font-weight: 500; text-align: center; }
 
 .ingredients-table { position: -webkit-sticky; position: sticky; top: 0; -webkit-transform: translateY(-1px); transform: translateY(-1px); text-align: center; width: 100vw; background: #003333; color: #ddddff; border-spacing: 0; }
 
-.ingredients-table td { width: 50%; height: 20px; font-size: 1.5em; border-top: solid 1px black; }
+.ingredients-table td { width: 50%; height: 20px; font-size: 2.5em; border-top: solid 1px black; }
 
-.ingredients-table .td-l { width: 50%; text-align: left; }
+.ingredients-table .td-l { width: 50%; text-align: left; padding-left: 1em; }
 
 .ingredients-table .td-r { width: 50%; text-align: left; }
 
@@ -3788,7 +3793,7 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 
 .feature-title-wrapper .feature-title-text { background: #ddddff; border-radius: 6px; color: #003333; font-size: 8vmin; padding: 6px 12px; margin: 0; }
 
-.how-to { background: #ddddff; color: #003333; padding: 6px 12px; font-size: 1.6em; font-weight: lighter; letter-spacing: 0.4px; text-align: left; }
+.how-to { background: #ddddff; color: #003333; padding: 6px 12px; font-size: 2.25em; font-weight: 500; letter-spacing: 0.4px; text-align: left; }
 
 .randomizer-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; height: 60vh; }
 
@@ -3801,5 +3806,3 @@ a, a:-webkit-any-link { text-decoration: none !important; }
 .loading { display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; width: 100%; margin: 0; padding: 0; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
 .loading span { display: block; font-size: 5vh; font-weight: 900; text-shadow: 3px 3px 1px #000000; }
-
-.nested-scroll, ul { overscroll-behavior: none; }

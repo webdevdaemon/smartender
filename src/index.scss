@@ -614,14 +614,14 @@ a:-webkit-any-link {
             text-align: center;
             width: 25%;
             .label-text--left {
-                font-family: serif;
+                font-family: $fbody;
                 font-weight: bold;
             }
         }
         .info {
             display: inline-block;
             width: 75%;
-            font-weight: 100;
+            font-weight: 500;
             text-align: center;
         }
     }
@@ -641,12 +641,13 @@ a:-webkit-any-link {
     td {
         width: 50%;
         height: 20px;
-        font-size: 1.5em;
+        font-size: 2.5em;
         border-top: solid 1px black;
     }
     .td-l {
         width: 50%;
         text-align: left;
+        padding-left: 1em;
     }
     .td-r {
         width: 50%;
@@ -685,8 +686,8 @@ a:-webkit-any-link {
     background: $lightest;
     color: $darkest;
     padding: 6px 12px;
-    font-size: 1.6em;
-    font-weight: lighter;
+    font-size: 2.25em;
+    font-weight: 500;
     letter-spacing: 0.4px;
     text-align: left;
 }
@@ -763,9 +764,4 @@ a:-webkit-any-link {
         font-weight: 900;
         text-shadow: 3px 3px 1px #000000;
     }
-}
-
-.nested-scroll,
-ul {
-    overscroll-behavior: none;
 }
