@@ -1,70 +1,61 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {getDrinkByName} from '../../_helpers/browseModule'
 
-
-import normalize from '../../_helpers/normalizeDrinkObject'
+getDrinkByName('old fashioned') //?
 
 class RenderRecipe extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     recipe: PropTypes.shape({
-      id: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number
-      ]),
+      iba: PropTypes.string,
       name: PropTypes.string,
       glass: PropTypes.string,
+      alcoholic: PropTypes.bool,
       category: PropTypes.string,
-      iba: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.object
-      ]),
-      howTo: 'Shake scotch, juice of lime, and powdered sugar with ice and strain into a whiskey sour glass. Decorate with 1/2 slice lemon, top with the cherry, and serve.',
-      thumbnail: 'https://www.thecocktaildb.com/images/media/drink/0dnb6k1504890436.jpg',
-      ingredients:
-        [['Scotch', '1 1/2 oz '],
-        ['Lime', 'Juice of 1/2 '],
-        ['Powdered sugar', '1/2 tsp '],
-        ['Lemon', '1/2 slice '],
-        ['Cherry', '1 ']],
-      alcoholic: true}),
-    name: PropTypes.string,
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      thumbnail: PropTypes.string,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      howTo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+      ingredients: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    }),
+    children: PropTypes.func.isRequired,
   }
-  
+
   constructor(props) {
     super(props)
     this.state = {
-      id: null,
-      name: null,
-      glass: null,
-      category: null,
-      iba: null,
-      howTo: null,
-      thumbnail: null,
-      ingredients: null,
-      alcoholic: null,
+      isLoading: true,
+      recipe: null,
     }
   }
-  
-  componentDidMount() {
-    const {recipe, id, name} = this.props
-    if (recipe) return this.setState({...recipe})
-    else {
-      this.setState((state, {id, name}) => {
-        
-        return {
-          
-        }
+
+  async componentDidMount() {
+    const {recipe} = this.props
+    if (recipe) {
+      return this.setState({
+        recipe: {...recipe},
+        isLoading: false,
       })
+    } else {
+      const {name} = this.props
+      const rcp = await getDrinkByName(name)
+      return rcp
+        .then(r => this.setState({recipe: {...r}, isLoading: false}))
+        .catch(err => Error(err))
     }
   }
-  
-  
+
   render() {
-    const {children, id, name} = this.props
-    return <React.Fragment>{
-      children({
-        ...this.state
-      })
-    }</React.Fragment>
+    const {children, name} = this.props
+    const {isLoading, recipe} = this.state
+    return (
+      <React.Fragment>
+        {children({
+          name,
+          recipe: isLoading ? null : {...recipe},
+        })}
+      </React.Fragment>
+    )
   }
 }
 

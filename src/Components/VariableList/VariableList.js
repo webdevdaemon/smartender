@@ -4,27 +4,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
-import {browse} from '../../_helpers/browseModule'
-
-// const ClickableListItem = (item, dex) => (
-// 	<li key={`${item}_0${dex}`} id={`${item}`} className='list-item-clickable'>
-//    <div className='list-item-name'>
-//      {item}
-//    </div>
-//  </li>
-// )
+import slugify from '../../_helpers/slugify'
 
 const ClickableListItem = (item, dex) => (
   <li key={`${item}_0${dex}`} id={`${item}`} className="list-item-clickable">
     <Link
-      style={{margin: 0, padding: 0, width: '100%', height: '100%'}}
+      style={{
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        height: '100%',
+      }}
       to={{
-        pathname: `/recipe/:${item}`,
-        state: {
-          recipe(x = `${item}`) {
-            return ((name) => browse.getDrinkByName(name))(x)
-          }
-        },
+        pathname: `/recipe/${slugify(item)}`,
+        state: item,
       }}
     >
       <div className="list-item-name">{item}</div>
@@ -48,5 +41,4 @@ VariableList.propTypes = {
   listHeader: PropTypes.string,
   match: PropTypes.any,
 }
-
 export default VariableList

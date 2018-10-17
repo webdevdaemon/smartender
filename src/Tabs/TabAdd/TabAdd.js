@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {Component} from 'react'
 import FeatureTitle from '../../Components/FeatureTitle'
 import {INGREDIENTS, GLASS_TYPES} from '../../_helpers/_data/index'
@@ -11,6 +12,7 @@ import {InputGroup, Switch, TextArea, Alignment} from '@blueprintjs/core'
 //   ingredients: {},
 //   howTo: 'mix stuff like...',
 // }
+
 const FORM_PROMPTS_BY_KEY = {
   name: 'Name Your Drink',
   alcoholic: 'Is It Alcoholic?',
@@ -28,17 +30,14 @@ class TabAdd extends Component {
     ingredients: null,
     howTo: null,
   }
-  
-  updateValue = (st) => {
-    this.setState(st)
-  }
+
+  updateValue = (st) => {this.setState(st)}
 
   render() {
     const {name,
       alcoholic,
       glass,
-      // ingredients,
-      howTo
+      howTo,
     } = this.state
     return (
       <div className='add-recipe'>

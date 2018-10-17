@@ -13,6 +13,7 @@ class TabBrowser extends Component {
     listHeader: 'Browse by Category, Ingredient, or Glass Type',
     visibleList: [],
     currentFlag: '',
+    currentTag: '',
   }
 
   static propTypes = {match: PropTypes.object}
@@ -30,7 +31,7 @@ class TabBrowser extends Component {
   updateFilterString = filter => this.setState({filter})
 
   filterList = (str = this.state.filter) => {
-    if (!str.length) return
+    if (!str) return
     const regX = `/${str}/gi`
     const list = this.state.visibleList
     const visibleList = list.filter(item => regX.test(item))
@@ -38,8 +39,8 @@ class TabBrowser extends Component {
   }
 
   onListItemClick = evt => {
-    evt.persist()
     const name = evt.target
+    console.log({name})
   }
 
   render() {
