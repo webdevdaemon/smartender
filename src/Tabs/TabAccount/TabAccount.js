@@ -88,13 +88,13 @@ class TabAccount extends React.Component {
         <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
         <ul className="menu-list">
-          {Object.entries(firebase.auth().currentUser).map(([key, val]) => {
+          {/* {Object.entries(firebase.auth().currentUser).map(([key, val]) => {
             return (
               <li className="">
                 <p className="">{`${key}: ${val}`}</p>
               </li>
             )
-          })}
+          })} */}
         </ul>
       </div>
     )

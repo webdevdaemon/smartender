@@ -43,7 +43,10 @@ class TabAdd extends Component {
     return (
       <div className='add-recipe'>
         <FeatureTitle title={'Add Recipe'} />
-        <form onSubmit={e => e.preventDefault()} className='add-recipe-form'>
+        <p style={{fontSize: '3em', textAlign: 'center', fontWeight: 'bold'}}>
+          Feature Coming SOON...
+        </p>
+        {/* <form onSubmit={e => e.preventDefault()} className='add-recipe-form'>
           <Switch
             large={true}
             label={`${FORM_PROMPTS_BY_KEY['alcoholic']}`}
@@ -92,7 +95,7 @@ class TabAdd extends Component {
             value={howTo}
           />
           
-        </form>
+        </form> */}
       </div>
     )
   }
