@@ -3,11 +3,11 @@
 */
 import React from 'react'
 import PropTypes from 'prop-types'
-import SearchResultsList from '../SearchResultsList'
+import ListResults from '../ListResults'
 
 const SearchResultsListWrapper = props => (
   <div className='search-results-list-wrapper'>
-		<SearchResultsList
+		<ListResults
 			listResults={props.listResults}
 		/>
   </div>

@@ -11,7 +11,7 @@ const TabSearch = (props) => (
 )
 
 TabSearch.propTypes = {
-	updateUI: PropTypes.func.isRequired,
+	updateSearchResults: PropTypes.func.isRequired,
 }
 
 export default TabSearch

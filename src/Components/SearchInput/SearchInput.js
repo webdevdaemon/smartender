@@ -1,5 +1,5 @@
 /**
-* @augments {Component<{    searchString:string,    updateUI:Function.isRequired,  >}
+* @augments {Component<{    searchString:string,    updateSearchResults:Function.isRequired,  >}
 */
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
@@ -12,14 +12,14 @@ class SearchInput extends Component {
 
   static propTypes = {
     searchString: PropTypes.string,
-    updateUI: PropTypes.func.isRequired,
+    updateSearchResults: PropTypes.func.isRequired,
   }
 
   componentDidMount = () => {
     this.inputRef.current.focus()
   }
 
-  inputHandler  = e => this.props.updateUI(e)
+  inputHandler  = e => this.props.updateSearchResults(e)
   submitHandler = e => e.preventDefault()
 
   render() {

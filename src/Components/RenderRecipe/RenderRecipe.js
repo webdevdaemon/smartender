@@ -2,11 +2,9 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {getDrinkByName} from '../../_helpers/browseModule'
 
-getDrinkByName('old fashioned') //?
-
 class RenderRecipe extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     recipe: PropTypes.shape({
       iba: PropTypes.string,
       name: PropTypes.string,

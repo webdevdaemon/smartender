@@ -6,12 +6,14 @@ const get = {
 }
 
 const filterBy = {
-glassType: (glassType = '') => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glassType}`,
-  ingredient: (ingredient = '') => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
-  category: (category = '') => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
-  adultsOnly: (adultsOnly = true) => `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${
-		adultsOnly ? 'Non_Alcoholic' : 'Alcoholic'
-	}`,
+  g: glassType =>
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glassType}`,
+  i: ingredient =>
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
+  c: category =>
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
+  _: (tag, flag) =>
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${flag}=${tag}`,
 }
 
 const listAll = {

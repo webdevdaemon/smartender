@@ -27,7 +27,7 @@ const Main = props => (
 )
 
 Main.propTypes = {
-  updateUI: PropTypes.func.isRequired,
+  updateSearchResults: PropTypes.func.isRequired,
   setAuthState: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
   admin: PropTypes.bool,

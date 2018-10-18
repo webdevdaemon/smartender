@@ -67,7 +67,7 @@ const PageRoutes = props => {
 }
 
 PageRoutes.propTypes = {
-  updateUI: PropTypes.func.isRequired,
+  updateSearchResults: PropTypes.func.isRequired,
   setAuthState: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
   currentRecipe: PropTypes.object,

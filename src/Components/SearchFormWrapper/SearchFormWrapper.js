@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SearchForm from '../SearchForm'
 
-const SearchFormWrapper = ({searchString, updateUI}) => (
+const SearchFormWrapper = ({searchString, updateSearchResults}) => (
 	<div className='search-form-wrapper'>
 		<SearchForm
 			searchString={searchString}
-			updateUI={updateUI}
+			updateSearchResults={updateSearchResults}
 		/>
 	</div>
 )
 
 SearchFormWrapper.propTypes = {
 	searchString: PropTypes.string,
-	updateUI: PropTypes.func,
+	updateSearchResults: PropTypes.func,
 }
 
 export default SearchFormWrapper
