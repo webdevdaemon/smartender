@@ -1,47 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
 
-import FaQuestion from 'react-icons/lib/fa/question'
-import FaSearch from 'react-icons/lib/fa/search'
-import FaPlus from 'react-icons/lib/fa/plus'
-import FaCogs from 'react-icons/lib/fa/cogs'
-import FaList from 'react-icons/lib/fa/list'
+import slugify from '../../_helpers/slugify'
+import Col from '../Col'
+import topLevelRoutes from '../../top-level-routes'
+
+const FooterNavButton = ({children, className}) =>
+  <Col.umn className={`footer__menu-item column ${className}`}>
+    {children}
+  </Col.umn>
 
 const Nav = () => (
-  <div className="nav">
-    <ul>
-      <li className='nav-link'>
-        <NavLink to="/browser">
-          <FaList />
-          <p className='footer-nav-text'>{'Browse'}</p>
-        </NavLink>
-      </li>
-      <li className='nav-link'>
-        <NavLink to="/search">
-          <FaSearch />
-          <p className='footer-nav-text'>{'Search'}</p>
-        </NavLink>
-      </li>
-      <li className='nav-link'>
-        <NavLink to="/randomizer">
-          <FaQuestion />  
-          <p className='footer-nav-text'>{'Random'}</p>
-        </NavLink>
-      </li>
-      <li className='nav-link'>
-        <NavLink to="/add">
-          <FaPlus />
-          <p className='footer-nav-text'>{'Submit'}</p>
-        </NavLink>
-      </li>
-      <li className='nav-link'>
-        <NavLink to="/" exact>
-          <FaCogs />
-          <p className='footer-nav-text'>{'About'}</p>
-        </NavLink>
-      </li>
-    </ul>
+  <div className="nav footer__nav">
+    <Col.umns>
+      {topLevelRoutes.map(({label, icon}) => (
+        <FooterNavButton>
+          <NavLink to={`/${slugify(label)}`}>
+            {icon}
+            <p className="footer-nav-text">{label}</p>
+          </NavLink>
+        </FooterNavButton>
+      ))}
+    </Col.umns>
   </div>
 )
 

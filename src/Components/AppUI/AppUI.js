@@ -1,21 +1,32 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+
+import Nav from '../Nav'
+import Main from '../../Sections/Main'
 import Header from '../../Sections/Header'
-import Page from '../../Sections/Page'
 import Footer from '../../Sections/Footer'
 import PageRoutes from '../../_helpers/page-routes'
-import Nav from '../Nav'
+
+import styled from 'react-emotion'
+
+const UI = styled('div')`
+  display: block;
+  background: #eeffff;
+  width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  z-index: 0;
+`
 
 const AppUI = props => (
-  <div className='app-ui'>
-    <Header/>
+  <UI className="app-ui">
+    <Header />
     <Main>
-      <PageRoutes/>
+      <PageRoutes />
     </Main>
     <Footer>
-      <Nav/>
+      <Nav />
     </Footer>
-  </div>
+  </UI>
 )
 
 export default AppUI

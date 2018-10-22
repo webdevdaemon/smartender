@@ -4,7 +4,6 @@ import {Route} from 'react-router-dom'
 
 import Home from '../Tabs/Home'
 import TabAdd from '../Tabs/TabAdd'
-import TabRecipe from '../Tabs/TabRecipe'
 import TabSearch from '../Tabs/TabSearch'
 import TabBrowser from '../Tabs/TabBrowser'
 import TabAccount from '../Tabs/TabAccount'
@@ -19,7 +18,6 @@ const PageRoutes = props => {
       <Route path="/browser" render={props => <TabBrowser />} />
       <Route path="/add" render={props => <TabAdd />} />
       <Route path="/randomizer" render={props => <TabRandomizer />} />
-      <Route path="/recipe/:id" render={props => <TabRecipe />} />
     </div>
   )
 }

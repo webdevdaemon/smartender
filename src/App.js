@@ -1,13 +1,10 @@
-import React, {Component} from 'react'
-import {BrowserRouter} from 'react-router-dom'
+ 
 import {base} from './base'
-import Main from './Components/Main'
-
-import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
-import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
-
-import {getListByTag} from './_helpers/browseModule'
-import autoComp from './_helpers/searchModule'
+import React, {Component} from 'react'
+import AppUI from './Components/AppUI/index'
+import {BrowserRouter} from 'react-router-dom'
+// import {getListByTag} from './_helpers/browseModule'
+// import autoComp from './_helpers/searchModule'
 
 class App extends Component {
   constructor(props) {
@@ -15,8 +12,8 @@ class App extends Component {
     this.state = {
       authenticated: false,
       admin: false,
-      user: null,
       avatar: null,
+      user: null,
       drinks: {},
     }
   }
@@ -26,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Main/>
+        <AppUI {...this.state}/>
       </BrowserRouter>
     )
   }

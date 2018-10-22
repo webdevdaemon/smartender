@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import FeatureTitle from '../../Components/FeatureTitle'
-import RandomizerWrapper from '../../Components/RandomizerWrapper'
+
 // import random from '../../_helpers/randomModule'
 
 class TabRandomizer extends Component {
@@ -9,23 +8,18 @@ class TabRandomizer extends Component {
     this.state = {
       id: null,
       recipe: null,
-      loading: true,
+      isLoading: true,
     }
   }
 
   // componentDidMount() {}
 
   render() {
-    const {loading, recipe, id} = this.state
-    return loading ? (
-      <div className="loading">
-        <span>Loading...</span>
-      </div>
+    const {isLoading, recipe, id} = this.state
+    return isLoading ? (
+      <h4 className="h4" />
     ) : (
-      <div className="randomizer">
-        <FeatureTitle title={'Recipe-Randomizer'} />
-        <RandomizerWrapper recipe={recipe} id={id} />
-      </div>
+      <a class={`button is-primary is-large ${isLoading && 'is-loading'}`}>{'"Suprise Me"'}</a>
     )
   }
 }

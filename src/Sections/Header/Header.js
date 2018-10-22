@@ -1,17 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {withRouter, Link} from 'react-router-dom'
+import Masthead from '../../Components/Masthead/Masthead'
+import styled from 'react-emotion'
 
-import Masthead from '../../Components/Masthead'
-import FaUser from 'react-icons/lib/fa/user'
-import FaAngleLeft from 'react-icons/lib/fa/angle-left'
+const StyledHeader = styled('header')`
+  background: #EBF1F5;
+  border-bottom: solid 1px #bfbfbf;
+  box-shadow: 0px 3px 2px #444;
+  position: absolute;
+  top:0; bottom: auto; left: 0; right: 0;
+  max-height: 10vh;
+  min-height: 7vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+`
 
 const Header = props => (
-  <header className="header">
-    <BackButton {...props} />
-    <Masthead title="brbckr" />
-    <UserButton avatar={props.authenticated && props.avatar} />
-  </header>
+  <StyledHeader className="header">
+    <Masthead title={'brbckr'} />
+  </StyledHeader>
 )
 
 Header.propTypes = {
@@ -21,28 +32,32 @@ Header.propTypes = {
   user: PropTypes.object,
 }
 
-function UserButton({avatar}) {
-  return (
-    <Link to={{pathname: '/account'}}>
-      {avatar ? (
-        <div className="avatar-wrapper account-button">
-          <div className="avatar" style={{backgroundImage: `url(${avatar})`}} />
-        </div>
-      ) : (
-        <button className="bp3-button bp3-intent">
-          <FaUser height="5.5vh" width="5.5vh" />
-        </button>
-      )}
-    </Link>
-  )
-}
+// function UserButton({avatar}) {
+//   return (
+//     <UB className avatar={avatar} >
+//       <Link to={{pathname: '/account'}}>
+//         {avatar ? (
+//           <div className="user__avatar--wrapper account__button">
+//             <div className="user__avatar" />
+//           </div>
+//         ) : (
 
-function BackButton({location, history, ...props}) {
-  return (
-    <a onClick={() => {history.goBack()}} className="back-button" >
-      <FaAngleLeft height="7vh" width="7vh" />
-    </a>
-  )
-}
+//       )}
+//       </Link>
+//     </UB>
+//   )
+// }
+
+// function BackButton({location, history, ...props}) {
+//   return (
+//     <a
+//       onClick={() => {
+//         history.goBack()
+//       }}
+//       className="back-button">
+//       <FaAngleLeft height="7vh" width="7vh" />
+//     </a>
+//   )
+// }
 
 export default withRouter(Header)

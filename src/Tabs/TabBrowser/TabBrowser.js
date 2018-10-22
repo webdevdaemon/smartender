@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {NavLink, Route} from 'react-router-dom'
-import ListResults from '../../Components/ListResults'
 
-import listPossibilities from '../../_helpers/listPossibilities'
+// import listPossibilities from '../../_helpers/listPossibilities'
 
 class TabBrowser extends Component {
   constructor(props) {
@@ -19,8 +18,8 @@ class TabBrowser extends Component {
   render() {
     const {match} = this.props
     return (
-      <main className="tab browser">
-        <h2 className='tab title'></h2>
+      <main className="tab__browser">
+        <h2 className='tab__title'></h2>
       </main>
     )
   }
