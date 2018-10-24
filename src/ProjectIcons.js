@@ -26,4 +26,10 @@ const Back = <HeaderIcon icon={back} />
 const User = <HeaderIcon icon={user} />
 
 export default Ico = (() => ({
-  Header: {Back, User}, Footer: {Add, Find, Randomize, Browse, About}}))()
+  Header: {
+    Back, User
+  },
+  Footer: {
+    Add, Find, Randomize, Browse, About
+  }
+}))()
