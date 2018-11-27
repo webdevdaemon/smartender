@@ -1,28 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {NavLink} from 'react-router-dom'
+import styled from 'react-emotion'
 
+import Columns from '../Columns'
+import Column from '../Column'
 import slugify from '../../_helpers/slugify'
-import Col from '../Col'
-import topLevelRoutes from '../../top-level-routes'
+import topLevelRoutes from '../../TopLevelRoutes'
 
-const FooterNavButton = ({children, className}) =>
-  <Col.umn className={`footer__menu-item column ${className}`}>
-    {children}
-  </Col.umn>
+const styledNavButton = styled('a')`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`
+
+const FooterNavButton = ({children}) => (
+  <Column>{children}</Column>
+)
+
+const StyledNav = styled('nav')`
+  background: #fcfcfc;
+  width: 100vw;
+  height: 100%;
+`
 
 const Nav = () => (
-  <div className="nav footer__nav">
-    <Col.umns>
-      {topLevelRoutes.map(({label, icon}) => (
-        <FooterNavButton>
-          <NavLink to={`/${slugify(label)}`}>
-            {icon}
-            <p className="footer-nav-text">{label}</p>
-          </NavLink>
-        </FooterNavButton>
-      ))}
-    </Col.umns>
-  </div>
+  <StyledNav className="nav footer__nav">
+    <Columns>
+      {() => {
+        return topLevelRoutes.map(({label, icon}) => (
+          <FooterNavButton>
+            {() => (
+              <NavLink to={`/${slugify(label)}`}>
+                {icon}
+                <p className="footer-nav-text">{label}</p>
+              </NavLink>
+            )}
+          </FooterNavButton>
+        ))
+      }}
+    </Columns>
+  </StyledNav>
 )
 
 Nav.propTypes = {

@@ -13,8 +13,7 @@ const StyledFooter = styled('footer')`
   align-items: stretch;
   margin: 0;
 	padding: 0;
-	
-
+  z-index: 500;
 `
 
 const Footer = ({ children }) =>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 
 const StyledH2 = styled('h2')`
-
+  
 `
 const StyledMasthead = styled('section')`
   

@@ -11,7 +11,8 @@ import styled from 'react-emotion'
 const UI = styled('div')`
   display: block;
   background: #eeffff;
-  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
   max-height: 100vh;
   min-height: 100vh;
   z-index: 0;

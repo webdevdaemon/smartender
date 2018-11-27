@@ -25,11 +25,18 @@ const About = <FooterIcon icon={infoCircle} />
 const Back = <HeaderIcon icon={back} />
 const User = <HeaderIcon icon={user} />
 
-export default Ico = (() => ({
+const Ico = {
   Header: {
-    Back, User
+    Back,
+    User,
   },
   Footer: {
-    Add, Find, Randomize, Browse, About
-  }
-}))()
+    Add,
+    Find,
+    Randomize,
+    Browse,
+    About,
+  },
+}
+
+export default Ico
